@@ -245,3 +245,22 @@ Proposed first automation milestone:
 - User selected Subagent-Driven execution.
 - Corrected the local simulation plan so `cleared` removes a slot, shifts later visible sessions left, and leaves the newest-side slot idle.
 - Next step is an isolated implementation worktree for the local software/simulator milestone.
+
+## Implementation Checkpoint - 2026-05-29
+
+- Created `feature/local-simulation-foundation` in `.worktrees/local-simulation-foundation`.
+- Completed and pushed the project skeleton with a Windows Node runner.
+- Completed and pushed the six-slot FIFO model:
+  - New sessions enter the newest/right slot.
+  - Full queues evict the oldest/leftmost slot.
+  - `cleared` shifts later sessions left and leaves the newest side idle.
+  - History records effective states for defaulted transitions.
+- Completed and pushed the local event schema:
+  - External payload uses `session_id`.
+  - Internal model uses `sessionId`.
+  - Explicit `state: null` is rejected instead of silently defaulted.
+- Completed and pushed the 64-byte HID display frame encoder:
+  - Six 8-byte slot records.
+  - Idle/unknown slots fail closed to idle rendering.
+  - Empty slots carry zero label hash bytes.
+- Current verification count before simulator work: 24 host tests passing.
