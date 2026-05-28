@@ -225,7 +225,7 @@ test('cleared removes a session and compacts remaining sessions left', () => {
 
   model = applyEvent(model, { source: 'test', sessionId: 's2', event: 'cleared' });
 
-  assert.deepEqual(ids(model), [null, null, null, 's1', 's3', 's4']);
+  assert.deepEqual(ids(model), [null, null, 's1', 's3', 's4', null]);
 });
 ```
 
@@ -359,8 +359,16 @@ function appendSession(model, event, state) {
 }
 
 function clearSession(model, event) {
-  const nonEmpty = model.slots.filter((slot) => slot && slot.sessionId !== event.sessionId);
-  model.slots = leftPadWithIdle(nonEmpty);
+  const index = findSessionIndex(model, event.sessionId);
+  if (index < 0) {
+    return bump(model, event);
+  }
+
+  model.slots = [
+    ...model.slots.slice(0, index),
+    ...model.slots.slice(index + 1),
+    null,
+  ];
   return bump(model, event);
 }
 

@@ -239,3 +239,9 @@ Proposed first automation milestone:
 
 - Create a repo skeleton with docs, host model tests, browser simulator, hardware notes, and component decision records.
 - Do not start PCB layout until the six-slot logic and simulator are executable and testable.
+
+## Execution Checkpoint - 2026-05-29
+
+- User selected Subagent-Driven execution.
+- Corrected the local simulation plan so `cleared` removes a slot, shifts later visible sessions left, and leaves the newest-side slot idle.
+- Next step is an isolated implementation worktree for the local software/simulator milestone.
