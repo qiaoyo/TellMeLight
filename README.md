@@ -27,6 +27,13 @@ simulator/index.html
 - Hardware architecture notes.
 - Decision record that blocks PCB layout until simulation is testable.
 
+## Out Of Scope For Milestone 1
+
+- Real USB HID writer.
+- Firmware build.
+- KiCad schematic or PCB layout.
+- Real AI-tool adapters.
+
 ## Design Docs
 
 - `docs/superpowers/specs/2026-05-29-tellmelight-design.md`

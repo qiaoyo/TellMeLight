@@ -71,12 +71,36 @@ test('ended keeps session visible and maps default outcome to done', () => {
   assert.equal(model.slots[5].state, STATE.DONE);
 });
 
+test('ended success outcomes keep session visible as done', () => {
+  for (const outcome of ['success', 'done']) {
+    let model = createEmptyModel();
+    model = applyEvent(model, { source: 'test', sessionId: outcome, event: 'started', state: STATE.RUNNING });
+    model = applyEvent(model, { source: 'test', sessionId: outcome, event: 'ended', outcome });
+
+    assert.equal(model.slots[5].state, STATE.DONE);
+  }
+});
+
 test('ended with error outcome keeps session visible as error', () => {
   let model = createEmptyModel();
   model = applyEvent(model, { source: 'test', sessionId: 's1', event: 'started', state: STATE.RUNNING });
   model = applyEvent(model, { source: 'test', sessionId: 's1', event: 'ended', outcome: 'error' });
 
   assert.equal(model.slots[5].state, STATE.ERROR);
+});
+
+test('ended rejects unsupported outcomes', () => {
+  const model = applyEvent(createEmptyModel(), {
+    source: 'test',
+    sessionId: 's1',
+    event: 'started',
+    state: STATE.RUNNING,
+  });
+
+  assert.throws(
+    () => applyEvent(model, { source: 'test', sessionId: 's1', event: 'ended', outcome: 'failed' }),
+    /Unsupported outcome/
+  );
 });
 
 test('cleared removes a session and compacts remaining sessions left', () => {

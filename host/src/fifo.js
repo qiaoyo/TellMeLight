@@ -36,7 +36,7 @@ export function applyEvent(model, event) {
   }
 
   if (event.event === EVENT.ENDED) {
-    const state = event.outcome === 'error' ? STATE.ERROR : STATE.DONE;
+    const state = stateForOutcome(event.outcome);
     if (index >= 0) {
       next.slots[index] = mergeSlot(next.slots[index], event, state);
       return bump(next, event, state);
@@ -113,6 +113,18 @@ function mergeSlot(slot, event, state) {
 
 function findSessionIndex(slots, sessionId) {
   return slots.findIndex((slot) => slot?.sessionId === sessionId);
+}
+
+function stateForOutcome(outcome) {
+  if (outcome === undefined || outcome === 'success' || outcome === 'done') {
+    return STATE.DONE;
+  }
+
+  if (outcome === 'error') {
+    return STATE.ERROR;
+  }
+
+  throw new Error(`Unsupported outcome: ${outcome}`);
 }
 
 function bump(model, event, state = event.state ?? null) {

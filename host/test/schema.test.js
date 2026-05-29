@@ -45,6 +45,19 @@ test('normalizeEvent accepts ended without state', () => {
   assert.equal(event.state, undefined);
 });
 
+test('normalizeEvent accepts known ended outcomes', () => {
+  for (const outcome of ['success', 'done', 'error']) {
+    const event = normalizeEvent({
+      source: 'manual',
+      session_id: `s-${outcome}`,
+      event: 'ended',
+      outcome,
+    });
+
+    assert.equal(event.outcome, outcome);
+  }
+});
+
 test('normalizeEvent rejects unknown states', () => {
   assert.throws(
     () => normalizeEvent({ source: 'manual', session_id: 's1', event: 'started', state: 'paused' }),
@@ -56,6 +69,13 @@ test('normalizeEvent rejects explicit null state', () => {
   assert.throws(
     () => normalizeEvent({ source: 'manual', session_id: 's1', event: 'started', state: null }),
     /Unsupported state/
+  );
+});
+
+test('normalizeEvent rejects unknown outcomes', () => {
+  assert.throws(
+    () => normalizeEvent({ source: 'manual', session_id: 's1', event: 'ended', outcome: 'failed' }),
+    /Unsupported outcome/
   );
 });
 

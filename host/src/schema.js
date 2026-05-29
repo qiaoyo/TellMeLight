@@ -1,5 +1,11 @@
 import { EVENT, STATE, isKnownEvent, isKnownState } from './states.js';
 
+const OUTCOME = Object.freeze({
+  SUCCESS: 'success',
+  DONE: 'done',
+  ERROR: 'error',
+});
+
 export function normalizeEvent(payload) {
   if (!payload || typeof payload !== 'object') {
     throw new Error('Event payload must be an object');
@@ -18,7 +24,7 @@ export function normalizeEvent(payload) {
     throw new Error(`Unsupported state: ${state}`);
   }
 
-  const outcome = payload.outcome === undefined ? undefined : String(payload.outcome);
+  const outcome = normalizeOutcome(payload.outcome);
 
   return {
     source,
@@ -42,4 +48,21 @@ function readRequiredString(payload, key) {
 function defaultStateForEvent(event) {
   if (event === EVENT.STARTED) return STATE.RUNNING;
   return undefined;
+}
+
+function normalizeOutcome(outcome) {
+  if (outcome === undefined) {
+    return undefined;
+  }
+
+  if (typeof outcome !== 'string' || outcome.trim() === '') {
+    throw new Error(`Unsupported outcome: ${outcome}`);
+  }
+
+  const normalized = outcome.trim();
+  if (!Object.values(OUTCOME).includes(normalized)) {
+    throw new Error(`Unsupported outcome: ${normalized}`);
+  }
+
+  return normalized;
 }
