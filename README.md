@@ -12,6 +12,18 @@ Run all tests on Windows:
 powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 --test host/test/*.test.js
 ```
 
+Start the local Host Bridge:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 host/src/server-cli.js
+```
+
+Send a repeatable demo event sequence while the Host Bridge is running:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 host/src/demo-client.js
+```
+
 Open the static simulator:
 
 ```text
