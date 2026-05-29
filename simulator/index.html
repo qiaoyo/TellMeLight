@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TellMeLight Simulator</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="workspace">
+      <section class="preview-panel" aria-labelledby="simulator-title">
+        <div class="panel-heading">
+          <h1 id="simulator-title">TellMeLight Simulator</h1>
+          <span class="status-pill">Local</span>
+        </div>
+
+        <div class="device-shell" aria-label="TellMeLight device preview">
+          <div class="device-face">
+            <div class="bar bar-left-long">
+              <div id="session-1" class="slot" data-slot="0"></div>
+              <div id="session-2" class="slot" data-slot="1"></div>
+            </div>
+            <div class="bar bar-middle-low">
+              <div id="session-3" class="slot" data-slot="2"></div>
+            </div>
+            <div class="bar bar-middle-high">
+              <div id="session-4" class="slot" data-slot="3"></div>
+            </div>
+            <div class="bar bar-right-long">
+              <div id="session-5" class="slot" data-slot="4"></div>
+              <div id="session-6" class="slot" data-slot="5"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="control-panel" aria-label="Simulator controls">
+        <div class="control-grid">
+          <button type="button" data-action="add-running">Add Running</button>
+          <button type="button" data-action="approval">Newest Approval</button>
+          <button type="button" data-action="done">Newest Done</button>
+          <button type="button" data-action="error">Newest Error</button>
+          <button type="button" data-action="clear-oldest">Clear Oldest</button>
+        </div>
+        <pre id="slot-json" aria-live="polite"></pre>
+      </aside>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

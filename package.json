@@ -1,0 +1,10 @@
+{
+  "name": "tellmelight",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Local-first design and simulation foundation for TellMeLight.",
+  "scripts": {
+    "test": "node --test host/test/*.test.js"
+  }
+}
