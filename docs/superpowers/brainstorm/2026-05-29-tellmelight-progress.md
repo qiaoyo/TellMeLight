@@ -301,3 +301,14 @@ Proposed first automation milestone:
   - Right middle short strip: short edge faces left.
 - The strips were made thicker, longer, and visually softer with larger rounded radii and multi-point clipped corners.
 - The change remains limited to the simulator's core display panel; session logic and controls are unchanged.
+
+## Core Display Correction Checkpoint - 2026-05-29
+
+- User caught that the right middle short strip was visually crooked.
+- Root cause:
+  - The strip had an explicit `rotate(1deg)`.
+  - Its short-left trapezoid points also shifted the top and bottom centers.
+- Correction:
+  - Removed rotation from the right middle short strip.
+  - Rebalanced the short-left trapezoid points so the strip stays upright while preserving a left-facing short edge.
+  - Added a simulator style regression test for the upright right middle strip.

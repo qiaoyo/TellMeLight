@@ -50,6 +50,18 @@ test('simulator styles use irregular rounded trapezoids with reference-facing sh
   assert.match(css, /width:\s*clamp\(44px,\s*8vw,\s*76px\)/);
 });
 
+test('simulator keeps the right middle short strip upright', async () => {
+  const css = await readFile('simulator/styles.css', 'utf8');
+  const blocks = Array.from(css.matchAll(/\.bar-middle-high\s*\{[\s\S]*?\n\}/g));
+  const block = blocks.at(-1)?.[0] ?? '';
+
+  assert.match(block, /clip-path:\s*var\(--trapezoid-short-left\)/);
+  assert.match(block, /transform:\s*translateY\(6%\);/);
+  assert.doesNotMatch(block, /rotate\(/);
+  assert.match(css, /--trapezoid-short-left:\s*polygon\([\s\S]*86% 0[\s\S]*86% 100%/);
+  assert.match(css, /--trapezoid-short-left:\s*polygon\([\s\S]*16% 15%[\s\S]*18% 90%/);
+});
+
 test('simulator applies state changes to the selected slot', async () => {
   const simulator = await runSimulator();
 

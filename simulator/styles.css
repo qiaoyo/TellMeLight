@@ -27,18 +27,18 @@
     7% 4%
   );
   --trapezoid-short-left: polygon(
-    20% 7%,
-    88% 0,
-    95% 2%,
-    100% 8%,
-    95% 92%,
-    92% 98%,
-    85% 100%,
-    12% 94%,
-    6% 91%,
-    2% 85%,
-    11% 16%,
-    14% 10%
+    16% 15%,
+    20% 9%,
+    86% 0,
+    94% 3%,
+    98% 10%,
+    96% 91%,
+    92% 97%,
+    86% 100%,
+    18% 90%,
+    12% 86%,
+    8% 79%,
+    11% 22%
   );
 }
 
@@ -174,7 +174,7 @@ h1 {
 
 .bar-middle-high {
   clip-path: var(--trapezoid-short-left);
-  transform: translateY(6%) rotate(1deg);
+  transform: translateY(6%);
 }
 
 .slot {
