@@ -18,7 +18,17 @@ Open the static simulator:
 simulator/index.html
 ```
 
+## Milestone 1 Contents
+
+- FIFO session model.
+- Local API event schema.
+- HID display frame encoder.
+- Browser simulator.
+- Hardware architecture notes.
+- Decision record that blocks PCB layout until simulation is testable.
+
 ## Design Docs
 
-- [Design spec](docs/superpowers/specs/2026-05-29-tellmelight-design.md)
-- [Progress log](docs/superpowers/brainstorm/2026-05-29-tellmelight-progress.md)
+- `docs/superpowers/specs/2026-05-29-tellmelight-design.md`
+- `docs/superpowers/brainstorm/2026-05-29-tellmelight-progress.md`
+- `docs/superpowers/plans/2026-05-29-local-simulation-foundation.md`
