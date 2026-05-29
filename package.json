@@ -7,6 +7,7 @@
   "scripts": {
     "host": "node host/src/server-cli.js",
     "demo": "node host/src/demo-client.js",
+    "event": "node host/src/event-cli.js",
     "test": "node --test host/test/*.test.js"
   }
 }

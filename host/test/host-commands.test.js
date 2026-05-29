@@ -7,6 +7,7 @@ test('package exposes host bridge commands', async () => {
 
   assert.equal(packageJson.scripts.host, 'node host/src/server-cli.js');
   assert.equal(packageJson.scripts.demo, 'node host/src/demo-client.js');
+  assert.equal(packageJson.scripts.event, 'node host/src/event-cli.js');
 });
 
 test('host bridge CLI starts the HTTP server on the default port', async () => {
@@ -26,4 +27,14 @@ test('demo client posts a repeatable event sequence', async () => {
   assert.match(demo, /\/v1\/events/);
   assert.match(demo, /demo-a/);
   assert.match(demo, /demo-b/);
+});
+
+test('event CLI sends adapter events through the event client', async () => {
+  const cli = await readFile('host/src/event-cli.js', 'utf8');
+
+  assert.match(cli, /parseEventCliArgs/);
+  assert.match(cli, /sendEvent/);
+  assert.match(cli, /started/);
+  assert.match(cli, /approval/);
+  assert.match(cli, /cleared/);
 });
