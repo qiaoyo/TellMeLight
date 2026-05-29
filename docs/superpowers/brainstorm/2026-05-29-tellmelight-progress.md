@@ -290,3 +290,14 @@ Proposed first automation milestone:
   - Left long strip contains two slots.
   - Each middle strip contains one slot.
   - Right long strip contains two slots.
+
+## Core Display Refinement Checkpoint - 2026-05-29
+
+- User confirmed the simulator button logic works.
+- Core display strips were refined from shared parallelogram geometry to per-strip irregular trapezoids:
+  - Left long strip: short edge faces right.
+  - Right long strip: short edge faces right.
+  - Left middle short strip: short edge faces right.
+  - Right middle short strip: short edge faces left.
+- The strips were made thicker, longer, and visually softer with larger rounded radii and multi-point clipped corners.
+- The change remains limited to the simulator's core display panel; session logic and controls are unchanged.

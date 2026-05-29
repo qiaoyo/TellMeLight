@@ -12,6 +12,34 @@
   --approval: #ffb84a;
   --done: #39d47a;
   --error: #ff4f5f;
+  --trapezoid-short-right: polygon(
+    12% 0,
+    86% 5%,
+    94% 8%,
+    98% 14%,
+    90% 84%,
+    87% 92%,
+    78% 97%,
+    10% 100%,
+    4% 97%,
+    0 91%,
+    5% 10%,
+    7% 4%
+  );
+  --trapezoid-short-left: polygon(
+    20% 7%,
+    88% 0,
+    95% 2%,
+    100% 8%,
+    95% 92%,
+    92% 98%,
+    85% 100%,
+    12% 94%,
+    6% 91%,
+    2% 85%,
+    11% 16%,
+    14% 10%
+  );
 }
 
 * {
@@ -93,14 +121,14 @@ h1 {
 }
 
 .device-face {
-  width: min(100%, 470px);
+  width: min(100%, 500px);
   aspect-ratio: 1 / 1;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(18px, 5vw, 44px);
-  padding: 13% 12%;
+  gap: clamp(16px, 4.6vw, 38px);
+  padding: 10% 9%;
   border-radius: 8px;
   background: #fbfcff;
   border: 1px solid #e1e8f0;
@@ -110,8 +138,8 @@ h1 {
 }
 
 .bar {
-  width: clamp(34px, 7vw, 58px);
-  border-radius: 12px;
+  width: clamp(44px, 8vw, 76px);
+  border-radius: 22px;
   padding: 0;
   overflow: hidden;
   background: #e8eef6;
@@ -119,31 +147,34 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  clip-path: polygon(12% 0, 100% 7%, 88% 100%, 0 93%);
-  box-shadow: 0 10px 22px rgba(38, 47, 64, 0.13);
+  box-shadow: 0 14px 28px rgba(38, 47, 64, 0.15);
 }
 
 .bar-left-long {
-  height: 72%;
-  transform: translateY(-1%) rotate(-0.6deg);
+  height: 82%;
+  clip-path: var(--trapezoid-short-right);
+  transform: translateY(-1%) rotate(-1deg);
 }
 
 .bar-right-long {
-  height: 82%;
-  transform: translateY(-3%) rotate(-0.6deg);
+  height: 92%;
+  clip-path: var(--trapezoid-short-right);
+  transform: translateY(-3%) rotate(-1deg);
 }
 
 .bar-middle-low,
 .bar-middle-high {
-  height: 43%;
+  height: 55%;
 }
 
 .bar-middle-low {
-  transform: translateY(12%) rotate(-0.6deg);
+  clip-path: var(--trapezoid-short-right);
+  transform: translateY(14%) rotate(-1deg);
 }
 
 .bar-middle-high {
-  transform: translateY(5%) rotate(-0.6deg);
+  clip-path: var(--trapezoid-short-left);
+  transform: translateY(6%) rotate(1deg);
 }
 
 .slot {
@@ -314,11 +345,11 @@ button:focus-visible {
 
 @media (max-width: 460px) {
   .device-face {
-    gap: 12px;
-    padding: 12% 8%;
+    gap: 10px;
+    padding: 10% 6%;
   }
 
   .bar {
-    width: clamp(28px, 13vw, 46px);
+    width: clamp(34px, 15vw, 56px);
   }
 }

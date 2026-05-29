@@ -33,8 +33,21 @@ test('simulator styles keep the core display near-square with slanted strips', a
   const css = await readFile('simulator/styles.css', 'utf8');
 
   assert.match(css, /aspect-ratio:\s*1\s*\/\s*1/);
-  assert.match(css, /clip-path:\s*polygon/);
-  assert.match(css, /border-radius:\s*12px/);
+  assert.match(css, /clip-path:\s*var\(--trapezoid/);
+  assert.match(css, /border-radius:\s*22px/);
+});
+
+test('simulator styles use irregular rounded trapezoids with reference-facing short edges', async () => {
+  const css = await readFile('simulator/styles.css', 'utf8');
+
+  assert.match(css, /--trapezoid-short-right/);
+  assert.match(css, /--trapezoid-short-left/);
+  assert.match(css, /\.bar-left-long[\s\S]*clip-path:\s*var\(--trapezoid-short-right\)/);
+  assert.match(css, /\.bar-right-long[\s\S]*clip-path:\s*var\(--trapezoid-short-right\)/);
+  assert.match(css, /\.bar-middle-low[\s\S]*clip-path:\s*var\(--trapezoid-short-right\)/);
+  assert.match(css, /\.bar-middle-high[\s\S]*clip-path:\s*var\(--trapezoid-short-left\)/);
+  assert.match(css, /border-radius:\s*22px/);
+  assert.match(css, /width:\s*clamp\(44px,\s*8vw,\s*76px\)/);
 });
 
 test('simulator applies state changes to the selected slot', async () => {
