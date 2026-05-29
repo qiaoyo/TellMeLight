@@ -112,6 +112,17 @@ test('simulator supports keyboard selection for focusable slots', async () => {
   assert.equal(simulator.slotSelected(5), 'true');
 });
 
+test('simulator can connect to the Host Bridge with local fallback', async () => {
+  const app = await readFile('simulator/app.js', 'utf8');
+
+  assert.match(app, /EventSource/);
+  assert.match(app, /http:\/\/localhost:8787\/v1\/stream/);
+  assert.match(app, /\/v1\/events/);
+  assert.match(app, /method:\s*'POST'/);
+  assert.match(app, /function applyBridgeSnapshot/);
+  assert.match(app, /function fallbackToLocal/);
+});
+
 async function runSimulator() {
   const app = await readFile('simulator/app.js', 'utf8');
   const slots = Array.from({ length: 6 }, (_, index) => createElement({ slot: String(index) }));
