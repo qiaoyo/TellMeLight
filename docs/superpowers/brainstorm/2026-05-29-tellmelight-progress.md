@@ -312,3 +312,23 @@ Proposed first automation milestone:
   - Removed rotation from the right middle short strip.
   - Rebalanced the short-left trapezoid points so the strip stays upright while preserving a left-facing short edge.
   - Added a simulator style regression test for the upright right middle strip.
+
+## Host Bridge Checkpoint - 2026-05-29
+
+- User approved Host Bridge option A as the next milestone.
+- Added a local dependency-free Node Host Bridge:
+  - `POST /v1/events` accepts normalized session events.
+  - `GET /v1/slots` returns the current six-slot snapshot.
+  - `GET /v1/stream` streams slot snapshots with Server-Sent Events.
+- Added CORS headers so the static `file://` simulator can talk to `localhost:8787`.
+- Added CLI entry points:
+  - `host/src/server-cli.js` starts the service on `127.0.0.1:8787`.
+  - `host/src/demo-client.js` sends a repeatable demo event sequence.
+- Updated the simulator:
+  - It listens to the Host Bridge stream when available.
+  - Manual buttons post events to the Host Bridge when connected.
+  - If the service is unavailable, the existing in-browser manual logic remains available.
+- Still out of scope:
+  - Real USB HID writing.
+  - Real AI-tool adapters.
+  - Firmware and PCB work.
