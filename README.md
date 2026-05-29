@@ -35,8 +35,9 @@ powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 host/src/event-cli.j
 Wrap a local command as a TellMeLight session:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 host/src/process-cli.js --source codex --id codex-1 --title "Codex run" -- codex --help
-npm run tml-run -- --source smoke --id process-smoke -- powershell -NoProfile -Command "exit 0"
+$node = powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 -Eval "console.log(process.execPath)"
+& $node host/src/process-cli.js --source codex --id codex-1 --title "Codex run" -- codex --help
+& $node host/src/process-cli.js --source smoke --id process-smoke -- powershell -NoProfile -Command "exit 0"
 ```
 
 Open the static simulator:

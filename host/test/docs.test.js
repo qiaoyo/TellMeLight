@@ -36,3 +36,11 @@ test('adapter contract documents normalized event fields and commands', async ()
   assert.match(contract, /--id/);
   assert.match(contract, /--/);
 });
+
+test('process wrapper docs avoid PowerShell script separator ambiguity', async () => {
+  const contract = await readFile('docs/adapters/contract.md', 'utf8');
+  const readme = await readFile('README.md', 'utf8');
+
+  assert.doesNotMatch(contract, /tools\/run-node\.ps1 host\/src\/process-cli\.js/);
+  assert.doesNotMatch(readme, /tools\/run-node\.ps1 host\/src\/process-cli\.js/);
+});

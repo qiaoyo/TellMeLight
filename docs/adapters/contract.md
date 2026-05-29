@@ -101,10 +101,11 @@ The wrapper preserves the child process exit code. TellMeLight event delivery fa
 Wrapper flags must come before `--`. Everything after `--` is treated as the child command and its arguments:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 host/src/process-cli.js --source codex --id codex-1 --title "Codex run" -- codex --help
+$node = powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 -Eval "console.log(process.execPath)"
+& $node host/src/process-cli.js --source codex --id codex-1 --title "Codex run" -- codex --help
 ```
 
-The package script name is `tml-run`:
+The package script name is `tml-run` for environments with `npm` available:
 
 ```powershell
 npm run tml-run -- --source smoke --id process-smoke -- powershell -NoProfile -Command "exit 0"
