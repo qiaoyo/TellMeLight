@@ -1,0 +1,21 @@
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import test from 'node:test';
+
+test('hardware architecture note records selected rev A parts', async () => {
+  const note = await readFile('hardware/notes/rev-a-architecture.md', 'utf8');
+
+  assert.match(note, /USB-C/);
+  assert.match(note, /RP2040-class/);
+  assert.match(note, /LP5024-class/);
+  assert.match(note, /six RGB light zones/);
+});
+
+test('local simulation decision prevents early PCB layout', async () => {
+  const decision = await readFile('docs/decisions/0001-local-simulation-first.md', 'utf8');
+
+  assert.match(decision, /Accepted/);
+  assert.match(decision, /No PCB layout/);
+  assert.match(decision, /FIFO/);
+  assert.match(decision, /simulator/);
+});
