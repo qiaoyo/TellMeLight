@@ -8,6 +8,7 @@ test('package exposes host bridge commands', async () => {
   assert.equal(packageJson.scripts.host, 'node host/src/server-cli.js');
   assert.equal(packageJson.scripts.demo, 'node host/src/demo-client.js');
   assert.equal(packageJson.scripts.event, 'node host/src/event-cli.js');
+  assert.equal(packageJson.scripts['tml-run'], 'node host/src/process-cli.js');
 });
 
 test('host bridge CLI starts the HTTP server on the default port', async () => {
@@ -37,4 +38,12 @@ test('event CLI sends adapter events through the event client', async () => {
   assert.match(cli, /started/);
   assert.match(cli, /approval/);
   assert.match(cli, /cleared/);
+});
+
+test('process CLI wraps local commands with process runner', async () => {
+  const cli = await readFile('host/src/process-cli.js', 'utf8');
+
+  assert.match(cli, /parseProcessCliArgs/);
+  assert.match(cli, /runProcessWithEvents/);
+  assert.match(cli, /tml-run/);
 });
