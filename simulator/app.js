@@ -10,6 +10,7 @@ const SESSION_IDS = ['session-1', 'session-2', 'session-3', 'session-4', 'sessio
 
 const slots = Array.from({ length: SLOT_COUNT }, () => null);
 let nextSessionIndex = 0;
+let selectedSlotIndex = SLOT_COUNT - 1;
 
 function createSession(state = STATE.RUNNING) {
   const id = SESSION_IDS[nextSessionIndex] ?? `session-${nextSessionIndex + 1}`;
@@ -37,29 +38,34 @@ function addRunning() {
   }
   sessions.push(createSession(STATE.RUNNING));
   placeSessionsRight(sessions);
+  selectedSlotIndex = SLOT_COUNT - 1;
 }
 
-function updateNewest(state) {
-  const newest = activeSessions().at(-1);
-  if (newest) {
-    newest.state = state;
-    render();
+function updateSelected(state) {
+  const selected = slots[selectedSlotIndex];
+  if (selected) {
+    selected.state = state;
   }
+  render();
 }
 
-function clearOldest() {
-  const oldestIndex = slots.findIndex(Boolean);
-  if (oldestIndex < 0) {
+function clearSelected() {
+  if (!slots[selectedSlotIndex]) {
     render();
     return;
   }
 
   const shifted = [
-    ...slots.slice(0, oldestIndex),
-    ...slots.slice(oldestIndex + 1),
+    ...slots.slice(0, selectedSlotIndex),
+    ...slots.slice(selectedSlotIndex + 1),
     null,
   ];
   slots.splice(0, SLOT_COUNT, ...shifted);
+  render();
+}
+
+function selectSlot(index) {
+  selectedSlotIndex = index;
   render();
 }
 
@@ -72,9 +78,12 @@ function render() {
     const node = document.querySelector(`[data-slot="${index}"]`);
     const session = slots[index];
     const state = session?.state ?? STATE.IDLE;
-    node.className = `slot ${slotClass(state)}`;
+    const selectedClass = index === selectedSlotIndex ? ' is-selected' : '';
+    node.className = `slot ${slotClass(state)}${selectedClass}`;
     node.dataset.state = state;
     node.dataset.sessionId = session?.id ?? '';
+    node.dataset.selected = String(index === selectedSlotIndex);
+    node.setAttribute('aria-selected', String(index === selectedSlotIndex));
     node.setAttribute('aria-label', session ? `${session.id} ${state}` : `slot ${index + 1} idle`);
   }
 
@@ -83,6 +92,7 @@ function render() {
       slot: index,
       id: session?.id ?? null,
       state: session?.state ?? STATE.IDLE,
+      selected: index === selectedSlotIndex,
     })),
     null,
     2,
@@ -96,33 +106,58 @@ function handleAction(action) {
     return;
   }
 
+  if (action === 'running') {
+    updateSelected(STATE.RUNNING);
+    return;
+  }
+
   if (action === 'approval') {
-    updateNewest(STATE.APPROVAL);
+    updateSelected(STATE.APPROVAL);
     return;
   }
 
   if (action === 'done') {
-    updateNewest(STATE.DONE);
+    updateSelected(STATE.DONE);
     return;
   }
 
   if (action === 'error') {
-    updateNewest(STATE.ERROR);
+    updateSelected(STATE.ERROR);
     return;
   }
 
-  if (action === 'clear-oldest') {
-    clearOldest();
+  if (action === 'clear-selected') {
+    clearSelected();
   }
 }
 
 document.addEventListener('click', (event) => {
+  const slot = event.target.closest('[data-slot]');
+  if (slot) {
+    selectSlot(Number(slot.dataset.slot));
+    return;
+  }
+
   const button = event.target.closest('[data-action]');
   if (!button) {
     return;
   }
 
   handleAction(button.dataset.action);
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key !== 'Enter' && event.key !== ' ') {
+    return;
+  }
+
+  const slot = event.target.closest('[data-slot]');
+  if (!slot) {
+    return;
+  }
+
+  event.preventDefault();
+  selectSlot(Number(slot.dataset.slot));
 });
 
 slots[SLOT_COUNT - 1] = createSession(STATE.RUNNING);

@@ -17,18 +17,18 @@
         <div class="device-shell" aria-label="TellMeLight device preview">
           <div class="device-face">
             <div class="bar bar-left-long">
-              <div id="session-1" class="slot" data-slot="0"></div>
-              <div id="session-2" class="slot" data-slot="1"></div>
+              <div id="session-1" class="slot" data-slot="0" role="button" tabindex="0"></div>
+              <div id="session-2" class="slot" data-slot="1" role="button" tabindex="0"></div>
             </div>
             <div class="bar bar-middle-low">
-              <div id="session-3" class="slot" data-slot="2"></div>
+              <div id="session-3" class="slot" data-slot="2" role="button" tabindex="0"></div>
             </div>
             <div class="bar bar-middle-high">
-              <div id="session-4" class="slot" data-slot="3"></div>
+              <div id="session-4" class="slot" data-slot="3" role="button" tabindex="0"></div>
             </div>
             <div class="bar bar-right-long">
-              <div id="session-5" class="slot" data-slot="4"></div>
-              <div id="session-6" class="slot" data-slot="5"></div>
+              <div id="session-5" class="slot" data-slot="4" role="button" tabindex="0"></div>
+              <div id="session-6" class="slot" data-slot="5" role="button" tabindex="0"></div>
             </div>
           </div>
         </div>
@@ -37,10 +37,11 @@
       <aside class="control-panel" aria-label="Simulator controls">
         <div class="control-grid">
           <button type="button" data-action="add-running">Add Running</button>
-          <button type="button" data-action="approval">Newest Approval</button>
-          <button type="button" data-action="done">Newest Done</button>
-          <button type="button" data-action="error">Newest Error</button>
-          <button type="button" data-action="clear-oldest">Clear Oldest</button>
+          <button type="button" data-action="running">Set Running</button>
+          <button type="button" data-action="approval">Set Approval</button>
+          <button type="button" data-action="done">Set Done</button>
+          <button type="button" data-action="error">Set Error</button>
+          <button type="button" data-action="clear-selected">Clear Selected</button>
         </div>
         <pre id="slot-json" aria-live="polite"></pre>
       </aside>

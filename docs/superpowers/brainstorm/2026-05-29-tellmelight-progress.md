@@ -264,3 +264,29 @@ Proposed first automation milestone:
   - Idle/unknown slots fail closed to idle rendering.
   - Empty slots carry zero label hash bytes.
 - Current verification count before simulator work: 24 host tests passing.
+
+## Simulator Interaction Checkpoint - 2026-05-29
+
+- User selected simulator option A: click any of the six visible slots, then apply a state action to the selected slot.
+- The simulator now keeps a selected slot index and exposes it in the rendered JSON state.
+- State controls now operate on the selected slot instead of always operating on the newest/rightmost session:
+  - `Set Running`
+  - `Set Approval`
+  - `Set Done`
+  - `Set Error`
+  - `Clear Selected`
+- `Clear Selected` removes the selected visible session, shifts later sessions left, and leaves the newest-side slot idle.
+- Focusable slots also support keyboard selection with Enter or Space.
+
+## Core Display Panel Checkpoint - 2026-05-29
+
+- The core display panel was adjusted toward the user-provided reference image:
+  - Near-square display area.
+  - Four lightly slanted vertical strips.
+  - Rounded strip corners.
+  - Left long strip slightly shorter than right long strip.
+  - Two middle strips remain shorter and staggered.
+- The six-session mapping is preserved:
+  - Left long strip contains two slots.
+  - Each middle strip contains one slot.
+  - Right long strip contains two slots.

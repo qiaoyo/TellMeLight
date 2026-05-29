@@ -18,6 +18,13 @@ Open the static simulator:
 simulator/index.html
 ```
 
+## Simulator Interaction
+
+- Click any of the six light slots to select it.
+- Use `Set Running`, `Set Approval`, `Set Done`, or `Set Error` to update the selected session.
+- Use `Clear Selected` to remove the selected visible session and compact later sessions left.
+- `Add Running` appends a new running session on the newest/rightmost side.
+
 ## Milestone 1 Contents
 
 - FIFO session model.
