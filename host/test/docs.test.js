@@ -30,4 +30,9 @@ test('adapter contract documents normalized event fields and commands', async ()
   assert.match(contract, /ended/);
   assert.match(contract, /cleared/);
   assert.match(contract, /event-cli\.js started/);
+  assert.match(contract, /process-cli\.js/);
+  assert.match(contract, /tml-run/);
+  assert.match(contract, /--source/);
+  assert.match(contract, /--id/);
+  assert.match(contract, /--/);
 });

@@ -88,6 +88,36 @@ Use a non-default Host Bridge URL:
 powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 host/src/event-cli.js started --id local-1 --url http://127.0.0.1:9000
 ```
 
+## Process Wrapper
+
+`host/src/process-cli.js` is the generic local process adapter. Use it when a tool can be represented as a command that starts, runs, and exits. The wrapper emits:
+
+- `started` before launching the child process.
+- `ended` with `outcome: "success"` when the child exits with code `0`.
+- `ended` with `outcome: "error"` when the child exits non-zero or cannot be spawned.
+
+The wrapper preserves the child process exit code. TellMeLight event delivery failures are printed as warnings and do not block the wrapped command.
+
+Wrapper flags must come before `--`. Everything after `--` is treated as the child command and its arguments:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 host/src/process-cli.js --source codex --id codex-1 --title "Codex run" -- codex --help
+```
+
+The package script name is `tml-run`:
+
+```powershell
+npm run tml-run -- --source smoke --id process-smoke -- powershell -NoProfile -Command "exit 0"
+```
+
+Useful flags:
+
+- `--source`: adapter or tool name; defaults to `process`.
+- `--id`: stable session ID; generated when omitted.
+- `--title`: visible session label; defaults to the child command line.
+- `--url`: non-default Host Bridge URL.
+- `--cwd`: child process working directory.
+
 ## Session ID Guidance
 
 Use stable session IDs. If a tool does not provide one, derive an ID from:

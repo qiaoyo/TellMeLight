@@ -32,6 +32,13 @@ powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 host/src/event-cli.j
 powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 host/src/event-cli.js done --id codex-1 --source codex
 ```
 
+Wrap a local command as a TellMeLight session:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 host/src/process-cli.js --source codex --id codex-1 --title "Codex run" -- codex --help
+npm run tml-run -- --source smoke --id process-smoke -- powershell -NoProfile -Command "exit 0"
+```
+
 Open the static simulator:
 
 ```text
@@ -52,6 +59,7 @@ simulator/index.html
 - HID display frame encoder.
 - Browser simulator.
 - Hardware architecture notes.
+- Generic process wrapper adapter.
 - Decision record that blocks PCB layout until simulation is testable.
 
 ## Out Of Scope For Milestone 1
@@ -59,7 +67,7 @@ simulator/index.html
 - Real USB HID writer.
 - Firmware build.
 - KiCad schematic or PCB layout.
-- Real AI-tool adapters.
+- Tool-specific log parsers for Codex, Claude, Cursor, or other AI tools.
 
 ## Design Docs
 

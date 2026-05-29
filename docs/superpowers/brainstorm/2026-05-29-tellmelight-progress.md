@@ -345,3 +345,17 @@ Proposed first automation milestone:
   - `cleared` sends `cleared`.
 - Added `docs/adapters/contract.md` so future Codex, Claude, Cursor, or local-agent adapters share one event contract.
 - This milestone still avoids parsing real tool logs; it creates the stable adapter input surface first.
+
+## Process Adapter Checkpoint - 2026-05-30
+
+- User approved generic process adapter option A as the next local-only integration step.
+- Added a dependency-free process runner:
+  - Sends `started` before child process launch.
+  - Sends `ended` with `outcome: success` for exit code `0`.
+  - Sends `ended` with `outcome: error` for non-zero exits or spawn failure.
+  - Keeps the child command running even if TellMeLight event delivery fails.
+- Added `host/src/process-cli.js` as the `tml-run` command surface:
+  - Wrapper flags are parsed before `--`.
+  - Child command and arguments are passed after `--`.
+  - `--source`, `--id`, `--title`, `--url`, and `--cwd` are supported.
+- This creates a practical bridge for local commands before any tool-specific Codex, Claude, Cursor, or IDE log parser exists.
