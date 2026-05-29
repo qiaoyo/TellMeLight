@@ -19,3 +19,15 @@ test('local simulation decision prevents early PCB layout', async () => {
   assert.match(decision, /FIFO/);
   assert.match(decision, /simulator/);
 });
+
+test('adapter contract documents normalized event fields and commands', async () => {
+  const contract = await readFile('docs/adapters/contract.md', 'utf8');
+
+  assert.match(contract, /session_id/);
+  assert.match(contract, /source/);
+  assert.match(contract, /started/);
+  assert.match(contract, /state_changed/);
+  assert.match(contract, /ended/);
+  assert.match(contract, /cleared/);
+  assert.match(contract, /event-cli\.js started/);
+});

@@ -332,3 +332,16 @@ Proposed first automation milestone:
   - Real USB HID writing.
   - Real AI-tool adapters.
   - Firmware and PCB work.
+
+## Adapter Foundation Checkpoint - 2026-05-29
+
+- User approved Adapter Foundation option A.
+- Added a reusable event client for sending normalized events to the Host Bridge.
+- Added a dependency-free event CLI:
+  - `started` sends a running `started` event.
+  - `running` and `approval` send `state_changed`.
+  - `done` sends `ended` with `outcome: success`.
+  - `error` sends `ended` with `outcome: error`.
+  - `cleared` sends `cleared`.
+- Added `docs/adapters/contract.md` so future Codex, Claude, Cursor, or local-agent adapters share one event contract.
+- This milestone still avoids parsing real tool logs; it creates the stable adapter input surface first.

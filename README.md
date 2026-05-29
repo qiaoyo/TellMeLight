@@ -24,6 +24,14 @@ Send a repeatable demo event sequence while the Host Bridge is running:
 powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 host/src/demo-client.js
 ```
 
+Send individual adapter-style events:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 host/src/event-cli.js started --id codex-1 --source codex --title "Implement firmware"
+powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 host/src/event-cli.js approval --id codex-1 --source codex
+powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 host/src/event-cli.js done --id codex-1 --source codex
+```
+
 Open the static simulator:
 
 ```text
@@ -56,5 +64,7 @@ simulator/index.html
 ## Design Docs
 
 - `docs/superpowers/specs/2026-05-29-tellmelight-design.md`
+- `docs/superpowers/specs/2026-05-29-adapter-foundation-design.md`
+- `docs/adapters/contract.md`
 - `docs/superpowers/brainstorm/2026-05-29-tellmelight-progress.md`
 - `docs/superpowers/plans/2026-05-29-local-simulation-foundation.md`
