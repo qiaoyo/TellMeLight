@@ -37,7 +37,7 @@ const designBomRows = [
   ['C17', '1', 'CAPACITOR', '10nF', 'Capacitor_SMD:C_0603_1608Metric', 'CL10B103KB8NNNC', 'C57112', 'Bottom', 'GREEN', 'USB-C shell RF shunt in 1M // 10nF RC network'],
   ['Y1', '1', 'CRYSTAL', '12MHz passive', 'Crystal:Crystal_SMD_TXC_7M-4Pin_3.2x2.5mm', 'YXC X322512MSB4SI passive crystal', 'C9002', 'Bottom', 'YELLOW', 'Passive 12MHz crystal; JLC active/passive warning should be confirmed as passive'],
   ['SW1,SW2', '2', 'SWITCH', 'BOOT_RESET', 'Button_Switch_SMD:SW_SPST_EVQP2_ShortPushTravel_H2.1mm', 'Panasonic EVQP2R02M', 'C79161', 'Bottom', 'GREEN', 'Back-side service buttons'],
-  ['WATERMARK', '1', 'SILKSCREEN', 'avatar watermark', 'F.Silkscreen line art', 'User avatar line art', '', 'Top', 'GREEN', 'Top-side avatar watermark, not an SMT part'],
+  ['WATERMARK', '1', 'SILKSCREEN', 'avatar watermark', 'F.Silkscreen A1-style separated line art', 'User avatar line art', '', 'Top', 'GREEN', 'Top-side A1-style separated avatar watermark, not an SMT part'],
   ['TP1-TP13', '13', 'TESTPOINT', '1.0mm pad', 'TestPoint:TestPoint_Pad_D1.0mm', 'Generic SMT test pad', '', 'Bottom', 'YELLOW', 'Not a purchased SMT part'],
   ['H1-H4', '4', 'MECHANICAL', 'M2 mounting hole', 'MountingHole:MountingHole_2.2mm_M2', 'Generic M2 clearance', '', 'Mechanical', 'YELLOW', 'Mechanical only'],
 ];
@@ -128,7 +128,7 @@ Rev A3 is the first compact JLC order-review candidate after the user's JLC dry 
 - VLED has TVS/ESD protection through U6.
 - USB-C shell uses R9 1M and C17 10nF in parallel to GND.
 - VBUS-to-VLED is explicit through R10 0R.
-- The top-side silkscreen has a small avatar watermark in line art.
+- The top-side silkscreen has a small A1-style separated avatar watermark in line art.
 - This package checks JLC board size, SMT matching, placement, orientation, and silkscreen. It is still not the paid-order electrical routing release.
 
 ## Known JLC Warnings To Interpret

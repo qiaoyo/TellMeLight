@@ -18,6 +18,8 @@ test('rev A3 KiCad project places protection parts on a smaller watermarked boar
   assert.match(readme, /avatar watermark/);
   assert.match(pcb, /TellMeLight Rev A3/);
   assert.match(pcb, /Avatar watermark/);
+  assert.match(pcb, /Avatar watermark A1 separated/);
+  assert.match(readme, /A1-style separated avatar watermark/);
   assert.match(pcb, /TPD1E05U06DPY/);
   assert.match(pcb, /Texas_DPY0002A_0\.6x1mm_P0\.65mm/);
 

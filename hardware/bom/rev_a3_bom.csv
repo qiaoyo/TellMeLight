@@ -20,6 +20,6 @@ C1-C10,10,CAPACITOR,100nF,Capacitor_SMD:C_0603_1608Metric,CL10B104KB8NNNC,C1591,
 C17,1,CAPACITOR,10nF,Capacitor_SMD:C_0603_1608Metric,CL10B103KB8NNNC,C57112,Bottom,GREEN,USB-C shell RF shunt in 1M // 10nF RC network
 Y1,1,CRYSTAL,12MHz passive,Crystal:Crystal_SMD_TXC_7M-4Pin_3.2x2.5mm,YXC X322512MSB4SI passive crystal,C9002,Bottom,YELLOW,Passive 12MHz crystal; JLC active/passive warning should be confirmed as passive
 "SW1,SW2",2,SWITCH,BOOT_RESET,Button_Switch_SMD:SW_SPST_EVQP2_ShortPushTravel_H2.1mm,Panasonic EVQP2R02M,C79161,Bottom,GREEN,Back-side service buttons
-WATERMARK,1,SILKSCREEN,avatar watermark,F.Silkscreen line art,User avatar line art,,Top,GREEN,"Top-side avatar watermark, not an SMT part"
+WATERMARK,1,SILKSCREEN,avatar watermark,F.Silkscreen A1-style separated line art,User avatar line art,,Top,GREEN,"Top-side A1-style separated avatar watermark, not an SMT part"
 TP1-TP13,13,TESTPOINT,1.0mm pad,TestPoint:TestPoint_Pad_D1.0mm,Generic SMT test pad,,Bottom,YELLOW,Not a purchased SMT part
 H1-H4,4,MECHANICAL,M2 mounting hole,MountingHole:MountingHole_2.2mm_M2,Generic M2 clearance,,Mechanical,YELLOW,Mechanical only

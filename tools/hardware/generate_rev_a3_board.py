@@ -72,60 +72,69 @@ def add_diffuser_marks(board):
 def add_avatar_watermark(board):
     layer = pcbnew.F_SilkS
     width = 0.15
-    origin_x = 20.0
-    origin_y = 42.2
-    scale = 0.72
-    offset_x = 19.0
-    offset_y = 8.0
-
-    def mapped(x, y):
-        return offset_x + (x - origin_x) * scale, offset_y + (y - origin_y) * scale
 
     def line(x1, y1, x2, y2):
-        start_x, start_y = mapped(x1, y1)
-        end_x, end_y = mapped(x2, y2)
-        rev_a1.add_line(board, layer, start_x, start_y, end_x, end_y, width)
+        rev_a1.add_line(board, layer, x1, y1, x2, y2, width)
 
     def poly(points):
         for start, end in zip(points, points[1:]):
             line(start[0], start[1], end[0], end[1])
 
     rev_a1.add_text(board, "Avatar watermark", 1.6, 55.0, pcbnew.Cmts_User, 0.6)
+    rev_a1.add_text(board, "Avatar watermark A1 separated", 1.6, 54.0, pcbnew.Cmts_User, 0.6)
 
-    # Wi-Fi-like strokes from the user's black/white avatar.
-    poly([(20.0, 45.5), (21.0, 44.7), (22.3, 44.3), (23.8, 44.6), (24.8, 45.5)])
-    poly([(20.7, 47.0), (21.6, 46.3), (22.8, 46.1), (24.0, 46.4), (24.7, 47.1)])
-    poly([(21.6, 48.5), (22.4, 48.1), (23.2, 48.1), (24.0, 48.5)])
+    top_x = 30.0
+    top_y = 7.3
+    lower_x = 30.0
+    lower_y = 14.2
+    scale = 0.08
 
-    # Bow/arrow glyph.
-    poly([(35.4, 44.7), (37.2, 43.2), (39.0, 44.7), (39.0, 48.8), (37.2, 50.0), (35.4, 48.8), (35.4, 44.7)])
-    line(33.8, 46.8, 35.4, 46.8)
-    line(33.8, 46.8, 34.4, 46.2)
-    line(33.8, 46.8, 34.4, 47.4)
-    line(37.2, 43.2, 37.2, 42.2)
+    def top(point):
+        return top_x + point[0] * scale, top_y + point[1] * scale
 
-    # Flower-like knot.
+    def lower(point):
+        return lower_x + point[0] * scale, lower_y + point[1] * scale
+
+    def poly_mapped(points, mapper):
+        poly([mapper(point) for point in points])
+
+    def line_mapped(start, end, mapper):
+        mapped_start = mapper(start)
+        mapped_end = mapper(end)
+        line(mapped_start[0], mapped_start[1], mapped_end[0], mapped_end[1])
+
+    # A1-style separated avatar watermark: full image language, but scaled as
+    # a quiet PCB signature instead of a main graphic.
+    poly_mapped([(0, 25), (7, 16), (18, 12), (29, 15), (36, 24)], top)
+    poly_mapped([(4, 37), (14, 29), (25, 28), (34, 34)], top)
+    poly_mapped([(12, 48), (18, 44), (25, 44), (31, 48)], top)
+
+    poly_mapped([(64, 16), (75, 6), (86, 16), (86, 41), (75, 49), (64, 41), (64, 16)], top)
+    line_mapped((52, 29), (64, 29), top)
+    line_mapped((52, 29), (57, 24), top)
+    line_mapped((52, 29), (57, 34), top)
+    line_mapped((75, 6), (75, 0), top)
+
     petals = [
-        [(49.0, 44.1), (50.0, 43.2), (51.0, 44.1), (50.0, 45.0), (49.0, 44.1)],
-        [(51.0, 44.1), (52.0, 45.1), (51.0, 46.1), (50.0, 45.0), (51.0, 44.1)],
-        [(51.0, 46.1), (50.0, 47.0), (49.0, 46.1), (50.0, 45.0), (51.0, 46.1)],
-        [(49.0, 46.1), (48.0, 45.1), (49.0, 44.1), (50.0, 45.0), (49.0, 46.1)],
+        [(122, 10), (130, 2), (138, 10), (130, 18), (122, 10)],
+        [(138, 10), (146, 18), (138, 26), (130, 18), (138, 10)],
+        [(138, 26), (130, 34), (122, 26), (130, 18), (138, 26)],
+        [(122, 26), (114, 18), (122, 10), (130, 18), (122, 26)],
     ]
     for points in petals:
-        poly(points)
-    line(49.5, 45.0, 50.5, 45.0)
-    line(50.0, 44.5, 50.0, 45.5)
+        poly_mapped(points, top)
+    line_mapped((125, 18), (135, 18), top)
+    line_mapped((130, 13), (130, 23), top)
 
-    # Face and horizontal baseline from the lower half of the avatar.
     face = [
-        (20.8, 51.3), (21.0, 49.6), (22.0, 48.7), (23.5, 48.5),
-        (25.1, 49.0), (26.0, 50.5), (25.9, 52.2), (24.8, 53.2),
-        (22.8, 53.3), (21.4, 52.6), (20.8, 51.3),
+        (4, 24), (2, 8), (14, 3), (29, 0),
+        (40, 8), (48, 22), (39, 36), (26, 45),
+        (10, 38), (4, 32), (4, 24),
     ]
-    poly(face)
-    line(23.0, 49.8, 23.25, 49.8)
-    line(23.12, 49.68, 23.12, 49.92)
-    line(28.5, 50.8, 50.5, 50.8)
+    poly_mapped(face, lower)
+    line_mapped((22, 10), (23.5, 10), lower)
+    line_mapped((22.75, 9.25), (22.75, 10.75), lower)
+    line_mapped((58, 25), (153, 25), lower)
 
 
 def place_components(board):

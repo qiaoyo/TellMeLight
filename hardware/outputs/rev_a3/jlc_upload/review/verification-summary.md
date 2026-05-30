@@ -38,7 +38,7 @@ Date: 2026-05-31
 - U6 adds VLED-to-GND TVS/ESD protection.
 - R9 and C17 implement the USB-C shell `1M // 10nF` RC network to GND.
 - R10 makes the VBUS-to-VLED source link explicit.
-- Top silkscreen contains the user's avatar watermark as line art.
+- Top silkscreen contains the user's A1-style separated avatar watermark as line art.
 
 ## Boundary Before Payment
 

@@ -17,7 +17,7 @@ Generated: 2026-05-31
 - U6 `TPD1E05U06DPY` adds VLED-to-GND TVS/ESD protection.
 - R10 `0R` explicitly ties VBUS to VLED.
 - R9 `1M` and C17 `10nF` implement the USB-C shell-to-GND RC network.
-- Top silkscreen includes a small line-art avatar watermark in an empty optical-face area.
+- Top silkscreen includes a small A1-style separated avatar watermark in an empty optical-face area.
 - The JLC package is an order-review candidate, but payment is still blocked until the JLC orientation preview is checked.
 
 ## Important Boundary
@@ -30,4 +30,4 @@ Rev A3 is a compact JLC order-review package for board size, SMT matching, place
 - D3: left middle short bar.
 - D4: right middle short bar.
 - D5 and D6: right long bar, newest side.
-- The avatar watermark sits near the upper top-side empty area and avoids SMT pads.
+- The A1-style separated avatar watermark sits near the upper top-side empty area and avoids SMT pads.
