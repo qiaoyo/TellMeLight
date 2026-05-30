@@ -73,6 +73,7 @@ function statePayload(context, state) {
     session_id: context.sessionId,
     event: 'state_changed',
     state,
+    ...(context.title ? { title: context.title } : {}),
   };
 }
 
@@ -82,6 +83,7 @@ function endedPayload(context, outcome) {
     session_id: context.sessionId,
     event: 'ended',
     outcome,
+    ...(context.title ? { title: context.title } : {}),
   };
 }
 

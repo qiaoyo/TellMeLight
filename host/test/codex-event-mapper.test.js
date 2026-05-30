@@ -50,7 +50,7 @@ test('approval-like Codex items map to approval state', () => {
 });
 
 test('turn.completed maps to successful ended event', () => {
-  const context = createCodexEventContext({ sessionId: 'thread-1' });
+  const context = createCodexEventContext({ sessionId: 'thread-1', title: 'Codex smoke' });
   const payload = mapCodexEventToTellMeLight({ type: 'turn.completed' }, context);
 
   assert.deepEqual(payload, {
@@ -58,6 +58,7 @@ test('turn.completed maps to successful ended event', () => {
     session_id: 'thread-1',
     event: 'ended',
     outcome: 'success',
+    title: 'Codex smoke',
   });
   assert.equal(context.ended, true);
 });
