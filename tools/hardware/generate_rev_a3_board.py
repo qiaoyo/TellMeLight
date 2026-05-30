@@ -66,6 +66,7 @@ def add_diffuser_marks(board):
         rev_a1.add_text(board, label, center_x - 2.1, center_y, pcbnew.Dwgs_User, 0.65)
 
     rev_a1.add_text(board, "TellMeLight Rev A3", 24.5, 3.5, pcbnew.F_SilkS, 0.8)
+    rev_a1.add_text(board, "By Joey.qiao", 39.5, 3.5, pcbnew.F_SilkS, 0.8)
     rev_a1.add_text(board, "JLC ORIENT", 27.0, 4.5, pcbnew.B_SilkS, 0.8)
 
 

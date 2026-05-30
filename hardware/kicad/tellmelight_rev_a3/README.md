@@ -18,6 +18,7 @@ Generated: 2026-05-31
 - R10 `0R` explicitly ties VBUS to VLED.
 - R9 `1M` and C17 `10nF` implement the USB-C shell-to-GND RC network.
 - Top silkscreen includes a small A1-style separated avatar watermark in an empty optical-face area.
+- Top silkscreen title includes the persistent `By Joey.qiao` attribution.
 - The JLC package is an order-review candidate, but payment is still blocked until the JLC orientation preview is checked.
 
 ## Important Boundary

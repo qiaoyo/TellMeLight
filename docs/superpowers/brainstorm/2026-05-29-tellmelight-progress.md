@@ -594,6 +594,7 @@ Proposed first automation milestone:
   - U6 `TPD1E05U06DPY`, R9 `1M`, C17 `10nF`, and R10 `0R` are now placed on the actual Rev A3 PCB and included in the JLC BOM/CPL.
   - The USB-C shell model remains `1M // 10nF` to GND; VLED is explicitly sourced through R10.
   - The top-side silkscreen includes a small A1-style separated line-art avatar watermark based on the user's black/white image.
+  - The top-side title includes the persistent `By Joey.qiao` attribution.
 - Generated:
   - `hardware/kicad/tellmelight_rev_a3/` KiCad project.
   - `hardware/bom/rev_a3_bom.csv`.

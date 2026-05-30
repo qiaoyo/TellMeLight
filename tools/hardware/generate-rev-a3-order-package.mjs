@@ -129,6 +129,7 @@ Rev A3 is the first compact JLC order-review candidate after the user's JLC dry 
 - USB-C shell uses R9 1M and C17 10nF in parallel to GND.
 - VBUS-to-VLED is explicit through R10 0R.
 - The top-side silkscreen has a small A1-style separated avatar watermark in line art.
+- The top-side title includes the persistent By Joey.qiao attribution.
 - This package checks JLC board size, SMT matching, placement, orientation, and silkscreen. It is still not the paid-order electrical routing release.
 
 ## Known JLC Warnings To Interpret
