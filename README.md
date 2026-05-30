@@ -87,6 +87,7 @@ Generate the Rev A3 machine-readable pin-level netlist:
 ```powershell
 powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 tools/hardware/generate-rev-a3-pin-netlist.mjs
 powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 tools/hardware/generate-rev-a3-symbols.mjs
+powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 tools/hardware/lint-rev-a3-netlist.mjs
 ```
 
 The Rev A3 netlist foundation lives at `hardware/netlists/rev_a3_pin_netlist.json`,
@@ -94,6 +95,8 @@ The Rev A3 netlist foundation lives at `hardware/netlists/rev_a3_pin_netlist.jso
 `hardware/notes/rev-a3-pin-level-schematic-feasibility.md`.
 The Rev A3 local KiCad symbols live at `hardware/kicad/tellmelight_rev_a3/tellmelight_rev_a3.kicad_sym`
 with a symbol-upgrade validation log at `hardware/outputs/rev_a3/symbol-upgrade-check.log`.
+The Rev A3 netlist lint report lives at `hardware/outputs/rev_a3/netlist-lint.json` and
+`hardware/notes/rev-a3-netlist-lint.md`.
 
 Run KiCad CLI checks with the installed Windows KiCad 10.0 path:
 
@@ -128,6 +131,7 @@ Run KiCad CLI checks with the installed Windows KiCad 10.0 path:
 - Rev A2 JLC upload review bundle with Gerber/drill zip, BOM/CPL zip, checksum manifest, and ordering blockers kept beside the quote files.
 - Rev A3 machine-readable pin-level netlist foundation for the next real KiCad schematic draft.
 - Rev A3 local KiCad symbol library for LP5024RSMR and the exact TUOZHAN S4-3528RGBTA-A RGB LED.
+- Rev A3 netlist lint that checks required nets, expected single-pin review nets, and the VLED source-model review item before schematic generation.
 
 ## Out Of Scope For Milestone 1
 

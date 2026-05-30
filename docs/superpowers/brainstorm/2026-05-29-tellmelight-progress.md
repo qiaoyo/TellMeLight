@@ -522,3 +522,17 @@ Proposed first automation milestone:
 - Added `hardware/notes/rev-a3-symbol-library-review.md`.
 - Ran `kicad-cli sym upgrade` as a local symbol syntax/format check and recorded `hardware/outputs/rev_a3/symbol-upgrade-check.log`.
 - This checkpoint removes the missing-symbol blocker for a future Rev A3 pin-level schematic draft; it still does not make Rev A2 or Rev A3 order-ready.
+
+## Rev A3 Netlist Lint Checkpoint - 2026-05-30
+
+- Added `tools/hardware/lint-rev-a3-netlist.mjs`.
+- Generated:
+  - `hardware/outputs/rev_a3/netlist-lint.json`.
+  - `hardware/notes/rev-a3-netlist-lint.md`.
+- Lint checks:
+  - Required nets: `GND`, `3V3`, `VBUS`, `VLED`, I2C, USB D+/D-, flash CS, reset, `LP_IREF`, and `LP_VCAP`.
+  - Expected single-pin review nets: reserved GPIO, no-connect outputs, RP2040 internal regulator output, and USB-C shield.
+  - Unexpected single-pin nets: currently none.
+- Lint produced review findings:
+  - `VLED_SOURCE_MODEL`: `VLED` currently touches only RGB LED common-anode pads; the Rev A3 schematic must explicitly model whether it is directly the `VBUS` rail, a renamed source rail, or a separate rail tied through a deliberate element.
+  - `JLC_ORIENTATION_PREVIEW_OUT_OF_SCOPE`: JLC orientation preview still must be done manually before payment.
