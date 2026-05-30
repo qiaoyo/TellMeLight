@@ -359,3 +359,21 @@ Proposed first automation milestone:
   - Child command and arguments are passed after `--`.
   - `--source`, `--id`, `--title`, `--url`, and `--cwd` are supported.
 - This creates a practical bridge for local commands before any tool-specific Codex, Claude, Cursor, or IDE log parser exists.
+
+## Windows Codex Integration Checkpoint - 2026-05-30
+
+- User requested direct local Windows Codex integration instead of another generic wrapper layer.
+- Verified the installed Codex CLI:
+  - `codex-cli 0.133.0-alpha.1`.
+  - VS Code ChatGPT extension Windows binary.
+  - `codex doctor` passes with proxy `http://127.0.0.1:7892`.
+- Verified a real Codex request:
+  - `codex exec --json -C . --sandbox read-only "Reply with exactly: TellMeLight codex smoke ok"`.
+  - Observed real `thread.started` JSONL with a Codex `thread_id`.
+  - Observed final agent message `TellMeLight codex smoke ok`.
+- Added `tml-codex`:
+  - Runs `codex exec --json` for new turns.
+  - Runs `codex exec resume --json` for recorded session continuation.
+  - Uses Codex `thread_id` as TellMeLight `session_id`.
+  - Maps Codex JSONL turn lifecycle to `running`, `approval`, `done`, and `error`.
+  - Supports `TELLMELIGHT_CODEX_PROXY` and `--tml-proxy` for the Windows proxy setup.

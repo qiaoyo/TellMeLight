@@ -119,6 +119,44 @@ Useful flags:
 - `--url`: non-default Host Bridge URL.
 - `--cwd`: child process working directory.
 
+## Windows Codex Adapter
+
+`host/src/codex-cli.js` is the direct Windows Codex adapter. It runs the local `codex` executable in JSONL mode and uses Codex's real `thread_id` as the TellMeLight `session_id`.
+
+New Codex request:
+
+```powershell
+$env:TELLMELIGHT_CODEX_PROXY = "http://127.0.0.1:7892"
+$node = powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 -Eval "console.log(process.execPath)"
+& $node host/src/codex-cli.js exec -C . --sandbox read-only "Reply with exactly: TellMeLight codex smoke ok"
+```
+
+Resume the latest recorded Codex session:
+
+```powershell
+& $node host/src/codex-cli.js resume --last "Continue the previous TellMeLight test"
+```
+
+The package script name is `tml-codex` for environments with `npm` available:
+
+```powershell
+npm run tml-codex -- exec -C . --sandbox read-only "Reply with exactly: TellMeLight codex smoke ok"
+```
+
+TellMeLight-only flags:
+
+- `--tml-url`: non-default Host Bridge URL.
+- `--tml-title`: visible session label.
+- `--tml-proxy`: proxy URL for the Codex child process.
+
+Event mapping:
+
+- Codex `thread.started` sends `started` with `state: running`.
+- Codex `turn.started` sends `state_changed` to `running`.
+- Approval-like Codex event or item statuses send `state_changed` to `approval`.
+- Codex `turn.completed` sends `ended` with `outcome: success`.
+- Codex error events or non-zero process exit send `ended` with `outcome: error`.
+
 ## Session ID Guidance
 
 Use stable session IDs. If a tool does not provide one, derive an ID from:

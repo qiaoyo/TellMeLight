@@ -44,3 +44,15 @@ test('process wrapper docs avoid PowerShell script separator ambiguity', async (
   assert.doesNotMatch(contract, /tools\/run-node\.ps1 host\/src\/process-cli\.js/);
   assert.doesNotMatch(readme, /tools\/run-node\.ps1 host\/src\/process-cli\.js/);
 });
+
+test('docs describe direct Windows Codex integration', async () => {
+  const contract = await readFile('docs/adapters/contract.md', 'utf8');
+  const readme = await readFile('README.md', 'utf8');
+
+  assert.match(contract, /codex-cli\.js/);
+  assert.match(contract, /tml-codex/);
+  assert.match(contract, /thread_id/);
+  assert.match(contract, /TELLMELIGHT_CODEX_PROXY/);
+  assert.match(readme, /tml-codex/);
+  assert.match(readme, /127\.0\.0\.1:7892/);
+});

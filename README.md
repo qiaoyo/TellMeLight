@@ -40,6 +40,17 @@ $node = powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 -Eval "conso
 & $node host/src/process-cli.js --source smoke --id process-smoke -- powershell -NoProfile -Command "exit 0"
 ```
 
+Run a real Windows Codex request as a TellMeLight session:
+
+```powershell
+$env:TELLMELIGHT_CODEX_PROXY = "http://127.0.0.1:7892"
+$node = powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 -Eval "console.log(process.execPath)"
+& $node host/src/codex-cli.js exec -C . --sandbox read-only "Reply with exactly: TellMeLight codex smoke ok"
+& $node host/src/codex-cli.js resume --last "Continue the previous TellMeLight test"
+```
+
+The package script for the same adapter is `tml-codex`.
+
 Open the static simulator:
 
 ```text
@@ -61,6 +72,7 @@ simulator/index.html
 - Browser simulator.
 - Hardware architecture notes.
 - Generic process wrapper adapter.
+- Direct Windows Codex JSON session adapter.
 - Decision record that blocks PCB layout until simulation is testable.
 
 ## Out Of Scope For Milestone 1
