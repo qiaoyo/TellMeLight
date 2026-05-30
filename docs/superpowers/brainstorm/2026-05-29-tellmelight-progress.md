@@ -482,3 +482,15 @@ Proposed first automation milestone:
   - JLC orientation preview must be manually reviewed for polarized/oriented parts, especially D1-D6.
   - JLC BOM/CPL upload must confirm the local LED footprint and C2827321 rotation before payment.
   - USB-C shell grounding and the crystal/load-cap pair remain YELLOW review items.
+
+## Rev A2 JLC Upload Review Bundle Checkpoint - 2026-05-30
+
+- Added `tools/hardware/package-rev-a2-jlc.mjs`.
+- Generated `hardware/outputs/rev_a2/jlc_upload/` as a quote/review bundle, not a payment-ready release.
+- Bundle contents:
+  - `tellmelight_rev_a2_jlc_gerber_drill.zip` for PCB quote upload practice.
+  - `tellmelight_rev_a2_jlc_assembly_bom_cpl.zip` for SMT BOM/CPL matching practice.
+  - `manifest.json` with SHA-256 hashes for copied/generated review files.
+  - `assembly/` copies of Rev A2 JLC BOM, CPL, and cost-estimate CSVs.
+  - `review/` copies of order readiness, LED footprint review, circuit explanation, KiCad verification summary, and top/bottom renders.
+- The package status is `NOT_FOR_ORDER` because JLC's orientation preview still needs manual review before any payment.
