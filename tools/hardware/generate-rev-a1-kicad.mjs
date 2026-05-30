@@ -26,6 +26,9 @@ const powerCsvPath = join(simulationDir, 'rev_a1_power_budget.csv');
 const powerMdPath = join(simulationDir, 'rev_a1_power_budget.md');
 const readinessPath = join(notesDir, 'rev-a1-jlc-readiness.md');
 const boardPath = join(projectDir, 'tellmelight_rev_a1.kicad_pcb');
+const previewPath = join(outputsDir, 'preview.html');
+const costMdPath = join(outputsDir, 'cost-estimate.md');
+const costCsvPath = join(outputsDir, 'cost-estimate.csv');
 
 async function ensureDirs() {
   await Promise.all([
@@ -447,6 +450,243 @@ Rev A1 is a local fabrication-candidate baseline, not an order release.
 `;
 }
 
+function costRows() {
+  return [
+    ['Item', 'Qty', 'JLC Candidate', 'Unit USD', 'Extended USD', 'Status', 'Source'],
+    ['RP2040', '1', 'C2040', '0.9854', '0.9854', 'priced', 'https://jlcpcb.com/partdetail/RaspberryPi-RP2040/C2040'],
+    ['LP5024RSMR', '1', 'C427525', '1.2622', '1.2622', 'priced', 'https://jlcpcb.com/partdetail/TexasInstruments-LP5024RSMR/C427525'],
+    ['W25Q32JVSSIQ selected', '1', 'C82344', '1.1589', '1.1589', 'stock risk', 'https://jlcpcb.com/partdetail/WINBOND-W25Q32JVSSIQ/C82344'],
+    ['W25Q32JVSSIQ in-stock alternate', '1', 'C179173', '1.4907', '1.4907', 'preferred estimate until C82344 recovers', 'https://jlcpcb.com/partdetail/WinbondElec-W25Q32JVSSIQ/C179173'],
+    ['AP2112K-3.3TRG1', '1', 'C51118', '0.1622', '0.1622', 'priced', 'https://jlcpcb.com/partdetail/DiodesIncorporated-AP2112K33TRG1/C51118'],
+    ['TPD2EUSB30DRTR', '1', 'C94934', '0.2127', '0.2127', 'priced', 'https://jlcpcb.com/partdetail/TexasInstruments-TPD2EUSB30DRTR/C94934'],
+    ['TYPE-C-31-M-12', '1', 'C165948', '0.1820', '0.1820', 'priced', 'https://jlcpcb.com/partdetail/HRO-TYPE_C_31_M_12/C165948'],
+    ['S4-3528RGBTA-A', '6', 'C2827321', '0.0310', '0.1860', 'priced', 'https://jlcpcb.com/partdetail/OPSCOOptoelectronics-S4_3528RGBTA_A/C2827321'],
+    ['Known priced component subtotal', '1', 'with C179173 alternate flash', '', '4.4812', 'estimate only', 'PCB fabrication, SMT assembly, tooling, tax, and shipping are not included'],
+    ['Known priced component subtotal', '1', 'with selected C82344 flash', '', '4.1494', 'not recommended while stock risk remains', 'C82344 currently shows stock risk'],
+    ['Passives, crystal, switches, test pads', '1', 'mixed', '', '', 'unpriced', 'Lock exact C-codes during Rev A2'],
+    ['PCB fabrication, SMT assembly, tooling, tax, shipping', '1', 'JLC quote upload required', '', '', 'unpriced', 'JLC quote upload required'],
+  ];
+}
+
+function costMarkdown() {
+  return `# Rev A1 Cost Preview
+
+Date: 2026-05-30
+
+This is a cost preview, not a purchase quote.
+
+Known priced component subtotal using the in-stock flash alternate ` + '`C179173`' + ` is about **USD 4.48 per board** at 1-piece price breaks.
+
+Known priced component subtotal using the originally selected flash ` + '`C82344`' + ` is about **USD 4.15 per board**, but C82344 currently shows stock risk, so this lower number should not be used as the working estimate.
+
+PCB fabrication, SMT assembly, tooling, tax, and shipping are not included. Those require uploading the Gerbers, BOM, and CPL/POS files into the JLC order flow.
+
+## Priced Items
+
+| Item | Qty | JLC candidate | Unit USD | Extended USD | Status |
+| --- | ---: | --- | ---: | ---: | --- |
+| RP2040 | 1 | C2040 | 0.9854 | 0.9854 | priced |
+| LP5024RSMR | 1 | C427525 | 1.2622 | 1.2622 | priced |
+| W25Q32JVSSIQ selected | 1 | C82344 | 1.1589 | 1.1589 | stock risk |
+| W25Q32JVSSIQ in-stock alternate | 1 | C179173 | 1.4907 | 1.4907 | preferred estimate until C82344 recovers |
+| AP2112K-3.3TRG1 | 1 | C51118 | 0.1622 | 0.1622 | priced |
+| TPD2EUSB30DRTR | 1 | C94934 | 0.2127 | 0.2127 | priced |
+| TYPE-C-31-M-12 | 1 | C165948 | 0.1820 | 0.1820 | priced |
+| S4-3528RGBTA-A | 6 | C2827321 | 0.0310 | 0.1860 | priced |
+
+## Not Yet Included
+
+- 4-layer PCB fabrication.
+- Double-sided SMT assembly fee.
+- Extended/basic part handling fees.
+- Passives, crystal, switches, and exact test pad/mechanical C-codes.
+- Shipping, tax, and payment fees.
+- Enclosure, diffuser, adhesive, light isolation, and product finish.
+
+## Source Pages
+
+- https://jlcpcb.com/partdetail/RaspberryPi-RP2040/C2040
+- https://jlcpcb.com/partdetail/TexasInstruments-LP5024RSMR/C427525
+- https://jlcpcb.com/partdetail/WINBOND-W25Q32JVSSIQ/C82344
+- https://jlcpcb.com/partdetail/WinbondElec-W25Q32JVSSIQ/C179173
+- https://jlcpcb.com/partdetail/DiodesIncorporated-AP2112K33TRG1/C51118
+- https://jlcpcb.com/partdetail/TexasInstruments-TPD2EUSB30DRTR/C94934
+- https://jlcpcb.com/partdetail/HRO-TYPE_C_31_M_12/C165948
+- https://jlcpcb.com/partdetail/OPSCOOptoelectronics-S4_3528RGBTA_A/C2827321
+`;
+}
+
+function previewHtml() {
+  return `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TellMeLight Rev A1 Preview</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #111414;
+      color: #eef4ef;
+    }
+    body {
+      margin: 0;
+      background: #111414;
+    }
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 32px 20px 44px;
+    }
+    h1, h2, p {
+      margin: 0;
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 680;
+    }
+    h2 {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+    .lead {
+      margin-top: 10px;
+      max-width: 760px;
+      color: #b8c5bd;
+      line-height: 1.55;
+    }
+    .grid {
+      display: grid;
+      gap: 18px;
+      margin-top: 26px;
+    }
+    .cards {
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    }
+    .renders {
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+    .card, .panel {
+      border: 1px solid #2c3833;
+      border-radius: 8px;
+      background: #17201c;
+      padding: 18px;
+    }
+    .metric {
+      display: block;
+      margin-top: 8px;
+      font-size: 24px;
+      font-weight: 700;
+    }
+    .muted {
+      color: #a7b5ad;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    img {
+      display: block;
+      width: 100%;
+      border-radius: 6px;
+      background: #050706;
+      border: 1px solid #27322e;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    th, td {
+      padding: 9px 10px;
+      border-bottom: 1px solid #2b3732;
+      text-align: left;
+    }
+    th {
+      color: #cbd8d0;
+      font-weight: 650;
+    }
+    a {
+      color: #7ee3d1;
+    }
+    .status-ok {
+      color: #8be9a1;
+    }
+    .status-risk {
+      color: #ffd166;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>TellMeLight Rev A1 Preview</h1>
+    <p class="lead">JLC-oriented local hardware baseline: 4-layer PCB, double-sided SMT direction, RP2040 + LP5024, six RGB session emitters, pogo/debug pads, and generated manufacturing outputs. This is still a review baseline, not an order release.</p>
+
+    <section class="grid cards" aria-label="status cards">
+      <div class="card">
+        <span class="muted">KiCad checks</span>
+        <span class="metric status-ok">ERC 0 / DRC 0</span>
+      </div>
+      <div class="card">
+        <span class="muted">Known priced component subtotal</span>
+        <span class="metric">USD 4.48</span>
+        <p class="muted">Uses in-stock flash alternate C179173. PCB fabrication, SMT assembly, tooling, tax, and shipping are not included.</p>
+      </div>
+      <div class="card">
+        <span class="muted">Main sourcing risk</span>
+        <span class="metric status-risk">C82344 stock</span>
+        <p class="muted">Selected flash candidate currently needs replacement or stock recovery before order prep.</p>
+      </div>
+      <div class="card">
+        <span class="muted">Next phase</span>
+        <span class="metric">Rev A2</span>
+        <p class="muted">Pin-by-pin schematic, JLC BOM/CPL, cost model, and order readiness checklist.</p>
+      </div>
+    </section>
+
+    <section class="grid renders" aria-label="board renders">
+      <div class="panel">
+        <h2>Top side optical face</h2>
+        <img src="tellmelight_rev_a1_top.png" alt="TellMeLight Rev A1 top render">
+      </div>
+      <div class="panel">
+        <h2>Bottom side electronics</h2>
+        <img src="tellmelight_rev_a1_bottom.png" alt="TellMeLight Rev A1 bottom render">
+      </div>
+    </section>
+
+    <section class="panel grid" aria-label="cost breakdown">
+      <h2>Cost Preview</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Qty</th>
+            <th>JLC candidate</th>
+            <th>Extended USD</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>RP2040</td><td>1</td><td>C2040</td><td>0.9854</td><td class="status-ok">priced</td></tr>
+          <tr><td>LP5024RSMR</td><td>1</td><td>C427525</td><td>1.2622</td><td class="status-ok">priced</td></tr>
+          <tr><td>W25Q32JVSSIQ alternate</td><td>1</td><td>C179173</td><td>1.4907</td><td class="status-risk">alternate estimate</td></tr>
+          <tr><td>AP2112K-3.3TRG1</td><td>1</td><td>C51118</td><td>0.1622</td><td class="status-ok">priced</td></tr>
+          <tr><td>TPD2EUSB30DRTR</td><td>1</td><td>C94934</td><td>0.2127</td><td class="status-ok">priced</td></tr>
+          <tr><td>TYPE-C-31-M-12</td><td>1</td><td>C165948</td><td>0.1820</td><td class="status-ok">priced</td></tr>
+          <tr><td>S4-3528RGBTA-A</td><td>6</td><td>C2827321</td><td>0.1860</td><td class="status-ok">priced</td></tr>
+          <tr><td>Known priced component subtotal</td><td>1</td><td>with C179173</td><td>4.4812</td><td>estimate only</td></tr>
+          <tr><td>PCB/SMT/shipping</td><td>1</td><td>JLC quote upload required</td><td></td><td class="status-risk">unpriced</td></tr>
+        </tbody>
+      </table>
+      <p class="muted">Open the detailed files: <a href="cost-estimate.md">cost-estimate.md</a>, <a href="cost-estimate.csv">cost-estimate.csv</a>, <a href="verification-summary.md">verification-summary.md</a>, <a href="tellmelight_rev_a1_pcb.pdf">PCB PDF</a>.</p>
+    </section>
+  </main>
+</body>
+</html>
+`;
+}
+
 async function writeStaticFiles() {
   await Promise.all([
     writeFile(projectPath, projectFile(), 'utf8'),
@@ -459,6 +699,9 @@ async function writeStaticFiles() {
     writeFile(powerCsvPath, csv(powerRows()), 'utf8'),
     writeFile(powerMdPath, powerMarkdown(), 'utf8'),
     writeFile(readinessPath, readinessMarkdown(), 'utf8'),
+    writeFile(costCsvPath, csv(costRows()), 'utf8'),
+    writeFile(costMdPath, costMarkdown(), 'utf8'),
+    writeFile(previewPath, previewHtml(), 'utf8'),
   ]);
 }
 

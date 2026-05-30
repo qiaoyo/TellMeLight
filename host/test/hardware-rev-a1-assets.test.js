@@ -56,3 +56,18 @@ test('rev A1 readiness and power notes capture no-hand-solder review gates', asy
   assert.match(power, /Typical visible load/);
   assert.match(power, /USB current target/);
 });
+
+test('rev A1 preview summarizes render outputs and cost uncertainty', async () => {
+  const preview = await readText('hardware/outputs/rev_a1/preview.html');
+  const cost = await readText('hardware/outputs/rev_a1/cost-estimate.md');
+  const costCsv = await readText('hardware/outputs/rev_a1/cost-estimate.csv');
+
+  assert.match(preview, /TellMeLight Rev A1 Preview/);
+  assert.match(preview, /tellmelight_rev_a1_top\.png/);
+  assert.match(preview, /tellmelight_rev_a1_bottom\.png/);
+  assert.match(preview, /Known priced component subtotal/);
+  assert.match(cost, /PCB fabrication, SMT assembly, tooling, tax, and shipping are not included/);
+  assert.match(cost, /C82344 currently shows stock risk/);
+  assert.match(costCsv, /Known priced component subtotal/);
+  assert.match(costCsv, /JLC quote upload required/);
+});
