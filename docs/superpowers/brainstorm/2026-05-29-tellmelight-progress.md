@@ -377,3 +377,26 @@ Proposed first automation milestone:
   - Uses Codex `thread_id` as TellMeLight `session_id`.
   - Maps Codex JSONL turn lifecycle to `running`, `approval`, `done`, and `error`.
   - Supports `TELLMELIGHT_CODEX_PROXY` and `--tml-proxy` for the Windows proxy setup.
+
+## Rev A KiCad Hardware Checkpoint - 2026-05-30
+
+- User installed KiCad at `E:\kicad` and requested automatic local hardware progress while away.
+- Confirmed local KiCad CLI:
+  - `E:\kicad\bin\kicad-cli.exe`
+  - KiCad version `10.0.3`.
+  - KiCad Python `pcbnew` API version `10.0`.
+- Rev A hardware baseline scope:
+  - USB-C wired integrated PCB.
+  - RP2040-class USB MCU.
+  - LP5024-class 24-channel I2C RGB LED driver in the 32-pin 4 x 4 mm VQFN/WQFN footprint class.
+  - Six common-anode RGB LED zones behind four rounded trapezoid diffuser bars.
+  - AP2112K-3.3-class 3V3 regulator.
+  - W25Q32JVSS-class QSPI flash.
+  - TPD2EUSB30-class USB ESD protection.
+- The KiCad milestone must generate project files, a block-level schematic/net plan, PCB floorplan with real footprints, Rev A BOM, power-budget simulation, and KiCad CLI reports.
+- Remaining review items before fabrication:
+  - Pin-by-pin schematic signoff.
+  - Final routing and USB layout review.
+  - Exact RGB LED optical sample decision.
+  - Enclosure and diffuser CAD.
+  - PCB vendor DFM rules for QFN/VQFN assembly.

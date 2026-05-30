@@ -2,7 +2,7 @@
 
 TellMeLight is a USB-connected AI hardware design for visualizing local AI sessions as a persistent six-slot light queue.
 
-Current milestone: local software simulation only. No real PCB or USB device is required.
+Current milestone: local software simulation plus a Rev A KiCad hardware baseline. No physical PCB or USB device is required yet.
 
 ## Local Commands
 
@@ -57,6 +57,19 @@ Open the static simulator:
 simulator/index.html
 ```
 
+Generate the Rev A KiCad hardware baseline:
+
+```powershell
+node tools/hardware/generate-rev-a-kicad.mjs
+```
+
+Run KiCad CLI checks with the installed Windows KiCad 10.0 path:
+
+```powershell
+& E:\kicad\bin\kicad-cli.exe sch erc --format json -o hardware/outputs/rev_a/erc.json hardware/kicad/tellmelight_rev_a/tellmelight_rev_a.kicad_sch
+& E:\kicad\bin\kicad-cli.exe pcb drc --format json -o hardware/outputs/rev_a/drc.json hardware/kicad/tellmelight_rev_a/tellmelight_rev_a.kicad_pcb
+```
+
 ## Simulator Interaction
 
 - Click any of the six light slots to select it.
@@ -73,19 +86,21 @@ simulator/index.html
 - Hardware architecture notes.
 - Generic process wrapper adapter.
 - Direct Windows Codex JSON session adapter.
-- Decision record that blocks PCB layout until simulation is testable.
+- Rev A KiCad hardware baseline with BOM, PCB floorplan, and power-budget simulation.
 
 ## Out Of Scope For Milestone 1
 
 - Real USB HID writer.
 - Firmware build.
-- KiCad schematic or PCB layout.
+- Fabrication-ready schematic signoff, final routing, enclosure CAD, and optical validation.
 - Tool-specific log parsers for Codex, Claude, Cursor, or other AI tools.
 
 ## Design Docs
 
 - `docs/superpowers/specs/2026-05-29-tellmelight-design.md`
+- `docs/superpowers/specs/2026-05-30-rev-a-kicad-hardware-design.md`
 - `docs/superpowers/specs/2026-05-29-adapter-foundation-design.md`
 - `docs/adapters/contract.md`
 - `docs/superpowers/brainstorm/2026-05-29-tellmelight-progress.md`
 - `docs/superpowers/plans/2026-05-29-local-simulation-foundation.md`
+- `docs/superpowers/plans/2026-05-30-rev-a-kicad-hardware.md`

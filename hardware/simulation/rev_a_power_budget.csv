@@ -1,0 +1,5 @@
+Scenario,3V3 load mA,LED channels on,LED current per channel mA,LED rail current mA,Approx USB current mA,LDO dissipation mW,Notes
+Idle off,38,0,0,0,38,65,"MCU, flash standby, LED driver logic; all visible zones off"
+Typical visible load,45,18,5,90,135,77,Six RGB zones at a restrained 5 mA/channel steady equivalent
+Breathing peak,50,18,10,180,230,85,Firmware should use PWM breathing below this peak most of the time
+Worst-case all channels,70,18,20,360,430,119,Below 500 mA USB target but too bright/thermal for default firmware
