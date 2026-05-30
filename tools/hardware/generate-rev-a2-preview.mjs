@@ -205,6 +205,8 @@ function html() {
           <a href="../../kicad/tellmelight_rev_a3/tellmelight_rev_a3.kicad_sym">Local KiCad symbols</a>
           <a href="../rev_a3/netlist-lint.json">Netlist lint JSON</a>
           <a href="../../notes/rev-a3-netlist-lint.md">Netlist lint note</a>
+          <a href="../../notes/rev-a3-protection-decisions.md">Protection decisions</a>
+          <a href="../../notes/rev-a3-jlc-tonight-checklist.md">Tonight JLC checklist</a>
         </div>
       </div>
     </section>
@@ -226,14 +228,19 @@ function html() {
             <td>SMT viewer must confirm orientation for RGB LEDs, LP5024, ESD, USB-C, crystal, and switches.</td>
           </tr>
           <tr>
-            <td>VLED source model</td>
-            <td class="warn">YELLOW</td>
-            <td>Rev A3 netlist lint shows VLED currently touches LED common-anode pads; schematic must model whether it is VBUS, a renamed rail, or a deliberate tied rail.</td>
+            <td>VLED source model resolved</td>
+            <td class="ok">GREEN</td>
+            <td>Rev A3 netlist now uses R10 0R from VBUS to VLED plus U6 VLED TVS from VLED to GND.</td>
+          </tr>
+          <tr>
+            <td>USB-C shell RC</td>
+            <td class="ok">GREEN</td>
+            <td>Rev A3 netlist now uses R9 1M and C17 10nF in parallel from SHIELD to GND.</td>
           </tr>
           <tr>
             <td>USB-C shell grounding</td>
             <td class="warn">YELLOW</td>
-            <td>Needs enclosure and ESD strategy before fabrication release.</td>
+            <td>The RC strategy is selected, but physical placement still needs final layout review.</td>
           </tr>
           <tr>
             <td>Crystal load-cap review</td>

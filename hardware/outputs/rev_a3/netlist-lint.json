@@ -6,7 +6,7 @@
   "requiredNets": [
     {
       "name": "GND",
-      "pinCount": 34,
+      "pinCount": 37,
       "pins": [
         "C1.2",
         "C10.2",
@@ -16,6 +16,7 @@
         "C14.2",
         "C15.2",
         "C16.2",
+        "C17.2",
         "C2.2",
         "C3.2",
         "C4.2",
@@ -28,6 +29,7 @@
         "R3.2",
         "R4.2",
         "R7.2",
+        "R9.2",
         "SW1.2",
         "SW2.2",
         "TP13.1",
@@ -40,6 +42,7 @@
         "U3.4",
         "U4.2",
         "U5.3",
+        "U6.2",
         "Y1.2",
         "Y1.4"
       ],
@@ -81,11 +84,12 @@
     },
     {
       "name": "VBUS",
-      "pinCount": 6,
+      "pinCount": 7,
       "pins": [
         "C11.1",
         "C8.1",
         "J1.A4/B4/A9/B9",
+        "R10.1",
         "TP1.1",
         "U4.1",
         "U4.3"
@@ -94,14 +98,16 @@
     },
     {
       "name": "VLED",
-      "pinCount": 6,
+      "pinCount": 8,
       "pins": [
         "D1.2",
         "D2.2",
         "D3.2",
         "D4.2",
         "D5.2",
-        "D6.2"
+        "D6.2",
+        "R10.2",
+        "U6.1"
       ],
       "status": "OK"
     },
@@ -205,6 +211,16 @@
         "U2.32"
       ],
       "status": "OK"
+    },
+    {
+      "name": "SHIELD",
+      "pinCount": 3,
+      "pins": [
+        "C17.1",
+        "J1.S1/S2/S3/S4",
+        "R9.1"
+      ],
+      "status": "OK"
     }
   ],
   "missingRequired": [],
@@ -285,28 +301,33 @@
         "U1.45"
       ],
       "reason": "RP2040 internal regulator output needs final decoupling review in the schematic draft."
-    },
-    {
-      "name": "SHIELD",
-      "pins": [
-        "J1.S1/S2/S3/S4"
-      ],
-      "reason": "USB-C shell grounding strategy depends on enclosure and ESD review."
     }
   ],
   "unexpectedSinglePinNets": [],
   "reviewFindings": [
     {
-      "code": "VLED_SOURCE_MODEL",
-      "severity": "YELLOW",
-      "message": "VLED source model: VLED currently touches only RGB LED common-anode pads; Rev A3 schematic must explicitly model its VBUS-derived source or rename it to the source rail.",
+      "code": "VLED_SOURCE_MODEL_RESOLVED",
+      "severity": "GREEN",
+      "message": "VLED source model resolved: R10 0R deliberately links VBUS to VLED, while U6 clamps VLED to GND for ESD/TVS protection.",
       "pins": [
         "D1.2",
         "D2.2",
         "D3.2",
         "D4.2",
         "D5.2",
-        "D6.2"
+        "D6.2",
+        "R10.2",
+        "U6.1"
+      ]
+    },
+    {
+      "code": "USB_C_SHELL_RC_MODEL",
+      "severity": "GREEN",
+      "message": "USB-C shell RC model: SHIELD is tied to board GND through parallel R9 1M and C17 10nF.",
+      "pins": [
+        "C17.1",
+        "J1.S1/S2/S3/S4",
+        "R9.1"
       ]
     },
     {

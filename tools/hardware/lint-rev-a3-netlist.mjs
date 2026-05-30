@@ -24,6 +24,7 @@ const requiredNetNames = [
   'RUN_RESET',
   'LP_IREF',
   'LP_VCAP',
+  'SHIELD',
 ];
 
 function singlePinReviewReason(name) {
@@ -77,12 +78,29 @@ for (const net of netlist.nets) {
 
 const reviewFindings = [];
 const vled = netsByName.get('VLED');
-if (vled && vled.pins.every((pin) => /^D\d+\.2$/.test(pin))) {
+if (vled && vled.pins.includes('R10.2') && (netsByName.get('VBUS')?.pins.includes('R10.1'))) {
+  reviewFindings.push({
+    code: 'VLED_SOURCE_MODEL_RESOLVED',
+    severity: 'GREEN',
+    message: 'VLED source model resolved: R10 0R deliberately links VBUS to VLED, while U6 clamps VLED to GND for ESD/TVS protection.',
+    pins: vled.pins,
+  });
+} else if (vled && vled.pins.every((pin) => /^D\d+\.2$/.test(pin))) {
   reviewFindings.push({
     code: 'VLED_SOURCE_MODEL',
     severity: 'YELLOW',
     message: 'VLED source model: VLED currently touches only RGB LED common-anode pads; Rev A3 schematic must explicitly model its VBUS-derived source or rename it to the source rail.',
     pins: vled.pins,
+  });
+}
+
+const shield = netsByName.get('SHIELD');
+if (shield && shield.pins.includes('R9.1') && shield.pins.includes('C17.1')) {
+  reviewFindings.push({
+    code: 'USB_C_SHELL_RC_MODEL',
+    severity: 'GREEN',
+    message: 'USB-C shell RC model: SHIELD is tied to board GND through parallel R9 1M and C17 10nF.',
+    pins: shield.pins,
   });
 }
 

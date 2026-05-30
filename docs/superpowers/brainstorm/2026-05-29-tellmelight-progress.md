@@ -547,3 +547,25 @@ Proposed first automation milestone:
   - Rev A2 BOM/CPL CSVs.
   - Rev A3 pin-level netlist JSON/CSV, local symbol library, netlist lint JSON, and lint note.
 - The page keeps `NOT_FOR_ORDER`, JLC orientation preview, VLED source model, USB-C shell grounding, and crystal load-cap review visible.
+
+## Rev A3 Protection And JLC Tonight Checkpoint - 2026-05-30
+
+- User selected the protection direction:
+  - Add VLED-to-GND ESD/TVS protection.
+  - Defer JLC orientation preview.
+  - Use USB-C shell `1M // 10nF` RC to board GND.
+  - Keep crystal decision understandable and avoid random capacitor changes.
+- Updated `tools/hardware/generate-rev-a3-pin-netlist.mjs`.
+- Added Rev A3 netlist parts:
+  - `U6` `TPD1E05U06DPY` from `VLED` to `GND`.
+  - `R10` `0R` from `VBUS` to `VLED`.
+  - `R9` `1M` and `C17` `10nF` from `SHIELD` to `GND`.
+- Updated netlist lint:
+  - `VLED_SOURCE_MODEL_RESOLVED` is now GREEN via R10.
+  - `USB_C_SHELL_RC_MODEL` is now GREEN via R9/C17.
+  - JLC orientation preview remains RED and manual.
+- Added:
+  - `hardware/notes/rev-a3-protection-decisions.md`.
+  - `hardware/notes/rev-a3-jlc-tonight-checklist.md`.
+  - `hardware/bom/rev_a3_protection_bom_delta.csv`.
+- Crystal note: keep `C9002` with C13/C14 `33pF` as the working candidate because C9002 is a 20pF-load 12MHz crystal candidate; with roughly 3pF stray capacitance, the target external capacitor is about 34pF.

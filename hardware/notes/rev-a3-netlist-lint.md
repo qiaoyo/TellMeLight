@@ -8,10 +8,10 @@ Rev A2 remains NOT_FOR_ORDER. This lint checks the Rev A3 machine-readable pin n
 
 ## Required Nets
 
-- GND: OK, 34 pins.
+- GND: OK, 37 pins.
 - 3V3: OK, 27 pins.
-- VBUS: OK, 6 pins.
-- VLED: OK, 6 pins.
+- VBUS: OK, 7 pins.
+- VLED: OK, 8 pins.
 - I2C0_SDA: OK, 4 pins.
 - I2C0_SCL: OK, 4 pins.
 - USB_DP_MCU: OK, 2 pins.
@@ -22,6 +22,7 @@ Rev A2 remains NOT_FOR_ORDER. This lint checks the Rev A3 machine-readable pin n
 - RUN_RESET: OK, 4 pins.
 - LP_IREF: OK, 2 pins.
 - LP_VCAP: OK, 2 pins.
+- SHIELD: OK, 3 pins.
 
 
 ## No unexpected single-pin nets
@@ -42,12 +43,12 @@ No unexpected single-pin nets were found.
 - NC_SBU: J1.A8/B8. Intentional no-connect or reserved no-connect net.
 - NC_U4_4: U4.4. Intentional no-connect or reserved no-connect net.
 - RP2040_VREG_OUT: U1.45. RP2040 internal regulator output needs final decoupling review in the schematic draft.
-- SHIELD: J1.S1/S2/S3/S4. USB-C shell grounding strategy depends on enclosure and ESD review.
 
 
 ## Review Findings
 
-- YELLOW: VLED_SOURCE_MODEL. VLED source model: VLED currently touches only RGB LED common-anode pads; Rev A3 schematic must explicitly model its VBUS-derived source or rename it to the source rail.
+- GREEN: VLED_SOURCE_MODEL_RESOLVED. VLED source model resolved: R10 0R deliberately links VBUS to VLED, while U6 clamps VLED to GND for ESD/TVS protection.
+- GREEN: USB_C_SHELL_RC_MODEL. USB-C shell RC model: SHIELD is tied to board GND through parallel R9 1M and C17 10nF.
 - RED: JLC_ORIENTATION_PREVIEW_OUT_OF_SCOPE. JLC orientation preview remains outside this lint and must be checked manually before payment.
 
 

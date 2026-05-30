@@ -32,6 +32,12 @@
       "status": "STOCK_SYMBOL_OK"
     },
     {
+      "item": "TPD1E05U06DPY",
+      "symbol": "Power_Protection:TPD1E05U06DPY",
+      "footprint": "Package_SON:Texas_DPY0002A_0.6x1mm_P0.65mm",
+      "status": "STOCK_SYMBOL_OK_JLC_CANDIDATE_VERIFY"
+    },
+    {
       "item": "USB-C TYPE-C-31-M-12",
       "symbol": "Connector:USB_C_Receptacle_USB2.0_16P",
       "footprint": "Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12",
@@ -872,6 +878,29 @@
       "notes": ""
     },
     {
+      "ref": "U6",
+      "value": "TPD1E05U06DPY",
+      "symbol": "Power_Protection:TPD1E05U06DPY",
+      "footprint": "Package_SON:Texas_DPY0002A_0.6x1mm_P0.65mm",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "I/O",
+          "net": "VLED",
+          "status": "GREEN",
+          "notes": "Single-line VLED ESD/TVS shunt placed close to the USB/VLED entry path."
+        },
+        {
+          "pin": "2",
+          "name": "GND",
+          "net": "GND",
+          "status": "GREEN",
+          "notes": "Short ground return to the local ground plane."
+        }
+      ],
+      "notes": "VLED TVS/ESD protection, JLC candidate C85364 to verify in BOM matcher."
+    },
+    {
       "ref": "J1",
       "value": "USB_C_Receptacle_USB2.0_16P",
       "symbol": "Connector:USB_C_Receptacle_USB2.0_16P",
@@ -1202,6 +1231,52 @@
         }
       ],
       "notes": "LP5024 always-on pull-up."
+    },
+    {
+      "ref": "R9",
+      "value": "1M",
+      "symbol": "Device:R",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "A",
+          "net": "SHIELD",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "2",
+          "name": "B",
+          "net": "GND",
+          "status": "GREEN",
+          "notes": ""
+        }
+      ],
+      "notes": "USB-C shield bleed path; part of 1M // 10nF shell-to-board-ground network."
+    },
+    {
+      "ref": "R10",
+      "value": "0R",
+      "symbol": "Device:R",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "A",
+          "net": "VBUS",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "2",
+          "name": "B",
+          "net": "VLED",
+          "status": "GREEN",
+          "notes": ""
+        }
+      ],
+      "notes": "Deliberate VBUS-to-VLED source link and optional LED-rail current-measure jumper."
     },
     {
       "ref": "C1",
@@ -1570,6 +1645,29 @@
         }
       ],
       "notes": "LP5024 VCC local capacitor."
+    },
+    {
+      "ref": "C17",
+      "value": "10nF",
+      "symbol": "Device:C",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "A",
+          "net": "SHIELD",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "2",
+          "name": "B",
+          "net": "GND",
+          "status": "GREEN",
+          "notes": ""
+        }
+      ],
+      "notes": "USB-C shield RF shunt; part of 1M // 10nF shell-to-board-ground network."
     },
     {
       "ref": "TP1",
@@ -2014,6 +2112,7 @@
         "C14.2",
         "C15.2",
         "C16.2",
+        "C17.2",
         "C2.2",
         "C3.2",
         "C4.2",
@@ -2026,6 +2125,7 @@
         "R3.2",
         "R4.2",
         "R7.2",
+        "R9.2",
         "SW1.2",
         "SW2.2",
         "TP13.1",
@@ -2038,6 +2138,7 @@
         "U3.4",
         "U4.2",
         "U5.3",
+        "U6.2",
         "Y1.2",
         "Y1.4"
       ]
@@ -2159,7 +2260,9 @@
     {
       "name": "SHIELD",
       "pins": [
-        "J1.S1/S2/S3/S4"
+        "C17.1",
+        "J1.S1/S2/S3/S4",
+        "R9.1"
       ]
     },
     {
@@ -2214,6 +2317,7 @@
         "C11.1",
         "C8.1",
         "J1.A4/B4/A9/B9",
+        "R10.1",
         "TP1.1",
         "U4.1",
         "U4.3"
@@ -2227,7 +2331,9 @@
         "D3.2",
         "D4.2",
         "D5.2",
-        "D6.2"
+        "D6.2",
+        "R10.2",
+        "U6.1"
       ]
     },
     {

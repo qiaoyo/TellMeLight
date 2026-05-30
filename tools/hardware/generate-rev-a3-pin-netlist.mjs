@@ -146,6 +146,10 @@ const components = [
     pin('2', 'D-', 'USB_DM_CONN'),
     pin('3', 'GND', 'GND'),
   ]),
+  component('U6', 'TPD1E05U06DPY', 'Power_Protection:TPD1E05U06DPY', 'Package_SON:Texas_DPY0002A_0.6x1mm_P0.65mm', [
+    pin('1', 'I/O', 'VLED', 'GREEN', 'Single-line VLED ESD/TVS shunt placed close to the USB/VLED entry path.'),
+    pin('2', 'GND', 'GND', 'GREEN', 'Short ground return to the local ground plane.'),
+  ], 'VLED TVS/ESD protection, JLC candidate C85364 to verify in BOM matcher.'),
   component('J1', 'USB_C_Receptacle_USB2.0_16P', 'Connector:USB_C_Receptacle_USB2.0_16P', 'Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12', [
     pin('A4/B4/A9/B9', 'VBUS', 'VBUS'),
     pin('A1/B1/A12/B12', 'GND', 'GND'),
@@ -178,6 +182,8 @@ const components = [
   resistor('R6', '4.7k', '3V3', 'I2C0_SCL', 'I2C SCL pull-up.'),
   resistor('R7', '10k', 'LP_IREF', 'GND', 'LP5024 full-scale current reference.'),
   resistor('R8', '10k', '3V3', 'LP_EN', 'LP5024 always-on pull-up.'),
+  resistor('R9', '1M', 'SHIELD', 'GND', 'USB-C shield bleed path; part of 1M // 10nF shell-to-board-ground network.'),
+  resistor('R10', '0R', 'VBUS', 'VLED', 'Deliberate VBUS-to-VLED source link and optional LED-rail current-measure jumper.'),
   capacitor('C1', '100nF', '3V3', 'GND', 'YELLOW', 'RP2040 local decoupling group.'),
   capacitor('C2', '100nF', '3V3', 'GND', 'YELLOW', 'RP2040 local decoupling group.'),
   capacitor('C3', '100nF', '3V3', 'GND', 'YELLOW', 'LP5024 local decoupling group.'),
@@ -194,6 +200,7 @@ const components = [
   capacitor('C14', '33pF', 'XOUT', 'GND', 'YELLOW', 'Crystal load cap candidate; recalculate before order.'),
   capacitor('C15', '1uF', 'LP_VCAP', 'GND'),
   capacitor('C16', '1uF', '3V3', 'GND', 'GREEN', 'LP5024 VCC local capacitor.'),
+  capacitor('C17', '10nF', 'SHIELD', 'GND', 'GREEN', 'USB-C shield RF shunt; part of 1M // 10nF shell-to-board-ground network.'),
   testPoint('TP1', 'VBUS', 'VBUS'),
   testPoint('TP2', '3V3', '3V3'),
   testPoint('TP3', 'GND', 'GND'),
@@ -250,6 +257,12 @@ const symbolReadiness = [
     symbol: 'Power_Protection:TPD2EUSB30',
     footprint: 'Package_TO_SOT_SMD:Texas_DRT-3',
     status: 'STOCK_SYMBOL_OK',
+  },
+  {
+    item: 'TPD1E05U06DPY',
+    symbol: 'Power_Protection:TPD1E05U06DPY',
+    footprint: 'Package_SON:Texas_DPY0002A_0.6x1mm_P0.65mm',
+    status: 'STOCK_SYMBOL_OK_JLC_CANDIDATE_VERIFY',
   },
   {
     item: 'USB-C TYPE-C-31-M-12',
@@ -331,6 +344,7 @@ Rev A2 remains NOT_FOR_ORDER. The current Rev A2 Gerbers/BOM/CPL can be used for
 - \`Memory_Flash:W25Q32JVSS\` for U3.
 - \`Regulator_Linear:AP2112K-3.3\` for U4.
 - \`Power_Protection:TPD2EUSB30\` for U5.
+- \`Power_Protection:TPD1E05U06DPY\` for U6 VLED TVS/ESD protection.
 - \`Connector:USB_C_Receptacle_USB2.0_16P\` for J1, with HRO footprint pin mapping still requiring review.
 
 ## Stock KiCad Footprints Available
@@ -339,6 +353,7 @@ Rev A2 remains NOT_FOR_ORDER. The current Rev A2 Gerbers/BOM/CPL can be used for
 - \`Package_DFN_QFN:VQFN-32-1EP_4x4mm_P0.4mm_EP2.8x2.8mm_ThermalVias\` for LP5024.
 - \`Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12\` for USB-C.
 - \`Package_TO_SOT_SMD:Texas_DRT-3\` for TPD2EUSB30DRTR.
+- \`Package_SON:Texas_DPY0002A_0.6x1mm_P0.65mm\` for TPD1E05U06DPY VLED TVS/ESD.
 - \`Package_SO:SOIC-8_3.9x4.9mm_P1.27mm\` for W25Q32JVSSIQ.
 - \`Package_TO_SOT_SMD:SOT-23-5\` for AP2112K-3.3.
 - \`Crystal:Crystal_SMD_TXC_7M-4Pin_3.2x2.5mm\` for the C9002 12MHz crystal candidate.
@@ -353,14 +368,51 @@ Rev A2 remains NOT_FOR_ORDER. The current Rev A2 Gerbers/BOM/CPL can be used for
 
 - LP5024 OUT0..OUT17 are mapped to D1..D6 RGB cathodes. OUT18..OUT23 remain reserved.
 - Every RGB LED pad 2 connects to \`VLED\`; LP5024 sinks current on the color cathodes.
+- R10 connects \`VBUS\` to \`VLED\`, so the LED anode rail is explicitly sourced while staying easy to measure or isolate.
+- U6 protects \`VLED\` to \`GND\` with a single-line TVS/ESD part.
 - USB D+/D- route through R1/R2 27R series resistors, with U5 on the connector side.
+- USB-C shell \`SHIELD\` uses R9 1M and C17 10nF in parallel to board \`GND\`.
 - BOOTSEL pulls \`FLASH_CS_N_BOOTSEL\` low; RESET pulls \`RUN_RESET\` low.
-- C13/C14 33pF and Y1 C9002 remain YELLOW because the final crystal load-capacitance math still needs signoff.
-- The USB-C shell \`SHIELD\` net remains YELLOW until the enclosure/ESD strategy is selected.
+- C13/C14 33pF and Y1 C9002 remain the working selection because C9002 is a 20pF-load 12MHz crystal candidate; final review should still confirm board stray capacitance.
 
 ## Next Local Step
 
 Generate a Rev A3 KiCad pin-level schematic draft from this netlist with local LP5024 and LED symbols, then run KiCad ERC. The draft should stay clearly marked as not order-ready until ERC, DRC, net parity, JLC orientation preview, USB shell grounding, and crystal review are complete.
+`;
+}
+
+function protectionDecisionNote() {
+  return `# Rev A3 Protection Decisions
+
+Date: 2026-05-30
+
+## Accepted Electrical Changes
+
+- VLED TVS: add U6 \`TPD1E05U06DPY\` from \`VLED\` to \`GND\`. KiCad stock symbol and footprint are available as \`Power_Protection:TPD1E05U06DPY\` and \`Package_SON:Texas_DPY0002A_0.6x1mm_P0.65mm\`. Working JLC candidate is C85364, to be verified in the JLC BOM matcher before payment.
+- VBUS to VLED: add R10 \`0R\` from \`VBUS\` to \`VLED\`. This makes the LED anode rail source explicit while keeping a cheap current-measure/isolation option. Working JLC candidate is C21189.
+- USB-C shell RC: add R9 \`1M\` and C17 \`10nF\` in parallel from \`SHIELD\` to \`GND\`. This gives DC bleed through the resistor and RF/ESD shunting through the capacitor without adding a more complex chassis network. Working JLC candidates are C22935 for 1M 0603 and C57112 for 10nF 0603, both to be verified in the JLC BOM matcher.
+
+## Why This Is Not Over-Designed
+
+- U6 is a single-line protection part, not a multi-function USB-C protection IC.
+- R9/C17 is the common lightweight shell-to-board-ground treatment for a small USB peripheral when there is no separate metal chassis.
+- R10 is a 0R link, so it can be replaced with a short or removed later if the final schematic decides \`VLED\` should simply be named \`VBUS\`.
+
+## Crystal Load-Cap Decision
+
+The current crystal candidate is C9002 / X322512MSB4SI, a 12MHz crystal with 20pF load capacitance. For equal external capacitors, the rough calculation is:
+
+\`\`\`text
+C_each ~= 2 * (CL - C_stray)
+C_each ~= 2 * (20pF - 3pF)
+C_each ~= 34pF
+\`\`\`
+
+That makes the current C13/C14 \`33pF\` candidate reasonable for this crystal family. The remaining review is not choosing between random values; it is confirming the final crystal's load-capacitance spec and expected board stray capacitance before payment.
+
+## Remaining JLC Gate
+
+JLC orientation preview is still a manual RED gate before payment. This protection update makes the electrical intent clearer, but it does not replace checking the SMT viewer for U6, U2, U5, J1, D1-D6, Y1, SW1, and SW2.
 `;
 }
 
@@ -372,5 +424,6 @@ await Promise.all([
 await writeFile(join(netlistDir, 'rev_a3_pin_netlist.json'), `${JSON.stringify(netlist, null, 2)}\n`, 'utf8');
 await writeFile(join(netlistDir, 'rev_a3_pin_netlist.csv'), csv(), 'utf8');
 await writeFile(join(notesDir, 'rev-a3-pin-level-schematic-feasibility.md'), feasibilityNote(), 'utf8');
+await writeFile(join(notesDir, 'rev-a3-protection-decisions.md'), protectionDecisionNote(), 'utf8');
 
 console.log(`Generated Rev A3 pin-level netlist at ${netlistDir}`);

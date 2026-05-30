@@ -18,6 +18,7 @@ Rev A2 remains NOT_FOR_ORDER. The current Rev A2 Gerbers/BOM/CPL can be used for
 - `Memory_Flash:W25Q32JVSS` for U3.
 - `Regulator_Linear:AP2112K-3.3` for U4.
 - `Power_Protection:TPD2EUSB30` for U5.
+- `Power_Protection:TPD1E05U06DPY` for U6 VLED TVS/ESD protection.
 - `Connector:USB_C_Receptacle_USB2.0_16P` for J1, with HRO footprint pin mapping still requiring review.
 
 ## Stock KiCad Footprints Available
@@ -26,6 +27,7 @@ Rev A2 remains NOT_FOR_ORDER. The current Rev A2 Gerbers/BOM/CPL can be used for
 - `Package_DFN_QFN:VQFN-32-1EP_4x4mm_P0.4mm_EP2.8x2.8mm_ThermalVias` for LP5024.
 - `Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12` for USB-C.
 - `Package_TO_SOT_SMD:Texas_DRT-3` for TPD2EUSB30DRTR.
+- `Package_SON:Texas_DPY0002A_0.6x1mm_P0.65mm` for TPD1E05U06DPY VLED TVS/ESD.
 - `Package_SO:SOIC-8_3.9x4.9mm_P1.27mm` for W25Q32JVSSIQ.
 - `Package_TO_SOT_SMD:SOT-23-5` for AP2112K-3.3.
 - `Crystal:Crystal_SMD_TXC_7M-4Pin_3.2x2.5mm` for the C9002 12MHz crystal candidate.
@@ -40,10 +42,12 @@ Rev A2 remains NOT_FOR_ORDER. The current Rev A2 Gerbers/BOM/CPL can be used for
 
 - LP5024 OUT0..OUT17 are mapped to D1..D6 RGB cathodes. OUT18..OUT23 remain reserved.
 - Every RGB LED pad 2 connects to `VLED`; LP5024 sinks current on the color cathodes.
+- R10 connects `VBUS` to `VLED`, so the LED anode rail is explicitly sourced while staying easy to measure or isolate.
+- U6 protects `VLED` to `GND` with a single-line TVS/ESD part.
 - USB D+/D- route through R1/R2 27R series resistors, with U5 on the connector side.
+- USB-C shell `SHIELD` uses R9 1M and C17 10nF in parallel to board `GND`.
 - BOOTSEL pulls `FLASH_CS_N_BOOTSEL` low; RESET pulls `RUN_RESET` low.
-- C13/C14 33pF and Y1 C9002 remain YELLOW because the final crystal load-capacitance math still needs signoff.
-- The USB-C shell `SHIELD` net remains YELLOW until the enclosure/ESD strategy is selected.
+- C13/C14 33pF and Y1 C9002 remain the working selection because C9002 is a 20pF-load 12MHz crystal candidate; final review should still confirm board stray capacitance.
 
 ## Next Local Step
 

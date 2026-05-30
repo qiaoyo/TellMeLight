@@ -15,7 +15,10 @@ test('rev A2 preview page links renders, JLC bundle, and Rev A3 readiness work',
     'jlc_upload/manifest.json',
     '../../netlists/rev_a3_pin_netlist.json',
     '../rev_a3/netlist-lint.json',
-    'VLED source model',
+    '../../notes/rev-a3-jlc-tonight-checklist.md',
+    '../../notes/rev-a3-protection-decisions.md',
+    'VLED source model resolved',
+    'USB-C shell RC',
     'JLC orientation preview',
   ]) {
     assert.match(preview, new RegExp(token.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));

@@ -99,6 +99,9 @@ The Rev A3 local KiCad symbols live at `hardware/kicad/tellmelight_rev_a3/tellme
 with a symbol-upgrade validation log at `hardware/outputs/rev_a3/symbol-upgrade-check.log`.
 The Rev A3 netlist lint report lives at `hardware/outputs/rev_a3/netlist-lint.json` and
 `hardware/notes/rev-a3-netlist-lint.md`.
+The Rev A3 protection decisions and tonight's JLC checklist live at
+`hardware/notes/rev-a3-protection-decisions.md` and
+`hardware/notes/rev-a3-jlc-tonight-checklist.md`.
 
 Run KiCad CLI checks with the installed Windows KiCad 10.0 path:
 
@@ -135,6 +138,7 @@ Run KiCad CLI checks with the installed Windows KiCad 10.0 path:
 - Rev A3 machine-readable pin-level netlist foundation for the next real KiCad schematic draft.
 - Rev A3 local KiCad symbol library for LP5024RSMR and the exact TUOZHAN S4-3528RGBTA-A RGB LED.
 - Rev A3 netlist lint that checks required nets, expected single-pin review nets, and the VLED source-model review item before schematic generation.
+- Rev A3 protection update with VLED TVS, explicit VBUS-to-VLED source link, USB-C shell `1M // 10nF` RC grounding, and a JLC checklist for quote/matcher validation.
 
 ## Out Of Scope For Milestone 1
 
