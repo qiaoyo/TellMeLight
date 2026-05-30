@@ -511,3 +511,14 @@ Proposed first automation milestone:
   - Stock symbols are available for RP2040, W25Q32JVSS, AP2112K-3.3, TPD2EUSB30, and USB-C USB2.0 receptacle.
   - Local symbols are still required for `LP5024RSMR` and the exact common-anode TUOZHAN RGB LED.
 - Rev A2 remains `NOT_FOR_ORDER`; Rev A3 is a schematic-generation foundation, not a fabrication release.
+
+## Rev A3 Local Symbol Library Checkpoint - 2026-05-30
+
+- Added `tools/hardware/generate-rev-a3-symbols.mjs`.
+- Generated `hardware/kicad/tellmelight_rev_a3/tellmelight_rev_a3.kicad_sym`.
+- Added local KiCad symbols:
+  - `LP5024RSMR`: 32 pins plus exposed-pad `GND_EP`, with OUT0..OUT23, ADDR0/ADDR1, VCC, SDA, SCL, EN, IREF, and VCAP.
+  - `LED_RGB_CA_TUOZHAN_S4_3528RGBTA_A`: exact C2827321 / `S4-3528RGBTA-A` common-anode pin mapping.
+- Added `hardware/notes/rev-a3-symbol-library-review.md`.
+- Ran `kicad-cli sym upgrade` as a local symbol syntax/format check and recorded `hardware/outputs/rev_a3/symbol-upgrade-check.log`.
+- This checkpoint removes the missing-symbol blocker for a future Rev A3 pin-level schematic draft; it still does not make Rev A2 or Rev A3 order-ready.

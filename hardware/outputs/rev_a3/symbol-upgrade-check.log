@@ -1,0 +1,7 @@
+Command: E:\kicad\bin\kicad-cli.exe sym upgrade --force --output E:\py_proj\TellMeLight\.worktrees\local-simulation-foundation\hardware\outputs\rev_a3\tellmelight_rev_a3_symbol_upgrade_check.kicad_sym E:\py_proj\TellMeLight\.worktrees\local-simulation-foundation\hardware\kicad\tellmelight_rev_a3\tellmelight_rev_a3.kicad_sym
+kicad-cli sym upgrade exit code 0
+--- stdout ---
+用更新的格式保存符号库
+
+--- stderr ---
+
