@@ -422,3 +422,25 @@ Proposed first automation milestone:
   - HRO TYPE-C-31-M-12: `C165948`.
   - S4-3528RGBTA-A common-anode RGB LED: `C2827321`.
 - Next work item is a Rev A1 implementation plan and generated KiCad/BOM artifacts.
+
+## Rev A1 Generated Hardware Checkpoint - 2026-05-30
+
+- Added the Rev A1 implementation plan and generated hardware assets.
+- Created `hardware/kicad/tellmelight_rev_a1/` as a separate KiCad project so Rev A remains preserved.
+- Generated a 4-layer PCB floorplan:
+  - Front side holds the six RGB emitters and diffuser alignment marks.
+  - Back side holds RP2040, LP5024, flash, regulator, USB-C, ESD, passives, buttons, and test pads.
+  - SWD moved from a through-hole header direction to pogo/test pads.
+- Generated Rev A1 manufacturing documents:
+  - `hardware/bom/rev_a1_bom.csv`.
+  - `hardware/bom/rev_a1_jlc_sourcing.csv`.
+  - `hardware/notes/rev-a1-jlc-readiness.md`.
+  - `hardware/simulation/rev_a1_power_budget.md`.
+- KiCad checks passed:
+  - ERC: 0 violations.
+  - DRC: 0 violations and 0 unconnected items.
+- Exported Rev A1 Gerbers, drill, position data, STEP, PCB PDF/SVG, schematic PDF/SVG, and top/bottom PNG renders.
+- Remaining order blockers:
+  - Pin-by-pin schematic still needs fabrication signoff.
+  - RGB LED pinout must be verified against the final JLC selected part.
+  - USB-C mechanical/shell grounding and LP5024 exposed-pad stencil need review before ordering.

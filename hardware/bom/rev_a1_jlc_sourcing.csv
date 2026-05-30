@@ -1,0 +1,11 @@
+Designator,Preferred Part,JLC Candidate,Library Status,Assembly Risk,Action Before Order
+U1,Raspberry Pi RP2040,C2040,JLC partdetail verified 2026-05-30,QFN-56 exposed pad,Review RP2040 hardware design recommendations and thermal pad stencil
+U2,TI LP5024RSMR,C427525,JLC partdetail verified 2026-05-30,VQFN-32 exposed pad and fine pitch,"Review LP5024 footprint, paste windowing, I2C address strap, and channel pinout"
+U3,Winbond W25Q32JVSSIQ,C82344,JLC partdetail verified 2026-05-30,SOIC-8 low risk,Confirm RP2040 QSPI pin mapping before release
+U4,Diodes Inc AP2112K-3.3TRG1,C51118,JLC partdetail verified 2026-05-30,SOT-23-5 low risk,Confirm input/output capacitor ESR and voltage rating
+U5,TI TPD2EUSB30DRTR,C94934,JLC partdetail verified 2026-05-30,Small USB ESD package,Place near USB-C connector and confirm pad numbering
+J1,HRO TYPE-C-31-M-12,C165948,JLC partdetail verified 2026-05-30,Connector mechanical alignment and shell paste,"Check USB-C footprint, shell grounding, and board-edge keepout"
+D1-D6,OPSCO S4-3528RGBTA-A,C2827321,JLC partdetail verified 2026-05-30,RGB pinout must match selected footprint,Verify common-anode pin mapping against final datasheet before ordering
+R/C passives,0603 JLC basic/common families,JLC basic/common,Use BOM matching at order time,Low,Lock exact C-codes after price/stock review
+Y1,12 MHz 3.2 x 2.5 mm crystal,JLC matched crystal,Use BOM matching at order time,Load cap value depends on crystal CL,Pick final crystal and capacitor values together
+"SW1,SW2",SMD tactile service buttons,JLC matched switch,Use BOM matching at order time,Service controls on back only,Confirm height clears enclosure and diffuser stack

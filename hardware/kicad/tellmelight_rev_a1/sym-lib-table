@@ -1,0 +1,10 @@
+(sym_lib_table
+	(version 7)
+	(lib
+		(name "TellMeLight")
+		(type "KiCad")
+		(uri "${KIPRJMOD}/tellmelight_rev_a1.kicad_sym")
+		(options "")
+		(descr "TellMeLight Rev A1 local schematic symbols")
+	)
+)

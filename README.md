@@ -63,11 +63,19 @@ Generate the Rev A KiCad hardware baseline:
 node tools/hardware/generate-rev-a-kicad.mjs
 ```
 
+Generate the Rev A1 JLC-oriented hardware baseline:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 tools/hardware/generate-rev-a1-kicad.mjs
+```
+
 Run KiCad CLI checks with the installed Windows KiCad 10.0 path:
 
 ```powershell
 & E:\kicad\bin\kicad-cli.exe sch erc --format json -o hardware/outputs/rev_a/erc.json hardware/kicad/tellmelight_rev_a/tellmelight_rev_a.kicad_sch
 & E:\kicad\bin\kicad-cli.exe pcb drc --format json -o hardware/outputs/rev_a/drc.json hardware/kicad/tellmelight_rev_a/tellmelight_rev_a.kicad_pcb
+& E:\kicad\bin\kicad-cli.exe sch erc --format json -o hardware/outputs/rev_a1/erc.json hardware/kicad/tellmelight_rev_a1/tellmelight_rev_a1.kicad_sch
+& E:\kicad\bin\kicad-cli.exe pcb drc --format json -o hardware/outputs/rev_a1/drc.json hardware/kicad/tellmelight_rev_a1/tellmelight_rev_a1.kicad_pcb
 ```
 
 ## Simulator Interaction
@@ -87,6 +95,7 @@ Run KiCad CLI checks with the installed Windows KiCad 10.0 path:
 - Generic process wrapper adapter.
 - Direct Windows Codex JSON session adapter.
 - Rev A KiCad hardware baseline with BOM, PCB floorplan, and power-budget simulation.
+- Rev A1 JLC-oriented KiCad baseline with 4-layer PCB, JLC sourcing table, pogo/debug pads, and manufacturing readiness notes.
 
 ## Out Of Scope For Milestone 1
 
@@ -99,8 +108,10 @@ Run KiCad CLI checks with the installed Windows KiCad 10.0 path:
 
 - `docs/superpowers/specs/2026-05-29-tellmelight-design.md`
 - `docs/superpowers/specs/2026-05-30-rev-a-kicad-hardware-design.md`
+- `docs/superpowers/specs/2026-05-30-rev-a1-jlc-fabrication-candidate-design.md`
 - `docs/superpowers/specs/2026-05-29-adapter-foundation-design.md`
 - `docs/adapters/contract.md`
 - `docs/superpowers/brainstorm/2026-05-29-tellmelight-progress.md`
 - `docs/superpowers/plans/2026-05-29-local-simulation-foundation.md`
 - `docs/superpowers/plans/2026-05-30-rev-a-kicad-hardware.md`
+- `docs/superpowers/plans/2026-05-30-rev-a1-jlc-fabrication-candidate.md`
