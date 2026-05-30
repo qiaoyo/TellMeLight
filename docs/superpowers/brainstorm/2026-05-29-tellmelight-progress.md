@@ -586,3 +586,27 @@ Proposed first automation milestone:
   - R10 `0R`, candidate `C21189`.
 - The CPL is explicitly marked `DRAFT_ONLY` for the four new protection parts because the real Rev A3 PCB/Gerber/CPL has not been generated yet.
 - Status remains `PREFLIGHT_NOT_FOR_ORDER`; stop before payment.
+
+## Rev A3 Formal JLC Review Package Checkpoint - 2026-05-31
+
+- Added a compact Rev A3 KiCad/JLC review package:
+  - Board size reduced to 76 mm x 56 mm.
+  - U6 `TPD1E05U06DPY`, R9 `1M`, C17 `10nF`, and R10 `0R` are now placed on the actual Rev A3 PCB and included in the JLC BOM/CPL.
+  - The USB-C shell model remains `1M // 10nF` to GND; VLED is explicitly sourced through R10.
+  - The top-side silkscreen includes a small line-art avatar watermark based on the user's black/white image.
+- Generated:
+  - `hardware/kicad/tellmelight_rev_a3/` KiCad project.
+  - `hardware/bom/rev_a3_bom.csv`.
+  - `hardware/bom/rev_a3_jlc_bom.csv`.
+  - `hardware/bom/rev_a3_jlc_cpl.csv`.
+  - `hardware/outputs/rev_a3/jlc_upload/tellmelight_rev_a3_jlc_gerber_drill.zip`.
+  - `hardware/outputs/rev_a3/jlc_upload/tellmelight_rev_a3_jlc_assembly_bom_cpl.zip`.
+  - Rev A3 top/bottom renders, PDF/SVG exports, STEP, Gerbers, drill, and manifest files.
+- Local verification:
+  - KiCad ERC: 0 violations.
+  - KiCad DRC: 0 violations and 0 unconnected items.
+  - Node test suite: 128/128 passing.
+- Boundary remains explicit:
+  - Rev A3 is `ORDER_REVIEW_NOT_FOR_PAYMENT`.
+  - It is suitable for JLC board-size, DFM, BOM/CPL matching, placement, orientation, and silkscreen review.
+  - Paid-order electrical routing remains the next hardware step after JLC orientation review.

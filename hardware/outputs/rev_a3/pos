@@ -1,0 +1,49 @@
+### Footprint positions - created on 2026-05-31T01:04:53 ###
+### Printed by KiCad version 10.0.3
+## Unit = inches, Angle = deg.
+## Side : All
+# Ref     Val             Package                                                PosX       PosY       Rot  Side
+C1        100nF           C_0603_1608Metric                                    1.2598    -1.4173    0.0000  bottom
+C2        100nF           C_0603_1608Metric                                    1.7323    -1.4173    0.0000  bottom
+C3        100nF           C_0603_1608Metric                                    1.2598    -0.7874    0.0000  bottom
+C4        100nF           C_0603_1608Metric                                    1.7323    -0.7874    0.0000  bottom
+C5        100nF           C_0603_1608Metric                                    0.7874    -1.3386    0.0000  bottom
+C6        100nF           C_0603_1608Metric                                    2.2047    -1.3386    0.0000  bottom
+C7        100nF           C_0603_1608Metric                                    1.1024    -1.7323    0.0000  bottom
+C8        100nF           C_0603_1608Metric                                    2.0866    -1.6929    0.0000  bottom
+C9        100nF           C_0603_1608Metric                                    0.9843    -1.0236    0.0000  bottom
+C10       100nF           C_0603_1608Metric                                    1.9685    -0.8661    0.0000  bottom
+C11       10uF            C_0603_1608Metric                                    2.3622    -1.5354    0.0000  bottom
+C12       10uF            C_0603_1608Metric                                    2.4409    -1.3780    0.0000  bottom
+C13       33pF            C_0603_1608Metric                                    0.8268    -1.1024    0.0000  bottom
+C14       33pF            C_0603_1608Metric                                    1.1024    -1.1417    0.0000  bottom
+C15       1uF_VCAP        C_0603_1608Metric                                    1.2205    -1.1024    0.0000  bottom
+C16       1uF_VCC         C_0603_1608Metric                                    2.1654    -0.8661    0.0000  bottom
+C17       10nF_SHIELD     C_0603_1608Metric                                    2.5984    -1.6535    0.0000  bottom
+J1        USB_C           USB_C_Receptacle_HRO_TYPE-C-31-M-12                  1.4961    -2.0079  180.0000  bottom
+R1        27R             R_0603_1608Metric                                    1.2598    -1.7323    0.0000  bottom
+R2        27R             R_0603_1608Metric                                    1.4173    -1.7323    0.0000  bottom
+R3        5.1k            R_0603_1608Metric                                    1.9685    -1.9291    0.0000  bottom
+R4        5.1k            R_0603_1608Metric                                    2.1654    -1.9291    0.0000  bottom
+R5        4.7k            R_0603_1608Metric                                    1.7717    -1.1024    0.0000  bottom
+R6        4.7k            R_0603_1608Metric                                    1.9291    -1.1024    0.0000  bottom
+R7        10k_IREF        R_0603_1608Metric                                    1.3386    -1.1024    0.0000  bottom
+R8        10k_EN          R_0603_1608Metric                                    2.1260    -1.1024    0.0000  bottom
+R9        1M_SHIELD       R_0603_1608Metric                                    2.4016    -1.6535    0.0000  bottom
+R10       0R_VLED         R_0603_1608Metric                                    1.8504    -1.7717    0.0000  bottom
+SW1       BOOT            SW_SPST_EVQP2_ShortPushTravel_H2.1mm                 2.4016    -1.8898    0.0000  bottom
+SW2       RESET           SW_SPST_EVQP2_ShortPushTravel_H2.1mm                 2.7165    -1.8898    0.0000  bottom
+U1        RP2040          QFN-56-1EP_7x7mm_P0.4mm_EP3.2x3.2mm_ThermalVias      1.4961    -1.5354    0.0000  bottom
+U2        LP5024          VQFN-32-1EP_4x4mm_P0.4mm_EP2.8x2.8mm_ThermalVias     1.4961    -0.9449    0.0000  bottom
+U3        W25Q32JVSS      SOIC-8_3.9x4.9mm_P1.27mm                             0.8661    -1.5354    0.0000  bottom
+U4        AP2112K-3.3     SOT-23-5                                             2.2047    -1.5354    0.0000  bottom
+U5        TPD2EUSB30      Texas_DRT-3                                          1.1417    -1.8898    0.0000  bottom
+U6        TPD1E05U06DPY   Texas_DPY0002A_0.6x1mm_P0.65mm                       0.9449    -1.8898    0.0000  bottom
+Y1        12MHz           Crystal_SMD_TXC_7M-4Pin_3.2x2.5mm                    0.9449    -1.2598    0.0000  bottom
+D1        S4-3528RGBTA-A  LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm             0.4252    -0.5512   90.0000  top
+D2        S4-3528RGBTA-A  LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm             0.4252    -1.4370   90.0000  top
+D3        S4-3528RGBTA-A  LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm             1.1417    -1.3386   90.0000  top
+D4        S4-3528RGBTA-A  LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm             1.7913    -1.1417   90.0000  top
+D5        S4-3528RGBTA-A  LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm             2.5197    -0.6102   90.0000  top
+D6        S4-3528RGBTA-A  LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm             2.5197    -1.5157   90.0000  top
+## End

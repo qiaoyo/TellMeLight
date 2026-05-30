@@ -1,0 +1,25 @@
+Designator,Qty,Kind,Value,Footprint,Preferred Part,JLC Candidate,Assembly Side,Status,Notes
+U1,1,MCU,RP2040,Package_DFN_QFN:QFN-56-1EP_7x7mm_P0.4mm_EP3.2x3.2mm_ThermalVias,Raspberry Pi RP2040,C2040,Bottom,GREEN,USB MCU
+U2,1,LED_DRIVER,LP5024RSMR,Package_DFN_QFN:VQFN-32-1EP_4x4mm_P0.4mm_EP2.8x2.8mm_ThermalVias,TI LP5024RSMR,C427525,Bottom,YELLOW,JLC color warning is expected because this is an RGB LED driver; confirm pin 1 in orientation preview
+U3,1,QSPI_FLASH,W25Q32JVSSIQ,Package_SO:SOIC-8_3.9x4.9mm_P1.27mm,Winbond W25Q32JVSSIQ alternate,C179173,Bottom,GREEN,Working flash alternate verified by JLC BOM matching
+U4,1,LDO,AP2112K-3.3TRG1,Package_TO_SOT_SMD:SOT-23-5,Diodes Inc AP2112K-3.3TRG1,C51118,Bottom,GREEN,3V3 regulator from USB VBUS
+U5,1,USB_ESD,TPD2EUSB30DRTR,Package_TO_SOT_SMD:Texas_DRT-3,TI TPD2EUSB30DRTR,C94934,Bottom,YELLOW,"USB D+/D- ESD clamp, orientation preview required"
+U6,1,VLED_TVS,TPD1E05U06DPY,Package_SON:Texas_DPY0002A_0.6x1mm_P0.65mm,TI TPD1E05U06DPYR,C436349,Bottom,YELLOW,"VLED-to-GND TVS/ESD protection, orientation preview required"
+J1,1,USB_C,USB_C_Receptacle_USB2.0,Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12,HRO TYPE-C-31-M-12,C165948,Bottom,YELLOW,"USB-C connector, shell tied through R9/C17 RC network"
+D1-D6,6,RGB_LED,S4-3528RGBTA-A,TellMeLight_Rev_A3:LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm,TUOZHAN S4-3528RGBTA-A,C2827321,Top,YELLOW,JLC color warning is expected for RGB; confirm color and orientation preview
+"R1,R2",2,RESISTOR,27R,Resistor_SMD:R_0603_1608Metric,0603WAF270JT5E,C25190,Bottom,GREEN,USB D+/D- series resistors
+"R3,R4",2,RESISTOR,5.1k,Resistor_SMD:R_0603_1608Metric,0603WAF5101T5E,C23186,Bottom,GREEN,USB-C CC pull-downs
+"R5,R6",2,RESISTOR,4.7k,Resistor_SMD:R_0603_1608Metric,0603WAF4701T5E,C23162,Bottom,GREEN,I2C SDA/SCL pull-ups
+"R7,R8",2,RESISTOR,10k,Resistor_SMD:R_0603_1608Metric,0603WAF1002T5E,C25804,Bottom,GREEN,LP5024 IREF and EN support
+R9,1,RESISTOR,1M,Resistor_SMD:R_0603_1608Metric,0603WAF1004T5E,C22935,Bottom,GREEN,USB-C shell bleed in 1M // 10nF RC network
+R10,1,RESISTOR,0R,Resistor_SMD:R_0603_1608Metric,0603WAF0000T5E,C21189,Bottom,GREEN,VBUS-to-VLED source link
+C1-C10,10,CAPACITOR,100nF,Capacitor_SMD:C_0603_1608Metric,CL10B104KB8NNNC,C1591,Bottom,GREEN,Local decoupling
+"C11,C12",2,CAPACITOR,10uF,Capacitor_SMD:C_0603_1608Metric,CL10A106KP8NNNC,C19702,Bottom,GREEN,LDO and LED rail bulk
+"C13,C14",2,CAPACITOR,33pF,Capacitor_SMD:C_0603_1608Metric,CML0603C0G330JT50V,C2594250,Bottom,YELLOW,Working match for C9002 20pF-load 12MHz crystal
+"C15,C16",2,CAPACITOR,1uF,Capacitor_SMD:C_0603_1608Metric,CL10A105KB8NNNC,C15849,Bottom,GREEN,LP5024 VCAP and VCC capacitors
+C17,1,CAPACITOR,10nF,Capacitor_SMD:C_0603_1608Metric,CL10B103KB8NNNC,C57112,Bottom,GREEN,USB-C shell RF shunt in 1M // 10nF RC network
+Y1,1,CRYSTAL,12MHz passive,Crystal:Crystal_SMD_TXC_7M-4Pin_3.2x2.5mm,YXC X322512MSB4SI passive crystal,C9002,Bottom,YELLOW,Passive 12MHz crystal; JLC active/passive warning should be confirmed as passive
+"SW1,SW2",2,SWITCH,BOOT_RESET,Button_Switch_SMD:SW_SPST_EVQP2_ShortPushTravel_H2.1mm,Panasonic EVQP2R02M,C79161,Bottom,GREEN,Back-side service buttons
+WATERMARK,1,SILKSCREEN,avatar watermark,F.Silkscreen line art,User avatar line art,,Top,GREEN,"Top-side avatar watermark, not an SMT part"
+TP1-TP13,13,TESTPOINT,1.0mm pad,TestPoint:TestPoint_Pad_D1.0mm,Generic SMT test pad,,Bottom,YELLOW,Not a purchased SMT part
+H1-H4,4,MECHANICAL,M2 mounting hole,MountingHole:MountingHole_2.2mm_M2,Generic M2 clearance,,Mechanical,YELLOW,Mechanical only

@@ -1,0 +1,7 @@
+Item,Qty,JLC Candidate,Status,Notes
+Known Rev A3 JLC dry-run PCB quote,5,4-layer 76x56 target,estimate pending,"Rev A2 96x74 quote was about RMB 60; Rev A3 should be lower after size reduction, but final quote must come from JLC"
+Rev A2 SMT dry-run quote,5,economic assembly,observed RMB 76 excluding PCB details,User observed with official flow template PCB
+U6 VLED TVS,1,C436349,matched in dry run,Added to Rev A3 formal BOM/CPL
+R9 shell bleed,1,C22935,matched in dry run,Added to Rev A3 formal BOM/CPL
+C17 shell shunt,1,C57112,matched in dry run,Added to Rev A3 formal BOM/CPL
+R10 VLED source link,1,C21189,matched in dry run,Added to Rev A3 formal BOM/CPL
