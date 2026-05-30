@@ -400,3 +400,25 @@ Proposed first automation milestone:
   - Exact RGB LED optical sample decision.
   - Enclosure and diffuser CAD.
   - PCB vendor DFM rules for QFN/VQFN assembly.
+
+## Rev A1 JLC Fabrication Candidate Checkpoint - 2026-05-30
+
+- User wants the next hardware phase to target likely JLC/JLCPCB fabrication and assembly.
+- User does not have soldering tools, so Rev A1 should avoid any assumed hand-soldering.
+- User prefers a more integrated, polished, technology-forward hardware approach.
+- Rev A1 selected the high-integration path:
+  - 4-layer PCB by default.
+  - Double-sided SMT assembly by default.
+  - Front side kept mostly optical with six RGB emitters.
+  - Back side carries RP2040, LP5024, USB-C, flash, regulator, ESD, passives, and debug pads.
+  - SWD header direction changes from visible pin header to pogo/test pads.
+- Component direction remains RP2040 + LP5024 because it is still the most product-like architecture.
+- JLC candidate parts were recorded for the main active/mechanical components:
+  - RP2040: `C2040`.
+  - LP5024RSMR: `C427525`.
+  - W25Q32JVSSIQ: `C82344`.
+  - AP2112K-3.3TRG1: `C51118`.
+  - TPD2EUSB30DRTR: `C94934`.
+  - HRO TYPE-C-31-M-12: `C165948`.
+  - S4-3528RGBTA-A common-anode RGB LED: `C2827321`.
+- Next work item is a Rev A1 implementation plan and generated KiCad/BOM artifacts.
