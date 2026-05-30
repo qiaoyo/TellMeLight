@@ -102,6 +102,16 @@ The Rev A3 netlist lint report lives at `hardware/outputs/rev_a3/netlist-lint.js
 The Rev A3 protection decisions and tonight's JLC checklist live at
 `hardware/notes/rev-a3-protection-decisions.md` and
 `hardware/notes/rev-a3-jlc-tonight-checklist.md`.
+Generate the Rev A3 JLC preflight assembly package:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 tools/hardware/generate-rev-a3-jlc-preflight.mjs
+```
+
+The Rev A3 preflight package lives at `hardware/outputs/rev_a3/jlc_preflight/`.
+It combines the Rev A2 assembly BOM/CPL with the Rev A3 protection additions for
+JLC part matching and rough cost discovery, but it is still `PREFLIGHT_NOT_FOR_ORDER`
+until the real Rev A3 PCB/Gerber/CPL exists.
 
 Run KiCad CLI checks with the installed Windows KiCad 10.0 path:
 
@@ -139,6 +149,7 @@ Run KiCad CLI checks with the installed Windows KiCad 10.0 path:
 - Rev A3 local KiCad symbol library for LP5024RSMR and the exact TUOZHAN S4-3528RGBTA-A RGB LED.
 - Rev A3 netlist lint that checks required nets, expected single-pin review nets, and the VLED source-model review item before schematic generation.
 - Rev A3 protection update with VLED TVS, explicit VBUS-to-VLED source link, USB-C shell `1M // 10nF` RC grounding, and a JLC checklist for quote/matcher validation.
+- Rev A3 JLC preflight assembly package for checking the full Rev A2 BOM plus U6/R9/C17/R10 protection additions before the final Rev A3 PCB/Gerber/CPL package.
 
 ## Out Of Scope For Milestone 1
 

@@ -569,3 +569,20 @@ Proposed first automation milestone:
   - `hardware/notes/rev-a3-jlc-tonight-checklist.md`.
   - `hardware/bom/rev_a3_protection_bom_delta.csv`.
 - Crystal note: keep `C9002` with C13/C14 `33pF` as the working candidate because C9002 is a 20pF-load 12MHz crystal candidate; with roughly 3pF stray capacitance, the target external capacitor is about 34pF.
+
+## Rev A3 JLC Assembly Preflight Checkpoint - 2026-05-30
+
+- Added `tools/hardware/generate-rev-a3-jlc-preflight.mjs`.
+- Generated `hardware/outputs/rev_a3/jlc_preflight/` as a part-matching and rough-cost package, not a payment-ready order package.
+- Generated:
+  - `hardware/bom/rev_a3_jlc_bom_preflight.csv`.
+  - `hardware/bom/rev_a3_jlc_cpl_draft.csv`.
+  - `hardware/outputs/rev_a3/jlc_preflight/tellmelight_rev_a3_jlc_assembly_preflight.zip`.
+  - `hardware/outputs/rev_a3/jlc_preflight/manifest.json`.
+- The Rev A3 preflight BOM carries the Rev A2 assembly list plus U6/R9/C17/R10:
+  - U6 `TPD1E05U06DPY`, JLC/LCSC candidate `C436349`.
+  - R9 `1M`, candidate `C22935`.
+  - C17 `10nF`, candidate `C57112`.
+  - R10 `0R`, candidate `C21189`.
+- The CPL is explicitly marked `DRAFT_ONLY` for the four new protection parts because the real Rev A3 PCB/Gerber/CPL has not been generated yet.
+- Status remains `PREFLIGHT_NOT_FOR_ORDER`; stop before payment.

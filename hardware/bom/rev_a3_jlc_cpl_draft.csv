@@ -1,0 +1,44 @@
+Designator,Mid X,Mid Y,Layer,Rotation,Status,Notes
+D1,16.500mm,19.500mm,Top,90,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+D2,16.500mm,44.500mm,Top,90,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+D3,37.500mm,40.000mm,Top,90,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+D4,58.500mm,34.000mm,Top,90,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+D5,82.000mm,20.000mm,Top,90,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+D6,82.000mm,46.500mm,Top,90,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+U1,46.000mm,50.000mm,Bottom,0,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+U2,46.000mm,27.000mm,Bottom,0,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+U3,26.000mm,50.000mm,Bottom,0,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+U4,65.000mm,51.000mm,Bottom,0,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+U5,37.000mm,61.000mm,Bottom,0,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+J1,48.000mm,66.000mm,Bottom,180,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+Y1,29.000mm,42.000mm,Bottom,0,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+SW1,78.000mm,57.000mm,Bottom,0,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+SW2,87.000mm,57.000mm,Bottom,0,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+R1,39.000mm,56.000mm,Bottom,0,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+R2,43.000mm,56.000mm,Bottom,0,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+R3,67.000mm,62.000mm,Bottom,0,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+R4,72.000mm,62.000mm,Bottom,0,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+R5,54.000mm,31.000mm,Bottom,0,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+R6,58.000mm,31.000mm,Bottom,0,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+R7,50.000mm,31.000mm,Bottom,0,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+R8,62.000mm,31.000mm,Bottom,0,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+C1,40.000mm,44.000mm,Bottom,0,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+C2,52.000mm,44.000mm,Bottom,0,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+C3,40.000mm,23.000mm,Bottom,0,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+C4,52.000mm,23.000mm,Bottom,0,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+C5,24.000mm,45.000mm,Bottom,0,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+C6,68.000mm,47.000mm,Bottom,0,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+C7,35.000mm,58.000mm,Bottom,0,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+C8,61.000mm,56.000mm,Bottom,0,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+C9,31.000mm,36.000mm,Bottom,0,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+C10,61.000mm,36.000mm,Bottom,0,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+C11,69.000mm,56.000mm,Bottom,0,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+C12,68.000mm,60.000mm,Bottom,0,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+C13,26.000mm,38.000mm,Bottom,0,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+C14,32.000mm,38.000mm,Bottom,0,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+C15,41.000mm,31.000mm,Bottom,0,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+C16,62.000mm,27.000mm,Bottom,0,REV_A2_BOARD_PLACED,Carried from Rev A2 board for quote-flow comparison only.
+U6,41.000mm,61.000mm,Bottom,0,DRAFT_ONLY,VLED TVS near USB/VLED entry; final PCB placement pending.
+R9,76.000mm,64.000mm,Bottom,0,DRAFT_ONLY,USB-C shell bleed resistor; final shell pad placement pending.
+C17,80.000mm,64.000mm,Bottom,0,DRAFT_ONLY,USB-C shell RF shunt capacitor; final shell pad placement pending.
+R10,53.500mm,60.500mm,Bottom,0,DRAFT_ONLY,VBUS-to-VLED jumper; final PCB placement pending.

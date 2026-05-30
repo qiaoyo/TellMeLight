@@ -1,0 +1,50 @@
+{
+  "project": "TellMeLight",
+  "revision": "A3",
+  "generated": "2026-05-30",
+  "status": "PREFLIGHT_NOT_FOR_ORDER",
+  "purpose": "JLC part matching and rough cost discovery for Rev A3 protection additions",
+  "blockers": [
+    "Rev A3 PCB/Gerber/CPL still pending; this package must not be used for payment.",
+    "JLC orientation preview remains deferred and must be checked before any final order.",
+    "Draft U6/R9/C17/R10 placement rows are not yet backed by real PCB footprints."
+  ],
+  "files": [
+    {
+      "path": "assembly/rev_a3_jlc_bom_preflight.csv",
+      "source": "hardware/outputs/rev_a3/jlc_preflight/assembly/rev_a3_jlc_bom_preflight.csv",
+      "bytes": 1343,
+      "sha256": "3ce3b0f648277a2e6a5c62f1dfe52b1301a07cdaf0bf854ab6a4083b596b2d82"
+    },
+    {
+      "path": "assembly/rev_a3_jlc_cpl_draft.csv",
+      "source": "hardware/outputs/rev_a3/jlc_preflight/assembly/rev_a3_jlc_cpl_draft.csv",
+      "bytes": 4667,
+      "sha256": "ff7f148cd4cc113d0fc3307bfcf200f8f8b0ea31bf49a9b1f2cb7d2716f93152"
+    },
+    {
+      "path": "README.md",
+      "source": "hardware/outputs/rev_a3/jlc_preflight/README.md",
+      "bytes": 1511,
+      "sha256": "32dacb0d92e1d2b692674101da737abbf8885862e28d5257beae811760de3a3d"
+    },
+    {
+      "path": "review/rev-a3-jlc-tonight-checklist.md",
+      "source": "hardware/outputs/rev_a3/jlc_preflight/review/rev-a3-jlc-tonight-checklist.md",
+      "bytes": 4658,
+      "sha256": "2beec2c226a8bff7021032e4c6067ffee9882eafbcc2a9ce32a04e69684838fc"
+    },
+    {
+      "path": "review/rev-a3-protection-decisions.md",
+      "source": "hardware/outputs/rev_a3/jlc_preflight/review/rev-a3-protection-decisions.md",
+      "bytes": 2043,
+      "sha256": "e1ea1ed9bb05157f86d53103183753bc9c30268181c9a3f68016f70c78e2126d"
+    },
+    {
+      "path": "tellmelight_rev_a3_jlc_assembly_preflight.zip",
+      "source": "hardware/outputs/rev_a3/jlc_preflight/tellmelight_rev_a3_jlc_assembly_preflight.zip",
+      "bytes": 1552,
+      "sha256": "2d1a6cb61917f9f91d3c2b5c6a5311fd2d455618b04876756010cbd4fc4673db"
+    }
+  ]
+}
