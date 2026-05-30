@@ -1,5 +1,5 @@
 Designator,Qty,Value,Function,Footprint,JLC Candidate,Status,Notes
-U6,1,TPD1E05U06DPY,VLED TVS,Package_SON:Texas_DPY0002A_0.6x1mm_P0.65mm,C85364,YELLOW,"Single-line 5V-class ESD/TVS from VLED to GND; verify exact JLC stock, pin 1 to VLED and pin 2 to GND in BOM matcher/orientation preview"
+U6,1,TPD1E05U06DPY,VLED TVS,Package_SON:Texas_DPY0002A_0.6x1mm_P0.65mm,C436349,YELLOW,"Single-line 5V-class ESD/TVS from VLED to GND; verify exact JLC stock, pin 1 to VLED and pin 2 to GND in BOM matcher/orientation preview"
 R9,1,1M,USB-C shell bleed,Resistor_SMD:R_0603_1608Metric,C22935,YELLOW,"Parallel shell-to-GND RC network; verify JLC basic/extended status"
 C17,1,10nF,USB-C shell RF shunt,Capacitor_SMD:C_0603_1608Metric,C57112,YELLOW,"Parallel shell-to-GND RC network; 50V or higher preferred, verify dielectric and stock"
 R10,1,0R,VBUS-to-VLED source link,Resistor_SMD:R_0603_1608Metric,C21189,YELLOW,"Explicit VBUS to VLED link and optional current-measure/isolation jumper; verify JLC basic/extended status"

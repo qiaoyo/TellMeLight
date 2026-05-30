@@ -33,7 +33,7 @@ test('rev A3 protection BOM delta lists new JLC candidates', async () => {
   assert.match(bom, /R9,1,1M,USB-C shell bleed/);
   assert.match(bom, /C17,1,10nF,USB-C shell RF shunt/);
   assert.match(bom, /R10,1,0R,VBUS-to-VLED source link/);
-  assert.match(bom, /C85364/);
+  assert.match(bom, /C436349/);
   assert.match(bom, /C22935/);
   assert.match(bom, /C57112/);
   assert.match(bom, /C21189/);

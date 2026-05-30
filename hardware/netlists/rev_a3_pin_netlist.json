@@ -898,7 +898,7 @@
           "notes": "Short ground return to the local ground plane."
         }
       ],
-      "notes": "VLED TVS/ESD protection, JLC candidate C85364 to verify in BOM matcher."
+      "notes": "VLED TVS/ESD protection, JLC candidate C436349 to verify in BOM matcher."
     },
     {
       "ref": "J1",

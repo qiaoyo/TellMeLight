@@ -149,7 +149,7 @@ const components = [
   component('U6', 'TPD1E05U06DPY', 'Power_Protection:TPD1E05U06DPY', 'Package_SON:Texas_DPY0002A_0.6x1mm_P0.65mm', [
     pin('1', 'I/O', 'VLED', 'GREEN', 'Single-line VLED ESD/TVS shunt placed close to the USB/VLED entry path.'),
     pin('2', 'GND', 'GND', 'GREEN', 'Short ground return to the local ground plane.'),
-  ], 'VLED TVS/ESD protection, JLC candidate C85364 to verify in BOM matcher.'),
+  ], 'VLED TVS/ESD protection, JLC candidate C436349 to verify in BOM matcher.'),
   component('J1', 'USB_C_Receptacle_USB2.0_16P', 'Connector:USB_C_Receptacle_USB2.0_16P', 'Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12', [
     pin('A4/B4/A9/B9', 'VBUS', 'VBUS'),
     pin('A1/B1/A12/B12', 'GND', 'GND'),
@@ -388,7 +388,7 @@ Date: 2026-05-30
 
 ## Accepted Electrical Changes
 
-- VLED TVS: add U6 \`TPD1E05U06DPY\` from \`VLED\` to \`GND\`. KiCad stock symbol and footprint are available as \`Power_Protection:TPD1E05U06DPY\` and \`Package_SON:Texas_DPY0002A_0.6x1mm_P0.65mm\`. Working JLC candidate is C85364, to be verified in the JLC BOM matcher before payment.
+- VLED TVS: add U6 \`TPD1E05U06DPY\` from \`VLED\` to \`GND\`. KiCad stock symbol and footprint are available as \`Power_Protection:TPD1E05U06DPY\` and \`Package_SON:Texas_DPY0002A_0.6x1mm_P0.65mm\`. Working JLC/LCSC candidate is C436349, to be verified in the JLC BOM matcher before payment.
 - VBUS to VLED: add R10 \`0R\` from \`VBUS\` to \`VLED\`. This makes the LED anode rail source explicit while keeping a cheap current-measure/isolation option. Working JLC candidate is C21189.
 - USB-C shell RC: add R9 \`1M\` and C17 \`10nF\` in parallel from \`SHIELD\` to \`GND\`. This gives DC bleed through the resistor and RF/ESD shunting through the capacitor without adding a more complex chassis network. Working JLC candidates are C22935 for 1M 0603 and C57112 for 10nF 0603, both to be verified in the JLC BOM matcher.
 

@@ -45,7 +45,7 @@ Search these manually in the JLC/LCSC part search or BOM matcher. The file is `h
 
 | Ref | Function | Candidate | What to check |
 | --- | --- | --- | --- |
-| U6 | VLED TVS | `TPD1E05U06DPY`, candidate `C85364` | Confirm it is a single-line 5V-class ESD/TVS part, package matches `Texas_DPY0002A_0.6x1mm_P0.65mm`, pin 1 can connect to VLED and pin 2 to GND. |
+| U6 | VLED TVS | `TPD1E05U06DPY`, candidate `C436349` | Confirm it is a single-line 5V-class ESD/TVS part, package matches `Texas_DPY0002A_0.6x1mm_P0.65mm`, pin 1 can connect to VLED and pin 2 to GND. |
 | R9 | USB-C shell bleed | `1M`, candidate `C22935` | Confirm 0603 resistor availability. |
 | C17 | USB-C shell RF shunt | `10nF`, candidate `C57112` | Confirm 0603 capacitor availability, 50V or higher preferred. |
 | R10 | VBUS-to-VLED source link | `0R`, candidate `C21189` | Confirm 0603 0R jumper availability. |
