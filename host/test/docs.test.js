@@ -19,3 +19,40 @@ test('local simulation decision prevents early PCB layout', async () => {
   assert.match(decision, /FIFO/);
   assert.match(decision, /simulator/);
 });
+
+test('adapter contract documents normalized event fields and commands', async () => {
+  const contract = await readFile('docs/adapters/contract.md', 'utf8');
+
+  assert.match(contract, /session_id/);
+  assert.match(contract, /source/);
+  assert.match(contract, /started/);
+  assert.match(contract, /state_changed/);
+  assert.match(contract, /ended/);
+  assert.match(contract, /cleared/);
+  assert.match(contract, /event-cli\.js started/);
+  assert.match(contract, /process-cli\.js/);
+  assert.match(contract, /tml-run/);
+  assert.match(contract, /--source/);
+  assert.match(contract, /--id/);
+  assert.match(contract, /--/);
+});
+
+test('process wrapper docs avoid PowerShell script separator ambiguity', async () => {
+  const contract = await readFile('docs/adapters/contract.md', 'utf8');
+  const readme = await readFile('README.md', 'utf8');
+
+  assert.doesNotMatch(contract, /tools\/run-node\.ps1 host\/src\/process-cli\.js/);
+  assert.doesNotMatch(readme, /tools\/run-node\.ps1 host\/src\/process-cli\.js/);
+});
+
+test('docs describe direct Windows Codex integration', async () => {
+  const contract = await readFile('docs/adapters/contract.md', 'utf8');
+  const readme = await readFile('README.md', 'utf8');
+
+  assert.match(contract, /codex-cli\.js/);
+  assert.match(contract, /tml-codex/);
+  assert.match(contract, /thread_id/);
+  assert.match(contract, /TELLMELIGHT_CODEX_PROXY/);
+  assert.match(readme, /tml-codex/);
+  assert.match(readme, /127\.0\.0\.1:7892/);
+});

@@ -1,0 +1,19 @@
+Designator,Qty,Kind,Value,Footprint,Preferred Part,JLC Candidate,Assembly Side,Notes,Status
+U1,1,MCU,RP2040,Package_DFN_QFN:QFN-56-1EP_7x7mm_P0.4mm_EP3.2x3.2mm_ThermalVias,Raspberry Pi RP2040,C2040,Bottom,USB device controller; QFN-56 7x7 mm,review
+U2,1,LED_DRIVER,LP5024RSMR,Package_DFN_QFN:VQFN-32-1EP_4x4mm_P0.4mm_EP2.8x2.8mm_ThermalVias,TI LP5024RSMR,C427525,Bottom,24-channel I2C RGB LED driver; 18 channels used,review
+U3,1,FLASH,W25Q32JVSSIQ,Package_SO:SOIC-8_3.9x4.9mm_P1.27mm,Winbond W25Q32JVSSIQ,C82344,Bottom,QSPI flash for RP2040 firmware,review
+U4,1,LDO,AP2112K-3.3TRG1,Package_TO_SOT_SMD:SOT-23-5,Diodes Inc AP2112K-3.3TRG1,C51118,Bottom,3V3 regulator from USB VBUS,review
+U5,1,USB_ESD,TPD2EUSB30DRTR,Package_TO_SOT_SMD:SOT-23-6,TI TPD2EUSB30DRTR,C94934,Bottom,USB D+/D- ESD protection near J1,review
+J1,1,USB_C,USB_C_Receptacle_USB2.0,Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12,HRO TYPE-C-31-M-12,C165948,Bottom,USB-C power and full-speed data,review
+"TP_SWDIO,TP_SWCLK,TP_RUN,TP_3V3,TP_GND",5,DEBUG,Pogo test pads,TestPoint:TestPoint_Pad_D1.0mm,Generic 1.0 mm SMT test pad,JLC basic mechanical,Bottom,"SWDIO, SWCLK, RUN, 3V3, GND without a through-hole header",review
+"SW1,SW2",2,SWITCH,BOOT_RESET,Button_Switch_SMD:SW_SPST_EVQP2_ShortPushTravel_H2.1mm,Panasonic EVQP2-class,JLC matched switch,Bottom,BOOTSEL and reset service buttons on back,review
+Y1,1,CRYSTAL,12MHz,Crystal:Crystal_SMD_TXC_7M-4Pin_3.2x2.5mm,12 MHz 3.2x2.5 mm crystal,JLC matched crystal,Bottom,RP2040 clock source; validate load caps with selected crystal,review
+D1-D6,6,RGB_LED,S4-3528RGBTA-A,LED_SMD:LED_RGB_Wuerth-PLCC4_3.2x2.8mm_150141M173100,OPSCO S4-3528RGBTA-A,C2827321,Top,Common-anode RGB emitters under diffuser bars,review
+"R1,R2",2,RESISTOR,27R,Resistor_SMD:R_0603_1608Metric,1% 0603 resistor,JLC basic 0603,Bottom,USB D+/D- series resistors,review
+"R3,R4",2,RESISTOR,5.1k,Resistor_SMD:R_0603_1608Metric,1% 0603 resistor,JLC basic 0603,Bottom,USB-C CC pull-downs,review
+"R5,R6",2,RESISTOR,4.7k,Resistor_SMD:R_0603_1608Metric,1% 0603 resistor,JLC basic 0603,Bottom,I2C pull-ups to 3V3,review
+C1-C10,10,CAPACITOR,100nF,Capacitor_SMD:C_0603_1608Metric,X7R 0603 capacitor,JLC basic 0603,Bottom,Local IC decoupling,review
+"C11,C12",2,CAPACITOR,10uF,Capacitor_SMD:C_0603_1608Metric,X5R/X7R 0603 or 0805 capacitor,JLC basic/common,Bottom,LDO input/output and LED rail bulk,review
+"C13,C14",2,CAPACITOR,Crystal load,Capacitor_SMD:C_0603_1608Metric,Load capacitor matched to selected crystal,JLC matched capacitor,Bottom,RP2040 crystal load caps,review
+TP1-TP8,8,TESTPOINT,1.0mm pad,TestPoint:TestPoint_Pad_D1.0mm,Generic 1.0 mm SMT test pad,JLC basic mechanical,Bottom,"VBUS, 3V3, GND, I2C, USB, RUN bring-up points",review
+H1-H4,4,MECHANICAL,M2 mounting hole,MountingHole:MountingHole_2.2mm_M2,Generic M2 clearance,Not assembled,Mechanical,Optional enclosure/diffuser fastening,review

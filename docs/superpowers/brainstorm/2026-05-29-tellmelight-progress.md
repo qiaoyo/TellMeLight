@@ -264,3 +264,183 @@ Proposed first automation milestone:
   - Idle/unknown slots fail closed to idle rendering.
   - Empty slots carry zero label hash bytes.
 - Current verification count before simulator work: 24 host tests passing.
+
+## Simulator Interaction Checkpoint - 2026-05-29
+
+- User selected simulator option A: click any of the six visible slots, then apply a state action to the selected slot.
+- The simulator now keeps a selected slot index and exposes it in the rendered JSON state.
+- State controls now operate on the selected slot instead of always operating on the newest/rightmost session:
+  - `Set Running`
+  - `Set Approval`
+  - `Set Done`
+  - `Set Error`
+  - `Clear Selected`
+- `Clear Selected` removes the selected visible session, shifts later sessions left, and leaves the newest-side slot idle.
+- Focusable slots also support keyboard selection with Enter or Space.
+
+## Core Display Panel Checkpoint - 2026-05-29
+
+- The core display panel was adjusted toward the user-provided reference image:
+  - Near-square display area.
+  - Four lightly slanted vertical strips.
+  - Rounded strip corners.
+  - Left long strip slightly shorter than right long strip.
+  - Two middle strips remain shorter and staggered.
+- The six-session mapping is preserved:
+  - Left long strip contains two slots.
+  - Each middle strip contains one slot.
+  - Right long strip contains two slots.
+
+## Core Display Refinement Checkpoint - 2026-05-29
+
+- User confirmed the simulator button logic works.
+- Core display strips were refined from shared parallelogram geometry to per-strip irregular trapezoids:
+  - Left long strip: short edge faces right.
+  - Right long strip: short edge faces right.
+  - Left middle short strip: short edge faces right.
+  - Right middle short strip: short edge faces left.
+- The strips were made thicker, longer, and visually softer with larger rounded radii and multi-point clipped corners.
+- The change remains limited to the simulator's core display panel; session logic and controls are unchanged.
+
+## Core Display Correction Checkpoint - 2026-05-29
+
+- User caught that the right middle short strip was visually crooked.
+- Root cause:
+  - The strip had an explicit `rotate(1deg)`.
+  - Its short-left trapezoid points also shifted the top and bottom centers.
+- Correction:
+  - Removed rotation from the right middle short strip.
+  - Rebalanced the short-left trapezoid points so the strip stays upright while preserving a left-facing short edge.
+  - Added a simulator style regression test for the upright right middle strip.
+
+## Host Bridge Checkpoint - 2026-05-29
+
+- User approved Host Bridge option A as the next milestone.
+- Added a local dependency-free Node Host Bridge:
+  - `POST /v1/events` accepts normalized session events.
+  - `GET /v1/slots` returns the current six-slot snapshot.
+  - `GET /v1/stream` streams slot snapshots with Server-Sent Events.
+- Added CORS headers so the static `file://` simulator can talk to `localhost:8787`.
+- Added CLI entry points:
+  - `host/src/server-cli.js` starts the service on `127.0.0.1:8787`.
+  - `host/src/demo-client.js` sends a repeatable demo event sequence.
+- Updated the simulator:
+  - It listens to the Host Bridge stream when available.
+  - Manual buttons post events to the Host Bridge when connected.
+  - If the service is unavailable, the existing in-browser manual logic remains available.
+- Still out of scope:
+  - Real USB HID writing.
+  - Real AI-tool adapters.
+  - Firmware and PCB work.
+
+## Adapter Foundation Checkpoint - 2026-05-29
+
+- User approved Adapter Foundation option A.
+- Added a reusable event client for sending normalized events to the Host Bridge.
+- Added a dependency-free event CLI:
+  - `started` sends a running `started` event.
+  - `running` and `approval` send `state_changed`.
+  - `done` sends `ended` with `outcome: success`.
+  - `error` sends `ended` with `outcome: error`.
+  - `cleared` sends `cleared`.
+- Added `docs/adapters/contract.md` so future Codex, Claude, Cursor, or local-agent adapters share one event contract.
+- This milestone still avoids parsing real tool logs; it creates the stable adapter input surface first.
+
+## Process Adapter Checkpoint - 2026-05-30
+
+- User approved generic process adapter option A as the next local-only integration step.
+- Added a dependency-free process runner:
+  - Sends `started` before child process launch.
+  - Sends `ended` with `outcome: success` for exit code `0`.
+  - Sends `ended` with `outcome: error` for non-zero exits or spawn failure.
+  - Keeps the child command running even if TellMeLight event delivery fails.
+- Added `host/src/process-cli.js` as the `tml-run` command surface:
+  - Wrapper flags are parsed before `--`.
+  - Child command and arguments are passed after `--`.
+  - `--source`, `--id`, `--title`, `--url`, and `--cwd` are supported.
+- This creates a practical bridge for local commands before any tool-specific Codex, Claude, Cursor, or IDE log parser exists.
+
+## Windows Codex Integration Checkpoint - 2026-05-30
+
+- User requested direct local Windows Codex integration instead of another generic wrapper layer.
+- Verified the installed Codex CLI:
+  - `codex-cli 0.133.0-alpha.1`.
+  - VS Code ChatGPT extension Windows binary.
+  - `codex doctor` passes with proxy `http://127.0.0.1:7892`.
+- Verified a real Codex request:
+  - `codex exec --json -C . --sandbox read-only "Reply with exactly: TellMeLight codex smoke ok"`.
+  - Observed real `thread.started` JSONL with a Codex `thread_id`.
+  - Observed final agent message `TellMeLight codex smoke ok`.
+- Added `tml-codex`:
+  - Runs `codex exec --json` for new turns.
+  - Runs `codex exec resume --json` for recorded session continuation.
+  - Uses Codex `thread_id` as TellMeLight `session_id`.
+  - Maps Codex JSONL turn lifecycle to `running`, `approval`, `done`, and `error`.
+  - Supports `TELLMELIGHT_CODEX_PROXY` and `--tml-proxy` for the Windows proxy setup.
+
+## Rev A KiCad Hardware Checkpoint - 2026-05-30
+
+- User installed KiCad at `E:\kicad` and requested automatic local hardware progress while away.
+- Confirmed local KiCad CLI:
+  - `E:\kicad\bin\kicad-cli.exe`
+  - KiCad version `10.0.3`.
+  - KiCad Python `pcbnew` API version `10.0`.
+- Rev A hardware baseline scope:
+  - USB-C wired integrated PCB.
+  - RP2040-class USB MCU.
+  - LP5024-class 24-channel I2C RGB LED driver in the 32-pin 4 x 4 mm VQFN/WQFN footprint class.
+  - Six common-anode RGB LED zones behind four rounded trapezoid diffuser bars.
+  - AP2112K-3.3-class 3V3 regulator.
+  - W25Q32JVSS-class QSPI flash.
+  - TPD2EUSB30-class USB ESD protection.
+- The KiCad milestone must generate project files, a block-level schematic/net plan, PCB floorplan with real footprints, Rev A BOM, power-budget simulation, and KiCad CLI reports.
+- Remaining review items before fabrication:
+  - Pin-by-pin schematic signoff.
+  - Final routing and USB layout review.
+  - Exact RGB LED optical sample decision.
+  - Enclosure and diffuser CAD.
+  - PCB vendor DFM rules for QFN/VQFN assembly.
+
+## Rev A1 JLC Fabrication Candidate Checkpoint - 2026-05-30
+
+- User wants the next hardware phase to target likely JLC/JLCPCB fabrication and assembly.
+- User does not have soldering tools, so Rev A1 should avoid any assumed hand-soldering.
+- User prefers a more integrated, polished, technology-forward hardware approach.
+- Rev A1 selected the high-integration path:
+  - 4-layer PCB by default.
+  - Double-sided SMT assembly by default.
+  - Front side kept mostly optical with six RGB emitters.
+  - Back side carries RP2040, LP5024, USB-C, flash, regulator, ESD, passives, and debug pads.
+  - SWD header direction changes from visible pin header to pogo/test pads.
+- Component direction remains RP2040 + LP5024 because it is still the most product-like architecture.
+- JLC candidate parts were recorded for the main active/mechanical components:
+  - RP2040: `C2040`.
+  - LP5024RSMR: `C427525`.
+  - W25Q32JVSSIQ: `C82344`.
+  - AP2112K-3.3TRG1: `C51118`.
+  - TPD2EUSB30DRTR: `C94934`.
+  - HRO TYPE-C-31-M-12: `C165948`.
+  - S4-3528RGBTA-A common-anode RGB LED: `C2827321`.
+- Next work item is a Rev A1 implementation plan and generated KiCad/BOM artifacts.
+
+## Rev A1 Generated Hardware Checkpoint - 2026-05-30
+
+- Added the Rev A1 implementation plan and generated hardware assets.
+- Created `hardware/kicad/tellmelight_rev_a1/` as a separate KiCad project so Rev A remains preserved.
+- Generated a 4-layer PCB floorplan:
+  - Front side holds the six RGB emitters and diffuser alignment marks.
+  - Back side holds RP2040, LP5024, flash, regulator, USB-C, ESD, passives, buttons, and test pads.
+  - SWD moved from a through-hole header direction to pogo/test pads.
+- Generated Rev A1 manufacturing documents:
+  - `hardware/bom/rev_a1_bom.csv`.
+  - `hardware/bom/rev_a1_jlc_sourcing.csv`.
+  - `hardware/notes/rev-a1-jlc-readiness.md`.
+  - `hardware/simulation/rev_a1_power_budget.md`.
+- KiCad checks passed:
+  - ERC: 0 violations.
+  - DRC: 0 violations and 0 unconnected items.
+- Exported Rev A1 Gerbers, drill, position data, STEP, PCB PDF/SVG, schematic PDF/SVG, and top/bottom PNG renders.
+- Remaining order blockers:
+  - Pin-by-pin schematic still needs fabrication signoff.
+  - RGB LED pinout must be verified against the final JLC selected part.
+  - USB-C mechanical/shell grounding and LP5024 exposed-pad stencil need review before ordering.
