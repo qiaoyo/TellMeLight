@@ -1,0 +1,2250 @@
+{
+  "metadata": {
+    "project": "TellMeLight",
+    "revision": "A3",
+    "generated": "2026-05-30",
+    "status": "PIN_LEVEL_NETLIST_READY_FOR_SCHEMATIC_DRAFT",
+    "sourceRevision": "Rev A2 pin map, sourcing notes, and local KiCad 10 library probe"
+  },
+  "symbolReadiness": [
+    {
+      "item": "RP2040",
+      "symbol": "MCU_RaspberryPi:RP2040",
+      "footprint": "Package_DFN_QFN:QFN-56-1EP_7x7mm_P0.4mm_EP3.2x3.2mm_ThermalVias",
+      "status": "STOCK_SYMBOL_OK"
+    },
+    {
+      "item": "W25Q32JVSSIQ",
+      "symbol": "Memory_Flash:W25Q32JVSS",
+      "footprint": "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm",
+      "status": "STOCK_SYMBOL_OK"
+    },
+    {
+      "item": "AP2112K-3.3",
+      "symbol": "Regulator_Linear:AP2112K-3.3",
+      "footprint": "Package_TO_SOT_SMD:SOT-23-5",
+      "status": "STOCK_SYMBOL_OK"
+    },
+    {
+      "item": "TPD2EUSB30DRTR",
+      "symbol": "Power_Protection:TPD2EUSB30",
+      "footprint": "Package_TO_SOT_SMD:Texas_DRT-3",
+      "status": "STOCK_SYMBOL_OK"
+    },
+    {
+      "item": "USB-C TYPE-C-31-M-12",
+      "symbol": "Connector:USB_C_Receptacle_USB2.0_16P",
+      "footprint": "Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12",
+      "status": "STOCK_SYMBOL_OK_PIN_MAPPING_REVIEW_REQUIRED"
+    },
+    {
+      "item": "LP5024RSMR",
+      "symbol": "TellMeLight_Rev_A3:LP5024RSMR",
+      "footprint": "Package_DFN_QFN:VQFN-32-1EP_4x4mm_P0.4mm_EP2.8x2.8mm_ThermalVias",
+      "status": "LOCAL_SYMBOL_REQUIRED"
+    },
+    {
+      "item": "S4-3528RGBTA-A",
+      "symbol": "TellMeLight_Rev_A3:LED_RGB_CA_TUOZHAN_S4_3528RGBTA_A",
+      "footprint": "TellMeLight_Rev_A2:LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm",
+      "status": "LOCAL_SYMBOL_REQUIRED"
+    }
+  ],
+  "components": [
+    {
+      "ref": "U1",
+      "value": "RP2040",
+      "symbol": "MCU_RaspberryPi:RP2040",
+      "footprint": "Package_DFN_QFN:QFN-56-1EP_7x7mm_P0.4mm_EP3.2x3.2mm_ThermalVias",
+      "pins": [
+        {
+          "pin": "2",
+          "name": "GPIO0",
+          "net": "GPIO0_RESERVED",
+          "status": "GREEN",
+          "notes": "Reserved for debug or future feature."
+        },
+        {
+          "pin": "3",
+          "name": "GPIO1",
+          "net": "GPIO1_RESERVED_LP_EN_OPTION",
+          "status": "YELLOW",
+          "notes": "Optional future firmware EN control; Rev A3 keeps LP5024 always enabled."
+        },
+        {
+          "pin": "6",
+          "name": "GPIO4/I2C0_SDA",
+          "net": "I2C0_SDA",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "7",
+          "name": "GPIO5/I2C0_SCL",
+          "net": "I2C0_SCL",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "20",
+          "name": "XIN",
+          "net": "XIN",
+          "status": "YELLOW",
+          "notes": "Crystal/load-cap value remains under review."
+        },
+        {
+          "pin": "21",
+          "name": "XOUT",
+          "net": "XOUT",
+          "status": "YELLOW",
+          "notes": "Crystal/load-cap value remains under review."
+        },
+        {
+          "pin": "24",
+          "name": "SWCLK",
+          "net": "SWCLK",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "25",
+          "name": "SWDIO",
+          "net": "SWDIO",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "26",
+          "name": "RUN",
+          "net": "RUN_RESET",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "46",
+          "name": "USB_DM",
+          "net": "USB_DM_MCU",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "47",
+          "name": "USB_DP",
+          "net": "USB_DP_MCU",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "51",
+          "name": "QSPI_SD3",
+          "net": "FLASH_HOLD_IO3",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "52",
+          "name": "QSPI_SCLK",
+          "net": "FLASH_SCLK",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "53",
+          "name": "QSPI_SD0",
+          "net": "FLASH_IO0_MOSI",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "54",
+          "name": "QSPI_SD2",
+          "net": "FLASH_WP_IO2",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "55",
+          "name": "QSPI_SD1",
+          "net": "FLASH_IO1_MISO",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "56",
+          "name": "QSPI_CSn",
+          "net": "FLASH_CS_N_BOOTSEL",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "1",
+          "name": "IOVDD",
+          "net": "3V3",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "10",
+          "name": "IOVDD",
+          "net": "3V3",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "22",
+          "name": "IOVDD",
+          "net": "3V3",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "33",
+          "name": "IOVDD",
+          "net": "3V3",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "42",
+          "name": "IOVDD",
+          "net": "3V3",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "49",
+          "name": "IOVDD",
+          "net": "3V3",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "23",
+          "name": "DVDD",
+          "net": "3V3",
+          "status": "YELLOW",
+          "notes": "Final RP2040 decoupling grouping still needs schematic review."
+        },
+        {
+          "pin": "50",
+          "name": "DVDD",
+          "net": "3V3",
+          "status": "YELLOW",
+          "notes": "Final RP2040 decoupling grouping still needs schematic review."
+        },
+        {
+          "pin": "44",
+          "name": "VREG_VIN",
+          "net": "3V3",
+          "status": "YELLOW",
+          "notes": "Confirm against RP2040 reference schematic during final signoff."
+        },
+        {
+          "pin": "45",
+          "name": "VREG_VOUT",
+          "net": "RP2040_VREG_OUT",
+          "status": "YELLOW",
+          "notes": "Confirm required capacitor placement/value during final signoff."
+        },
+        {
+          "pin": "48",
+          "name": "USB_VDD",
+          "net": "3V3_USB",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "19",
+          "name": "TESTEN",
+          "net": "GND",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "57",
+          "name": "EP/GND",
+          "net": "GND",
+          "status": "GREEN",
+          "notes": ""
+        }
+      ],
+      "notes": "Main MCU, USB device endpoint, QSPI boot flash host, and I2C LED-driver controller."
+    },
+    {
+      "ref": "U2",
+      "value": "LP5024RSMR",
+      "symbol": "TellMeLight_Rev_A3:LP5024RSMR",
+      "footprint": "Package_DFN_QFN:VQFN-32-1EP_4x4mm_P0.4mm_EP2.8x2.8mm_ThermalVias",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "OUT0",
+          "net": "D1_R",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "2",
+          "name": "OUT1",
+          "net": "D1_G",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "3",
+          "name": "OUT2",
+          "net": "D1_B",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "4",
+          "name": "OUT3",
+          "net": "D2_R",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "5",
+          "name": "OUT4",
+          "net": "D2_G",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "6",
+          "name": "OUT5",
+          "net": "D2_B",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "7",
+          "name": "OUT6",
+          "net": "D3_R",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "8",
+          "name": "OUT7",
+          "net": "D3_G",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "9",
+          "name": "OUT8",
+          "net": "D3_B",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "10",
+          "name": "OUT9",
+          "net": "D4_R",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "11",
+          "name": "OUT10",
+          "net": "D4_G",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "12",
+          "name": "OUT11",
+          "net": "D4_B",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "13",
+          "name": "OUT12",
+          "net": "D5_R",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "14",
+          "name": "OUT13",
+          "net": "D5_G",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "15",
+          "name": "OUT14",
+          "net": "D5_B",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "16",
+          "name": "OUT15",
+          "net": "D6_R",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "17",
+          "name": "OUT16",
+          "net": "D6_G",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "18",
+          "name": "OUT17",
+          "net": "D6_B",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "19",
+          "name": "OUT18",
+          "net": "NC_LP_OUT18_RESERVE",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "20",
+          "name": "OUT19",
+          "net": "NC_LP_OUT19_RESERVE",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "21",
+          "name": "OUT20",
+          "net": "NC_LP_OUT20_RESERVE",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "22",
+          "name": "OUT21",
+          "net": "NC_LP_OUT21_RESERVE",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "23",
+          "name": "OUT22",
+          "net": "NC_LP_OUT22_RESERVE",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "24",
+          "name": "OUT23",
+          "net": "NC_LP_OUT23_RESERVE",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "25",
+          "name": "ADDR0",
+          "net": "GND",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "26",
+          "name": "ADDR1",
+          "net": "GND",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "27",
+          "name": "VCC",
+          "net": "3V3",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "28",
+          "name": "SDA",
+          "net": "I2C0_SDA",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "29",
+          "name": "SCL",
+          "net": "I2C0_SCL",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "30",
+          "name": "EN",
+          "net": "LP_EN",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "31",
+          "name": "IREF",
+          "net": "LP_IREF",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "32",
+          "name": "VCAP",
+          "net": "LP_VCAP",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "EP",
+          "name": "Exposed pad",
+          "net": "GND",
+          "status": "GREEN",
+          "notes": ""
+        }
+      ],
+      "notes": "24-channel current-sink RGB LED driver; local schematic symbol required because KiCad stock library does not include LP5024."
+    },
+    {
+      "ref": "D1",
+      "value": "S4-3528RGBTA-A",
+      "symbol": "TellMeLight_Rev_A3:LED_RGB_CA_TUOZHAN_S4_3528RGBTA_A",
+      "footprint": "TellMeLight_Rev_A2:LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "Blue cathode",
+          "net": "D1_B",
+          "status": "GREEN",
+          "notes": "Slot 1 blue sink to LP5024."
+        },
+        {
+          "pin": "2",
+          "name": "Common anode",
+          "net": "VLED",
+          "status": "GREEN",
+          "notes": "Slot 1 common anode rail."
+        },
+        {
+          "pin": "3",
+          "name": "Green cathode",
+          "net": "D1_G",
+          "status": "GREEN",
+          "notes": "Slot 1 green sink to LP5024."
+        },
+        {
+          "pin": "4",
+          "name": "Red cathode",
+          "net": "D1_R",
+          "status": "GREEN",
+          "notes": "Slot 1 red sink to LP5024."
+        }
+      ],
+      "notes": "FIFO session slot 1; TUOZHAN datasheet pinout resolved in Rev A2."
+    },
+    {
+      "ref": "D2",
+      "value": "S4-3528RGBTA-A",
+      "symbol": "TellMeLight_Rev_A3:LED_RGB_CA_TUOZHAN_S4_3528RGBTA_A",
+      "footprint": "TellMeLight_Rev_A2:LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "Blue cathode",
+          "net": "D2_B",
+          "status": "GREEN",
+          "notes": "Slot 2 blue sink to LP5024."
+        },
+        {
+          "pin": "2",
+          "name": "Common anode",
+          "net": "VLED",
+          "status": "GREEN",
+          "notes": "Slot 2 common anode rail."
+        },
+        {
+          "pin": "3",
+          "name": "Green cathode",
+          "net": "D2_G",
+          "status": "GREEN",
+          "notes": "Slot 2 green sink to LP5024."
+        },
+        {
+          "pin": "4",
+          "name": "Red cathode",
+          "net": "D2_R",
+          "status": "GREEN",
+          "notes": "Slot 2 red sink to LP5024."
+        }
+      ],
+      "notes": "FIFO session slot 2; TUOZHAN datasheet pinout resolved in Rev A2."
+    },
+    {
+      "ref": "D3",
+      "value": "S4-3528RGBTA-A",
+      "symbol": "TellMeLight_Rev_A3:LED_RGB_CA_TUOZHAN_S4_3528RGBTA_A",
+      "footprint": "TellMeLight_Rev_A2:LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "Blue cathode",
+          "net": "D3_B",
+          "status": "GREEN",
+          "notes": "Slot 3 blue sink to LP5024."
+        },
+        {
+          "pin": "2",
+          "name": "Common anode",
+          "net": "VLED",
+          "status": "GREEN",
+          "notes": "Slot 3 common anode rail."
+        },
+        {
+          "pin": "3",
+          "name": "Green cathode",
+          "net": "D3_G",
+          "status": "GREEN",
+          "notes": "Slot 3 green sink to LP5024."
+        },
+        {
+          "pin": "4",
+          "name": "Red cathode",
+          "net": "D3_R",
+          "status": "GREEN",
+          "notes": "Slot 3 red sink to LP5024."
+        }
+      ],
+      "notes": "FIFO session slot 3; TUOZHAN datasheet pinout resolved in Rev A2."
+    },
+    {
+      "ref": "D4",
+      "value": "S4-3528RGBTA-A",
+      "symbol": "TellMeLight_Rev_A3:LED_RGB_CA_TUOZHAN_S4_3528RGBTA_A",
+      "footprint": "TellMeLight_Rev_A2:LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "Blue cathode",
+          "net": "D4_B",
+          "status": "GREEN",
+          "notes": "Slot 4 blue sink to LP5024."
+        },
+        {
+          "pin": "2",
+          "name": "Common anode",
+          "net": "VLED",
+          "status": "GREEN",
+          "notes": "Slot 4 common anode rail."
+        },
+        {
+          "pin": "3",
+          "name": "Green cathode",
+          "net": "D4_G",
+          "status": "GREEN",
+          "notes": "Slot 4 green sink to LP5024."
+        },
+        {
+          "pin": "4",
+          "name": "Red cathode",
+          "net": "D4_R",
+          "status": "GREEN",
+          "notes": "Slot 4 red sink to LP5024."
+        }
+      ],
+      "notes": "FIFO session slot 4; TUOZHAN datasheet pinout resolved in Rev A2."
+    },
+    {
+      "ref": "D5",
+      "value": "S4-3528RGBTA-A",
+      "symbol": "TellMeLight_Rev_A3:LED_RGB_CA_TUOZHAN_S4_3528RGBTA_A",
+      "footprint": "TellMeLight_Rev_A2:LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "Blue cathode",
+          "net": "D5_B",
+          "status": "GREEN",
+          "notes": "Slot 5 blue sink to LP5024."
+        },
+        {
+          "pin": "2",
+          "name": "Common anode",
+          "net": "VLED",
+          "status": "GREEN",
+          "notes": "Slot 5 common anode rail."
+        },
+        {
+          "pin": "3",
+          "name": "Green cathode",
+          "net": "D5_G",
+          "status": "GREEN",
+          "notes": "Slot 5 green sink to LP5024."
+        },
+        {
+          "pin": "4",
+          "name": "Red cathode",
+          "net": "D5_R",
+          "status": "GREEN",
+          "notes": "Slot 5 red sink to LP5024."
+        }
+      ],
+      "notes": "FIFO session slot 5; TUOZHAN datasheet pinout resolved in Rev A2."
+    },
+    {
+      "ref": "D6",
+      "value": "S4-3528RGBTA-A",
+      "symbol": "TellMeLight_Rev_A3:LED_RGB_CA_TUOZHAN_S4_3528RGBTA_A",
+      "footprint": "TellMeLight_Rev_A2:LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "Blue cathode",
+          "net": "D6_B",
+          "status": "GREEN",
+          "notes": "Slot 6 blue sink to LP5024."
+        },
+        {
+          "pin": "2",
+          "name": "Common anode",
+          "net": "VLED",
+          "status": "GREEN",
+          "notes": "Slot 6 common anode rail."
+        },
+        {
+          "pin": "3",
+          "name": "Green cathode",
+          "net": "D6_G",
+          "status": "GREEN",
+          "notes": "Slot 6 green sink to LP5024."
+        },
+        {
+          "pin": "4",
+          "name": "Red cathode",
+          "net": "D6_R",
+          "status": "GREEN",
+          "notes": "Slot 6 red sink to LP5024."
+        }
+      ],
+      "notes": "FIFO session slot 6; TUOZHAN datasheet pinout resolved in Rev A2."
+    },
+    {
+      "ref": "U3",
+      "value": "W25Q32JVSSIQ",
+      "symbol": "Memory_Flash:W25Q32JVSS",
+      "footprint": "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "/CS",
+          "net": "FLASH_CS_N_BOOTSEL",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "2",
+          "name": "DO/IO1",
+          "net": "FLASH_IO1_MISO",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "3",
+          "name": "/WP/IO2",
+          "net": "FLASH_WP_IO2",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "4",
+          "name": "GND",
+          "net": "GND",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "5",
+          "name": "DI/IO0",
+          "net": "FLASH_IO0_MOSI",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "6",
+          "name": "CLK",
+          "net": "FLASH_SCLK",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "7",
+          "name": "/HOLD/IO3",
+          "net": "FLASH_HOLD_IO3",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "8",
+          "name": "VCC",
+          "net": "3V3",
+          "status": "GREEN",
+          "notes": ""
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "ref": "U4",
+      "value": "AP2112K-3.3",
+      "symbol": "Regulator_Linear:AP2112K-3.3",
+      "footprint": "Package_TO_SOT_SMD:SOT-23-5",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "VIN",
+          "net": "VBUS",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "2",
+          "name": "GND",
+          "net": "GND",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "3",
+          "name": "EN",
+          "net": "VBUS",
+          "status": "GREEN",
+          "notes": "Always enabled when USB VBUS is present."
+        },
+        {
+          "pin": "4",
+          "name": "NC",
+          "net": "NC_U4_4",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "5",
+          "name": "VOUT",
+          "net": "3V3",
+          "status": "GREEN",
+          "notes": ""
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "ref": "U5",
+      "value": "TPD2EUSB30DRTR",
+      "symbol": "Power_Protection:TPD2EUSB30",
+      "footprint": "Package_TO_SOT_SMD:Texas_DRT-3",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "D+",
+          "net": "USB_DP_CONN",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "2",
+          "name": "D-",
+          "net": "USB_DM_CONN",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "3",
+          "name": "GND",
+          "net": "GND",
+          "status": "GREEN",
+          "notes": ""
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "ref": "J1",
+      "value": "USB_C_Receptacle_USB2.0_16P",
+      "symbol": "Connector:USB_C_Receptacle_USB2.0_16P",
+      "footprint": "Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12",
+      "pins": [
+        {
+          "pin": "A4/B4/A9/B9",
+          "name": "VBUS",
+          "net": "VBUS",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "A1/B1/A12/B12",
+          "name": "GND",
+          "net": "GND",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "A6/B6",
+          "name": "D+",
+          "net": "USB_DP_CONN",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "A7/B7",
+          "name": "D-",
+          "net": "USB_DM_CONN",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "A5",
+          "name": "CC1",
+          "net": "CC1",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "B5",
+          "name": "CC2",
+          "net": "CC2",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "A8/B8",
+          "name": "SBU",
+          "net": "NC_SBU",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "S1/S2/S3/S4",
+          "name": "Shield",
+          "net": "SHIELD",
+          "status": "YELLOW",
+          "notes": "Final shell-grounding strategy depends on enclosure and ESD review."
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "ref": "Y1",
+      "value": "12MHz C9002",
+      "symbol": "Device:Crystal",
+      "footprint": "Crystal:Crystal_SMD_TXC_7M-4Pin_3.2x2.5mm",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "X1",
+          "net": "XIN",
+          "status": "YELLOW",
+          "notes": ""
+        },
+        {
+          "pin": "2",
+          "name": "GND",
+          "net": "GND",
+          "status": "YELLOW",
+          "notes": ""
+        },
+        {
+          "pin": "3",
+          "name": "X2",
+          "net": "XOUT",
+          "status": "YELLOW",
+          "notes": ""
+        },
+        {
+          "pin": "4",
+          "name": "GND",
+          "net": "GND",
+          "status": "YELLOW",
+          "notes": ""
+        }
+      ],
+      "notes": "Crystal load and ESR review remains a Rev A3 signoff item."
+    },
+    {
+      "ref": "SW1",
+      "value": "BOOTSEL EVQP2R02M",
+      "symbol": "Switch:SW_Push",
+      "footprint": "Button_Switch_SMD:SW_SPST_EVQP2_ShortPushTravel_H2.1mm",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "A",
+          "net": "FLASH_CS_N_BOOTSEL",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "2",
+          "name": "B",
+          "net": "GND",
+          "status": "GREEN",
+          "notes": ""
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "ref": "SW2",
+      "value": "RESET EVQP2R02M",
+      "symbol": "Switch:SW_Push",
+      "footprint": "Button_Switch_SMD:SW_SPST_EVQP2_ShortPushTravel_H2.1mm",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "A",
+          "net": "RUN_RESET",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "2",
+          "name": "B",
+          "net": "GND",
+          "status": "GREEN",
+          "notes": ""
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "ref": "R1",
+      "value": "27R",
+      "symbol": "Device:R",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "A",
+          "net": "USB_DP_CONN",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "2",
+          "name": "B",
+          "net": "USB_DP_MCU",
+          "status": "GREEN",
+          "notes": ""
+        }
+      ],
+      "notes": "USB D+ series termination."
+    },
+    {
+      "ref": "R2",
+      "value": "27R",
+      "symbol": "Device:R",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "A",
+          "net": "USB_DM_CONN",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "2",
+          "name": "B",
+          "net": "USB_DM_MCU",
+          "status": "GREEN",
+          "notes": ""
+        }
+      ],
+      "notes": "USB D- series termination."
+    },
+    {
+      "ref": "R3",
+      "value": "5.1k",
+      "symbol": "Device:R",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "A",
+          "net": "CC1",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "2",
+          "name": "B",
+          "net": "GND",
+          "status": "GREEN",
+          "notes": ""
+        }
+      ],
+      "notes": "USB-C sink Rd pulldown."
+    },
+    {
+      "ref": "R4",
+      "value": "5.1k",
+      "symbol": "Device:R",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "A",
+          "net": "CC2",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "2",
+          "name": "B",
+          "net": "GND",
+          "status": "GREEN",
+          "notes": ""
+        }
+      ],
+      "notes": "USB-C sink Rd pulldown."
+    },
+    {
+      "ref": "R5",
+      "value": "4.7k",
+      "symbol": "Device:R",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "A",
+          "net": "3V3",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "2",
+          "name": "B",
+          "net": "I2C0_SDA",
+          "status": "GREEN",
+          "notes": ""
+        }
+      ],
+      "notes": "I2C SDA pull-up."
+    },
+    {
+      "ref": "R6",
+      "value": "4.7k",
+      "symbol": "Device:R",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "A",
+          "net": "3V3",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "2",
+          "name": "B",
+          "net": "I2C0_SCL",
+          "status": "GREEN",
+          "notes": ""
+        }
+      ],
+      "notes": "I2C SCL pull-up."
+    },
+    {
+      "ref": "R7",
+      "value": "10k",
+      "symbol": "Device:R",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "A",
+          "net": "LP_IREF",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "2",
+          "name": "B",
+          "net": "GND",
+          "status": "GREEN",
+          "notes": ""
+        }
+      ],
+      "notes": "LP5024 full-scale current reference."
+    },
+    {
+      "ref": "R8",
+      "value": "10k",
+      "symbol": "Device:R",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "A",
+          "net": "3V3",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "2",
+          "name": "B",
+          "net": "LP_EN",
+          "status": "GREEN",
+          "notes": ""
+        }
+      ],
+      "notes": "LP5024 always-on pull-up."
+    },
+    {
+      "ref": "C1",
+      "value": "100nF",
+      "symbol": "Device:C",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "A",
+          "net": "3V3",
+          "status": "YELLOW",
+          "notes": ""
+        },
+        {
+          "pin": "2",
+          "name": "B",
+          "net": "GND",
+          "status": "YELLOW",
+          "notes": ""
+        }
+      ],
+      "notes": "RP2040 local decoupling group."
+    },
+    {
+      "ref": "C2",
+      "value": "100nF",
+      "symbol": "Device:C",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "A",
+          "net": "3V3",
+          "status": "YELLOW",
+          "notes": ""
+        },
+        {
+          "pin": "2",
+          "name": "B",
+          "net": "GND",
+          "status": "YELLOW",
+          "notes": ""
+        }
+      ],
+      "notes": "RP2040 local decoupling group."
+    },
+    {
+      "ref": "C3",
+      "value": "100nF",
+      "symbol": "Device:C",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "A",
+          "net": "3V3",
+          "status": "YELLOW",
+          "notes": ""
+        },
+        {
+          "pin": "2",
+          "name": "B",
+          "net": "GND",
+          "status": "YELLOW",
+          "notes": ""
+        }
+      ],
+      "notes": "LP5024 local decoupling group."
+    },
+    {
+      "ref": "C4",
+      "value": "100nF",
+      "symbol": "Device:C",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "A",
+          "net": "3V3",
+          "status": "YELLOW",
+          "notes": ""
+        },
+        {
+          "pin": "2",
+          "name": "B",
+          "net": "GND",
+          "status": "YELLOW",
+          "notes": ""
+        }
+      ],
+      "notes": "LP5024 local decoupling group."
+    },
+    {
+      "ref": "C5",
+      "value": "100nF",
+      "symbol": "Device:C",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "A",
+          "net": "3V3",
+          "status": "YELLOW",
+          "notes": ""
+        },
+        {
+          "pin": "2",
+          "name": "B",
+          "net": "GND",
+          "status": "YELLOW",
+          "notes": ""
+        }
+      ],
+      "notes": "Flash local decoupling."
+    },
+    {
+      "ref": "C6",
+      "value": "100nF",
+      "symbol": "Device:C",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "A",
+          "net": "3V3",
+          "status": "YELLOW",
+          "notes": ""
+        },
+        {
+          "pin": "2",
+          "name": "B",
+          "net": "GND",
+          "status": "YELLOW",
+          "notes": ""
+        }
+      ],
+      "notes": "Regulator output local decoupling."
+    },
+    {
+      "ref": "C7",
+      "value": "100nF",
+      "symbol": "Device:C",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "A",
+          "net": "3V3_USB",
+          "status": "YELLOW",
+          "notes": ""
+        },
+        {
+          "pin": "2",
+          "name": "B",
+          "net": "GND",
+          "status": "YELLOW",
+          "notes": ""
+        }
+      ],
+      "notes": "USB PHY supply decoupling candidate; placement/value review remains before schematic signoff."
+    },
+    {
+      "ref": "C8",
+      "value": "100nF",
+      "symbol": "Device:C",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "A",
+          "net": "VBUS",
+          "status": "YELLOW",
+          "notes": ""
+        },
+        {
+          "pin": "2",
+          "name": "B",
+          "net": "GND",
+          "status": "YELLOW",
+          "notes": ""
+        }
+      ],
+      "notes": "USB VBUS local high-frequency decoupling."
+    },
+    {
+      "ref": "C9",
+      "value": "100nF",
+      "symbol": "Device:C",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "A",
+          "net": "3V3",
+          "status": "YELLOW",
+          "notes": ""
+        },
+        {
+          "pin": "2",
+          "name": "B",
+          "net": "GND",
+          "status": "YELLOW",
+          "notes": ""
+        }
+      ],
+      "notes": "Additional local decoupling."
+    },
+    {
+      "ref": "C10",
+      "value": "100nF",
+      "symbol": "Device:C",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "A",
+          "net": "3V3",
+          "status": "YELLOW",
+          "notes": ""
+        },
+        {
+          "pin": "2",
+          "name": "B",
+          "net": "GND",
+          "status": "YELLOW",
+          "notes": ""
+        }
+      ],
+      "notes": "Additional local decoupling."
+    },
+    {
+      "ref": "C11",
+      "value": "10uF",
+      "symbol": "Device:C",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "A",
+          "net": "VBUS",
+          "status": "YELLOW",
+          "notes": ""
+        },
+        {
+          "pin": "2",
+          "name": "B",
+          "net": "GND",
+          "status": "YELLOW",
+          "notes": ""
+        }
+      ],
+      "notes": "AP2112 input bulk capacitor."
+    },
+    {
+      "ref": "C12",
+      "value": "10uF",
+      "symbol": "Device:C",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "A",
+          "net": "3V3",
+          "status": "YELLOW",
+          "notes": ""
+        },
+        {
+          "pin": "2",
+          "name": "B",
+          "net": "GND",
+          "status": "YELLOW",
+          "notes": ""
+        }
+      ],
+      "notes": "AP2112 output bulk capacitor."
+    },
+    {
+      "ref": "C13",
+      "value": "33pF",
+      "symbol": "Device:C",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "A",
+          "net": "XIN",
+          "status": "YELLOW",
+          "notes": ""
+        },
+        {
+          "pin": "2",
+          "name": "B",
+          "net": "GND",
+          "status": "YELLOW",
+          "notes": ""
+        }
+      ],
+      "notes": "Crystal load cap candidate; recalculate before order."
+    },
+    {
+      "ref": "C14",
+      "value": "33pF",
+      "symbol": "Device:C",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "A",
+          "net": "XOUT",
+          "status": "YELLOW",
+          "notes": ""
+        },
+        {
+          "pin": "2",
+          "name": "B",
+          "net": "GND",
+          "status": "YELLOW",
+          "notes": ""
+        }
+      ],
+      "notes": "Crystal load cap candidate; recalculate before order."
+    },
+    {
+      "ref": "C15",
+      "value": "1uF",
+      "symbol": "Device:C",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "A",
+          "net": "LP_VCAP",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "2",
+          "name": "B",
+          "net": "GND",
+          "status": "GREEN",
+          "notes": ""
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "ref": "C16",
+      "value": "1uF",
+      "symbol": "Device:C",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "A",
+          "net": "3V3",
+          "status": "GREEN",
+          "notes": ""
+        },
+        {
+          "pin": "2",
+          "name": "B",
+          "net": "GND",
+          "status": "GREEN",
+          "notes": ""
+        }
+      ],
+      "notes": "LP5024 VCC local capacitor."
+    },
+    {
+      "ref": "TP1",
+      "value": "VBUS",
+      "symbol": "Connector:TestPoint",
+      "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "pad",
+          "net": "VBUS",
+          "status": "GREEN",
+          "notes": "Bring-up pogo/test pad."
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "ref": "TP2",
+      "value": "3V3",
+      "symbol": "Connector:TestPoint",
+      "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "pad",
+          "net": "3V3",
+          "status": "GREEN",
+          "notes": "Bring-up pogo/test pad."
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "ref": "TP3",
+      "value": "GND",
+      "symbol": "Connector:TestPoint",
+      "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "pad",
+          "net": "GND",
+          "status": "GREEN",
+          "notes": "Bring-up pogo/test pad."
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "ref": "TP4",
+      "value": "SDA",
+      "symbol": "Connector:TestPoint",
+      "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "pad",
+          "net": "I2C0_SDA",
+          "status": "GREEN",
+          "notes": "Bring-up pogo/test pad."
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "ref": "TP5",
+      "value": "SCL",
+      "symbol": "Connector:TestPoint",
+      "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "pad",
+          "net": "I2C0_SCL",
+          "status": "GREEN",
+          "notes": "Bring-up pogo/test pad."
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "ref": "TP6",
+      "value": "D+",
+      "symbol": "Connector:TestPoint",
+      "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "pad",
+          "net": "USB_DP_CONN",
+          "status": "GREEN",
+          "notes": "Bring-up pogo/test pad."
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "ref": "TP7",
+      "value": "D-",
+      "symbol": "Connector:TestPoint",
+      "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "pad",
+          "net": "USB_DM_CONN",
+          "status": "GREEN",
+          "notes": "Bring-up pogo/test pad."
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "ref": "TP8",
+      "value": "RUN",
+      "symbol": "Connector:TestPoint",
+      "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "pad",
+          "net": "RUN_RESET",
+          "status": "GREEN",
+          "notes": "Bring-up pogo/test pad."
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "ref": "TP9",
+      "value": "SWDIO",
+      "symbol": "Connector:TestPoint",
+      "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "pad",
+          "net": "SWDIO",
+          "status": "GREEN",
+          "notes": "Bring-up pogo/test pad."
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "ref": "TP10",
+      "value": "SWCLK",
+      "symbol": "Connector:TestPoint",
+      "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "pad",
+          "net": "SWCLK",
+          "status": "GREEN",
+          "notes": "Bring-up pogo/test pad."
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "ref": "TP11",
+      "value": "RUN",
+      "symbol": "Connector:TestPoint",
+      "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "pad",
+          "net": "RUN_RESET",
+          "status": "GREEN",
+          "notes": "Bring-up pogo/test pad."
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "ref": "TP12",
+      "value": "3V3",
+      "symbol": "Connector:TestPoint",
+      "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "pad",
+          "net": "3V3",
+          "status": "GREEN",
+          "notes": "Bring-up pogo/test pad."
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "ref": "TP13",
+      "value": "GND",
+      "symbol": "Connector:TestPoint",
+      "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+      "pins": [
+        {
+          "pin": "1",
+          "name": "pad",
+          "net": "GND",
+          "status": "GREEN",
+          "notes": "Bring-up pogo/test pad."
+        }
+      ],
+      "notes": ""
+    }
+  ],
+  "nets": [
+    {
+      "name": "3V3",
+      "pins": [
+        "C1.1",
+        "C10.1",
+        "C12.1",
+        "C16.1",
+        "C2.1",
+        "C3.1",
+        "C4.1",
+        "C5.1",
+        "C6.1",
+        "C9.1",
+        "R5.1",
+        "R6.1",
+        "R8.1",
+        "TP12.1",
+        "TP2.1",
+        "U1.1",
+        "U1.10",
+        "U1.22",
+        "U1.23",
+        "U1.33",
+        "U1.42",
+        "U1.44",
+        "U1.49",
+        "U1.50",
+        "U2.27",
+        "U3.8",
+        "U4.5"
+      ]
+    },
+    {
+      "name": "3V3_USB",
+      "pins": [
+        "C7.1",
+        "U1.48"
+      ]
+    },
+    {
+      "name": "CC1",
+      "pins": [
+        "J1.A5",
+        "R3.1"
+      ]
+    },
+    {
+      "name": "CC2",
+      "pins": [
+        "J1.B5",
+        "R4.1"
+      ]
+    },
+    {
+      "name": "D1_B",
+      "pins": [
+        "D1.1",
+        "U2.3"
+      ]
+    },
+    {
+      "name": "D1_G",
+      "pins": [
+        "D1.3",
+        "U2.2"
+      ]
+    },
+    {
+      "name": "D1_R",
+      "pins": [
+        "D1.4",
+        "U2.1"
+      ]
+    },
+    {
+      "name": "D2_B",
+      "pins": [
+        "D2.1",
+        "U2.6"
+      ]
+    },
+    {
+      "name": "D2_G",
+      "pins": [
+        "D2.3",
+        "U2.5"
+      ]
+    },
+    {
+      "name": "D2_R",
+      "pins": [
+        "D2.4",
+        "U2.4"
+      ]
+    },
+    {
+      "name": "D3_B",
+      "pins": [
+        "D3.1",
+        "U2.9"
+      ]
+    },
+    {
+      "name": "D3_G",
+      "pins": [
+        "D3.3",
+        "U2.8"
+      ]
+    },
+    {
+      "name": "D3_R",
+      "pins": [
+        "D3.4",
+        "U2.7"
+      ]
+    },
+    {
+      "name": "D4_B",
+      "pins": [
+        "D4.1",
+        "U2.12"
+      ]
+    },
+    {
+      "name": "D4_G",
+      "pins": [
+        "D4.3",
+        "U2.11"
+      ]
+    },
+    {
+      "name": "D4_R",
+      "pins": [
+        "D4.4",
+        "U2.10"
+      ]
+    },
+    {
+      "name": "D5_B",
+      "pins": [
+        "D5.1",
+        "U2.15"
+      ]
+    },
+    {
+      "name": "D5_G",
+      "pins": [
+        "D5.3",
+        "U2.14"
+      ]
+    },
+    {
+      "name": "D5_R",
+      "pins": [
+        "D5.4",
+        "U2.13"
+      ]
+    },
+    {
+      "name": "D6_B",
+      "pins": [
+        "D6.1",
+        "U2.18"
+      ]
+    },
+    {
+      "name": "D6_G",
+      "pins": [
+        "D6.3",
+        "U2.17"
+      ]
+    },
+    {
+      "name": "D6_R",
+      "pins": [
+        "D6.4",
+        "U2.16"
+      ]
+    },
+    {
+      "name": "FLASH_CS_N_BOOTSEL",
+      "pins": [
+        "SW1.1",
+        "U1.56",
+        "U3.1"
+      ]
+    },
+    {
+      "name": "FLASH_HOLD_IO3",
+      "pins": [
+        "U1.51",
+        "U3.7"
+      ]
+    },
+    {
+      "name": "FLASH_IO0_MOSI",
+      "pins": [
+        "U1.53",
+        "U3.5"
+      ]
+    },
+    {
+      "name": "FLASH_IO1_MISO",
+      "pins": [
+        "U1.55",
+        "U3.2"
+      ]
+    },
+    {
+      "name": "FLASH_SCLK",
+      "pins": [
+        "U1.52",
+        "U3.6"
+      ]
+    },
+    {
+      "name": "FLASH_WP_IO2",
+      "pins": [
+        "U1.54",
+        "U3.3"
+      ]
+    },
+    {
+      "name": "GND",
+      "pins": [
+        "C1.2",
+        "C10.2",
+        "C11.2",
+        "C12.2",
+        "C13.2",
+        "C14.2",
+        "C15.2",
+        "C16.2",
+        "C2.2",
+        "C3.2",
+        "C4.2",
+        "C5.2",
+        "C6.2",
+        "C7.2",
+        "C8.2",
+        "C9.2",
+        "J1.A1/B1/A12/B12",
+        "R3.2",
+        "R4.2",
+        "R7.2",
+        "SW1.2",
+        "SW2.2",
+        "TP13.1",
+        "TP3.1",
+        "U1.19",
+        "U1.57",
+        "U2.25",
+        "U2.26",
+        "U2.EP",
+        "U3.4",
+        "U4.2",
+        "U5.3",
+        "Y1.2",
+        "Y1.4"
+      ]
+    },
+    {
+      "name": "GPIO0_RESERVED",
+      "pins": [
+        "U1.2"
+      ]
+    },
+    {
+      "name": "GPIO1_RESERVED_LP_EN_OPTION",
+      "pins": [
+        "U1.3"
+      ]
+    },
+    {
+      "name": "I2C0_SCL",
+      "pins": [
+        "R6.2",
+        "TP5.1",
+        "U1.7",
+        "U2.29"
+      ]
+    },
+    {
+      "name": "I2C0_SDA",
+      "pins": [
+        "R5.2",
+        "TP4.1",
+        "U1.6",
+        "U2.28"
+      ]
+    },
+    {
+      "name": "LP_EN",
+      "pins": [
+        "R8.2",
+        "U2.30"
+      ]
+    },
+    {
+      "name": "LP_IREF",
+      "pins": [
+        "R7.1",
+        "U2.31"
+      ]
+    },
+    {
+      "name": "LP_VCAP",
+      "pins": [
+        "C15.1",
+        "U2.32"
+      ]
+    },
+    {
+      "name": "NC_LP_OUT18_RESERVE",
+      "pins": [
+        "U2.19"
+      ]
+    },
+    {
+      "name": "NC_LP_OUT19_RESERVE",
+      "pins": [
+        "U2.20"
+      ]
+    },
+    {
+      "name": "NC_LP_OUT20_RESERVE",
+      "pins": [
+        "U2.21"
+      ]
+    },
+    {
+      "name": "NC_LP_OUT21_RESERVE",
+      "pins": [
+        "U2.22"
+      ]
+    },
+    {
+      "name": "NC_LP_OUT22_RESERVE",
+      "pins": [
+        "U2.23"
+      ]
+    },
+    {
+      "name": "NC_LP_OUT23_RESERVE",
+      "pins": [
+        "U2.24"
+      ]
+    },
+    {
+      "name": "NC_SBU",
+      "pins": [
+        "J1.A8/B8"
+      ]
+    },
+    {
+      "name": "NC_U4_4",
+      "pins": [
+        "U4.4"
+      ]
+    },
+    {
+      "name": "RP2040_VREG_OUT",
+      "pins": [
+        "U1.45"
+      ]
+    },
+    {
+      "name": "RUN_RESET",
+      "pins": [
+        "SW2.1",
+        "TP11.1",
+        "TP8.1",
+        "U1.26"
+      ]
+    },
+    {
+      "name": "SHIELD",
+      "pins": [
+        "J1.S1/S2/S3/S4"
+      ]
+    },
+    {
+      "name": "SWCLK",
+      "pins": [
+        "TP10.1",
+        "U1.24"
+      ]
+    },
+    {
+      "name": "SWDIO",
+      "pins": [
+        "TP9.1",
+        "U1.25"
+      ]
+    },
+    {
+      "name": "USB_DM_CONN",
+      "pins": [
+        "J1.A7/B7",
+        "R2.1",
+        "TP7.1",
+        "U5.2"
+      ]
+    },
+    {
+      "name": "USB_DM_MCU",
+      "pins": [
+        "R2.2",
+        "U1.46"
+      ]
+    },
+    {
+      "name": "USB_DP_CONN",
+      "pins": [
+        "J1.A6/B6",
+        "R1.1",
+        "TP6.1",
+        "U5.1"
+      ]
+    },
+    {
+      "name": "USB_DP_MCU",
+      "pins": [
+        "R1.2",
+        "U1.47"
+      ]
+    },
+    {
+      "name": "VBUS",
+      "pins": [
+        "C11.1",
+        "C8.1",
+        "J1.A4/B4/A9/B9",
+        "TP1.1",
+        "U4.1",
+        "U4.3"
+      ]
+    },
+    {
+      "name": "VLED",
+      "pins": [
+        "D1.2",
+        "D2.2",
+        "D3.2",
+        "D4.2",
+        "D5.2",
+        "D6.2"
+      ]
+    },
+    {
+      "name": "XIN",
+      "pins": [
+        "C13.1",
+        "U1.20",
+        "Y1.1"
+      ]
+    },
+    {
+      "name": "XOUT",
+      "pins": [
+        "C14.1",
+        "U1.21",
+        "Y1.3"
+      ]
+    }
+  ]
+}

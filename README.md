@@ -82,6 +82,16 @@ Use `tellmelight_rev_a2_jlc_gerber_drill.zip` for PCB quote upload practice and
 `tellmelight_rev_a2_jlc_assembly_bom_cpl.zip` for SMT BOM/CPL matching practice. The bundle is
 explicitly `NOT_FOR_ORDER` until the JLC orientation preview is manually checked.
 
+Generate the Rev A3 machine-readable pin-level netlist:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 tools/hardware/generate-rev-a3-pin-netlist.mjs
+```
+
+The Rev A3 netlist foundation lives at `hardware/netlists/rev_a3_pin_netlist.json`,
+`hardware/netlists/rev_a3_pin_netlist.csv`, and
+`hardware/notes/rev-a3-pin-level-schematic-feasibility.md`.
+
 Run KiCad CLI checks with the installed Windows KiCad 10.0 path:
 
 ```powershell
@@ -113,6 +123,7 @@ Run KiCad CLI checks with the installed Windows KiCad 10.0 path:
 - Rev A1 JLC-oriented KiCad baseline with 4-layer PCB, JLC sourcing table, pogo/debug pads, and manufacturing readiness notes.
 - Rev A2 pin-level review package with JLC BOM/CPL drafts, corrected USB ESD footprint direction, local TUOZHAN RGB LED footprint mapping, and circuit explanation notes.
 - Rev A2 JLC upload review bundle with Gerber/drill zip, BOM/CPL zip, checksum manifest, and ordering blockers kept beside the quote files.
+- Rev A3 machine-readable pin-level netlist foundation for the next real KiCad schematic draft.
 
 ## Out Of Scope For Milestone 1
 
@@ -134,3 +145,4 @@ Run KiCad CLI checks with the installed Windows KiCad 10.0 path:
 - `docs/superpowers/plans/2026-05-30-rev-a-kicad-hardware.md`
 - `docs/superpowers/plans/2026-05-30-rev-a1-jlc-fabrication-candidate.md`
 - `docs/superpowers/plans/2026-05-30-rev-a2-pinout-jlc-order-package.md`
+- `docs/superpowers/plans/2026-05-30-rev-a3-pin-level-schematic.md`

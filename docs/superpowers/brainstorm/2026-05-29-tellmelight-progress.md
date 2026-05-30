@@ -494,3 +494,20 @@ Proposed first automation milestone:
   - `assembly/` copies of Rev A2 JLC BOM, CPL, and cost-estimate CSVs.
   - `review/` copies of order readiness, LED footprint review, circuit explanation, KiCad verification summary, and top/bottom renders.
 - The package status is `NOT_FOR_ORDER` because JLC's orientation preview still needs manual review before any payment.
+
+## Rev A3 Pin-Level Netlist Foundation Checkpoint - 2026-05-30
+
+- Added `tools/hardware/generate-rev-a3-pin-netlist.mjs`.
+- Generated a machine-readable pin-level netlist before attempting a full KiCad schematic:
+  - `hardware/netlists/rev_a3_pin_netlist.json`.
+  - `hardware/netlists/rev_a3_pin_netlist.csv`.
+  - `hardware/notes/rev-a3-pin-level-schematic-feasibility.md`.
+- The Rev A3 netlist records:
+  - LP5024 OUT0..OUT17 to D1..D6 RGB cathodes.
+  - TUOZHAN `S4-3528RGBTA-A` pin mapping: pad 1 blue cathode, pad 2 common anode, pad 3 green cathode, pad 4 red cathode.
+  - USB-C D+/D- through 27R series resistors and connector-side `TPD2EUSB30DRTR`.
+  - QSPI flash, BOOTSEL, RESET, I2C pull-ups, LP5024 IREF/VCAP/EN, power rails, and bring-up test pads.
+- Local KiCad library probe result:
+  - Stock symbols are available for RP2040, W25Q32JVSS, AP2112K-3.3, TPD2EUSB30, and USB-C USB2.0 receptacle.
+  - Local symbols are still required for `LP5024RSMR` and the exact common-anode TUOZHAN RGB LED.
+- Rev A2 remains `NOT_FOR_ORDER`; Rev A3 is a schematic-generation foundation, not a fabrication release.
