@@ -444,3 +444,35 @@ Proposed first automation milestone:
   - Pin-by-pin schematic still needs fabrication signoff.
   - RGB LED pinout must be verified against the final JLC selected part.
   - USB-C mechanical/shell grounding and LP5024 exposed-pad stencil need review before ordering.
+
+## Rev A2 Pinout And JLC Order Package Checkpoint - 2026-05-30
+
+- User requested Rev A2 with JLC-searchable small components where possible and clear substitutions/risks when parts are not resolved.
+- Added Rev A2 order package assets:
+  - `hardware/notes/rev-a2-pin-map.md`.
+  - `hardware/notes/rev-a2-sourcing-decisions.md`.
+  - `hardware/notes/rev-a2-order-readiness.md`.
+  - `hardware/notes/rev-a2-circuit-explanation.md`.
+  - `hardware/bom/rev_a2_bom.csv`.
+  - `hardware/bom/rev_a2_jlc_bom.csv`.
+  - `hardware/bom/rev_a2_jlc_cpl.csv`.
+  - `hardware/bom/rev_a2_cost_estimate.csv`.
+- Rev A2 sourcing decisions:
+  - Use `C179173` as the working `W25Q32JVSSIQ` flash alternate while Rev A1 `C82344` has stock risk.
+  - Keep `LP5024RSMR` / `C427525` as the 24-channel current-sink LED driver.
+  - Correct `TPD2EUSB30DRTR` / `C94934` to the KiCad `Texas_DRT-3` footprint direction instead of the Rev A1 `SOT-23-6` placeholder.
+  - Use JLC-searchable small-component candidates for 27R, 5.1k, 4.7k, 10k, 100nF, 1uF, 10uF, 33pF, 12MHz crystal, and service switches.
+- Added the Rev A2 KiCad project at `hardware/kicad/tellmelight_rev_a2/`.
+- Rev A2 PCB placement adds LP5024 support passives:
+  - `R7` IREF.
+  - `R8` EN pull-up.
+  - `C15` VCAP.
+  - `C16` VCC local capacitor.
+- KiCad Rev A2 verification passed locally:
+  - ERC: 0 violations.
+  - DRC: 0 violations and 0 unconnected items.
+  - Gerbers, drill, position data, schematic PDF/SVG, PCB PDF/SVG, STEP, and top/bottom PNG renders were exported.
+- Remaining order blockers:
+  - `S4-3528RGBTA-A` RGB LED pinout and KiCad footprint mapping remain RED before any JLC order.
+  - JLC orientation preview must be manually reviewed for polarized/oriented parts.
+  - USB-C shell grounding and the crystal/load-cap pair remain YELLOW review items.

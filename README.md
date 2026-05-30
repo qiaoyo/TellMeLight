@@ -69,6 +69,13 @@ Generate the Rev A1 JLC-oriented hardware baseline:
 powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 tools/hardware/generate-rev-a1-kicad.mjs
 ```
 
+Generate the Rev A2 pinout/JLC order package and KiCad baseline:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 tools/hardware/generate-rev-a2-order-package.mjs
+powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 tools/hardware/generate-rev-a2-kicad.mjs
+```
+
 Run KiCad CLI checks with the installed Windows KiCad 10.0 path:
 
 ```powershell
@@ -76,6 +83,8 @@ Run KiCad CLI checks with the installed Windows KiCad 10.0 path:
 & E:\kicad\bin\kicad-cli.exe pcb drc --format json -o hardware/outputs/rev_a/drc.json hardware/kicad/tellmelight_rev_a/tellmelight_rev_a.kicad_pcb
 & E:\kicad\bin\kicad-cli.exe sch erc --format json -o hardware/outputs/rev_a1/erc.json hardware/kicad/tellmelight_rev_a1/tellmelight_rev_a1.kicad_sch
 & E:\kicad\bin\kicad-cli.exe pcb drc --format json -o hardware/outputs/rev_a1/drc.json hardware/kicad/tellmelight_rev_a1/tellmelight_rev_a1.kicad_pcb
+& E:\kicad\bin\kicad-cli.exe sch erc --format json -o hardware/outputs/rev_a2/erc.json hardware/kicad/tellmelight_rev_a2/tellmelight_rev_a2.kicad_sch
+& E:\kicad\bin\kicad-cli.exe pcb drc --format json -o hardware/outputs/rev_a2/drc.json hardware/kicad/tellmelight_rev_a2/tellmelight_rev_a2.kicad_pcb
 ```
 
 ## Simulator Interaction
@@ -96,6 +105,7 @@ Run KiCad CLI checks with the installed Windows KiCad 10.0 path:
 - Direct Windows Codex JSON session adapter.
 - Rev A KiCad hardware baseline with BOM, PCB floorplan, and power-budget simulation.
 - Rev A1 JLC-oriented KiCad baseline with 4-layer PCB, JLC sourcing table, pogo/debug pads, and manufacturing readiness notes.
+- Rev A2 pin-level review package with JLC BOM/CPL drafts, corrected USB ESD footprint direction, and circuit explanation notes.
 
 ## Out Of Scope For Milestone 1
 
@@ -109,9 +119,11 @@ Run KiCad CLI checks with the installed Windows KiCad 10.0 path:
 - `docs/superpowers/specs/2026-05-29-tellmelight-design.md`
 - `docs/superpowers/specs/2026-05-30-rev-a-kicad-hardware-design.md`
 - `docs/superpowers/specs/2026-05-30-rev-a1-jlc-fabrication-candidate-design.md`
+- `docs/superpowers/specs/2026-05-30-rev-a2-pinout-jlc-order-package-design.md`
 - `docs/superpowers/specs/2026-05-29-adapter-foundation-design.md`
 - `docs/adapters/contract.md`
 - `docs/superpowers/brainstorm/2026-05-29-tellmelight-progress.md`
 - `docs/superpowers/plans/2026-05-29-local-simulation-foundation.md`
 - `docs/superpowers/plans/2026-05-30-rev-a-kicad-hardware.md`
 - `docs/superpowers/plans/2026-05-30-rev-a1-jlc-fabrication-candidate.md`
+- `docs/superpowers/plans/2026-05-30-rev-a2-pinout-jlc-order-package.md`

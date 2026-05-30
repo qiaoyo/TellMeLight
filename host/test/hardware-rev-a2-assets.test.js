@@ -77,3 +77,17 @@ test('rev A2 circuit explanation teaches the current schematic blocks', async ()
     assert.match(explanation, literalPattern(token));
   }
 });
+
+test('rev A2 verification summary records KiCad checks and export outputs', async () => {
+  const summary = await readText('hardware/outputs/rev_a2/verification-summary.md');
+  const pcb = await readText('hardware/kicad/tellmelight_rev_a2/tellmelight_rev_a2.kicad_pcb');
+
+  assert.match(summary, /ERC: 0 violations/);
+  assert.match(summary, /DRC: 0 violations/);
+  assert.match(summary, /Texas_DRT-3/);
+  assert.match(summary, /RGB LED pinout remains RED/);
+  assert.match(summary, /tellmelight_rev_a2_top\.png/);
+  assert.match(pcb, /Texas_DRT-3/);
+  assert.match(pcb, /\bR7\b/);
+  assert.match(pcb, /\bC15\b/);
+});
