@@ -1,0 +1,12 @@
+Item,Qty,JLC Candidate,Unit USD,Extended USD,Status,Notes
+RP2040,1,C2040,0.9854,0.9854,priced,Major part price carried from Rev A1 JLC review
+LP5024RSMR,1,C427525,1.2622,1.2622,priced,Major part price carried from Rev A1 JLC review
+W25Q32JVSSIQ alternate,1,C179173,1.4907,1.4907,priced,Working Rev A2 flash alternate because C82344 has stock risk
+AP2112K-3.3TRG1,1,C51118,0.1622,0.1622,priced,Major part price carried from Rev A1 JLC review
+TPD2EUSB30DRTR,1,C94934,0.2127,0.2127,priced,Footprint corrected to Texas_DRT-3 in Rev A2
+TYPE-C-31-M-12,1,C165948,0.1820,0.1820,priced,Major part price carried from Rev A1 JLC review
+S4-3528RGBTA-A,6,C2827321,0.0310,0.1860,priced,RGB LED pinout remains RED blocker before ordering
+Known priced component subtotal,1,with C179173 alternate flash,,4.4812,estimate only,"PCB fabrication, SMT assembly, tooling, tax, and shipping are not included"
+Small passives and switches with exact C-codes,1,C25190/C23186/C23162/C25804/C1591/C19702/C15849/C2594250/C9002/C79161,,,JLC quote upload required,C-codes are searchable; final all-in price must be taken from JLC BOM quote
+PCB fabrication and SMT assembly,1,JLC quote upload required,,,unpriced,JLC quote upload required
+"Enclosure, diffuser, adhesive, light isolation",1,external mechanical quote required,,,unpriced,Not part of PCB/SMT quote

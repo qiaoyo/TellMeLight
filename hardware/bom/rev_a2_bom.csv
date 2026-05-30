@@ -1,0 +1,21 @@
+Designator,Qty,Kind,Value,Footprint,Preferred Part,JLC Candidate,Assembly Side,Status,Notes
+U1,1,MCU,RP2040,Package_DFN_QFN:QFN-56-1EP_7x7mm_P0.4mm_EP3.2x3.2mm_ThermalVias,Raspberry Pi RP2040,C2040,Bottom,GREEN,"USB MCU; pin map now documents USB, QSPI, SWD, crystal, RUN, power pins"
+U2,1,LED_DRIVER,LP5024RSMR,Package_DFN_QFN:VQFN-32-1EP_4x4mm_P0.4mm_EP2.8x2.8mm_ThermalVias,TI LP5024RSMR,C427525,Bottom,YELLOW,"Kept for Rev A2; VQFN exposed pad, IREF, VCAP, and channel footprint review still required"
+U3,1,QSPI_FLASH,W25Q32JVSSIQ,Package_SO:SOIC-8_3.9x4.9mm_P1.27mm,Winbond W25Q32JVSSIQ alternate,C179173,Bottom,GREEN,Rev A2 working alternate because Rev A1 C82344 has stock risk
+U4,1,LDO,AP2112K-3.3TRG1,Package_TO_SOT_SMD:SOT-23-5,Diodes Inc AP2112K-3.3TRG1,C51118,Bottom,GREEN,3V3 regulator from USB VBUS; EN tied high to VIN/VBUS
+U5,1,USB_ESD,TPD2EUSB30DRTR,Package_TO_SOT_SMD:Texas_DRT-3,TI TPD2EUSB30DRTR,C94934,Bottom,YELLOW,Rev A2 corrects Rev A1 SOT-23-6 mismatch to KiCad Texas_DRT-3 footprint; orientation still needs JLC review
+J1,1,USB_C,USB_C_Receptacle_USB2.0,Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12,HRO TYPE-C-31-M-12,C165948,Bottom,YELLOW,"USB-C connector, shell grounding and board-edge mechanical review required"
+D1-D6,6,RGB_LED,S4-3528RGBTA-A,LED_SMD:LED_RGB_Wuerth-PLCC4_3.2x2.8mm_150141M173100,OPSCO S4-3528RGBTA-A,C2827321,Top,RED,RGB LED pinout and selected KiCad footprint pad order must be verified before order
+"R1,R2",2,RESISTOR,27R,Resistor_SMD:R_0603_1608Metric,0603WAF270JT5E,C25190,Bottom,GREEN,USB D+/D- series resistors near RP2040 side of connector-side ESD clamp
+"R3,R4",2,RESISTOR,5.1k,Resistor_SMD:R_0603_1608Metric,0603WAF5101T5E,C23186,Bottom,GREEN,USB-C CC1/CC2 Rd pull-downs to advertise USB device/sink
+"R5,R6",2,RESISTOR,4.7k,Resistor_SMD:R_0603_1608Metric,0603WAF4701T5E,C23162,Bottom,GREEN,I2C SDA/SCL pull-ups to 3V3
+R7,1,RESISTOR,10k,Resistor_SMD:R_0603_1608Metric,0603WAF1002T5E,C25804,Bottom,GREEN,"LP5024 IREF resistor, about 7.35mA full-scale channel current by formula 105*0.7/R"
+R8,1,RESISTOR,10k,Resistor_SMD:R_0603_1608Metric,0603WAF1002T5E,C25804,Bottom,GREEN,LP5024 EN pull-up to 3V3; firmware turns LEDs off through registers
+C1-C10,10,CAPACITOR,100nF,Capacitor_SMD:C_0603_1608Metric,CL10B104KB8NNNC,C1591,Bottom,GREEN,"Local decoupling near RP2040, flash, regulator, ESD support, and LED driver"
+"C11,C12",2,CAPACITOR,10uF,Capacitor_SMD:C_0603_1608Metric,CL10A106KP8NNNC,C19702,Bottom,GREEN,"LDO input/output and LED rail bulk, confirm DC-bias derating in final review"
+"C15,C16",2,CAPACITOR,1uF,Capacitor_SMD:C_0603_1608Metric,CL10A105KB8NNNC,C15849,Bottom,GREEN,LP5024 VCAP and VCC capacitors placed close to U2
+"C13,C14",2,CAPACITOR,33pF,Capacitor_SMD:C_0603_1608Metric,CML0603C0G330JT50V,C2594250,Bottom,YELLOW,Initial match for C9002 20pF-load 12MHz crystal; verify stray capacitance before release
+Y1,1,CRYSTAL,12MHz,Crystal:Crystal_SMD_TXC_7M-4Pin_3.2x2.5mm,YXC X322512MSB4SI,C9002,Bottom,YELLOW,12MHz 3225 crystal candidate; final load-cap calculation required
+"SW1,SW2",2,SWITCH,BOOT_RESET,Button_Switch_SMD:SW_SPST_EVQP2_ShortPushTravel_H2.1mm,Panasonic EVQP2R02M,C79161,Bottom,GREEN,Back-side BOOTSEL and RESET service buttons; JLC searchable and in stock at review time
+TP1-TP13,13,TESTPOINT,1.0mm pad,TestPoint:TestPoint_Pad_D1.0mm,Generic SMT test pad,,Bottom,YELLOW,Not a purchased SMT part; confirm pogo access and keepout in enclosure
+H1-H4,4,MECHANICAL,M2 mounting hole,MountingHole:MountingHole_2.2mm_M2,Generic M2 clearance,,Mechanical,YELLOW,Mechanical only; not in JLC SMT BOM
