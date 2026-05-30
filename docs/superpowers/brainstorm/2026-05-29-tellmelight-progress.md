@@ -536,3 +536,14 @@ Proposed first automation milestone:
 - Lint produced review findings:
   - `VLED_SOURCE_MODEL`: `VLED` currently touches only RGB LED common-anode pads; the Rev A3 schematic must explicitly model whether it is directly the `VBUS` rail, a renamed source rail, or a separate rail tied through a deliberate element.
   - `JLC_ORIENTATION_PREVIEW_OUT_OF_SCOPE`: JLC orientation preview still must be done manually before payment.
+
+## Rev A2 Hardware Preview Page Checkpoint - 2026-05-30
+
+- Added `tools/hardware/generate-rev-a2-preview.mjs`.
+- Generated `hardware/outputs/rev_a2/preview.html`.
+- The page links:
+  - Rev A2 top and bottom PCB renders.
+  - Rev A2 JLC Gerber/drill zip, BOM/CPL zip, and checksum manifest.
+  - Rev A2 BOM/CPL CSVs.
+  - Rev A3 pin-level netlist JSON/CSV, local symbol library, netlist lint JSON, and lint note.
+- The page keeps `NOT_FOR_ORDER`, JLC orientation preview, VLED source model, USB-C shell grounding, and crystal load-cap review visible.

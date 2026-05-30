@@ -75,12 +75,14 @@ Generate the Rev A2 pinout/JLC order package and KiCad baseline:
 powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 tools/hardware/generate-rev-a2-order-package.mjs
 powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 tools/hardware/generate-rev-a2-kicad.mjs
 powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 tools/hardware/package-rev-a2-jlc.mjs
+powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 tools/hardware/generate-rev-a2-preview.mjs
 ```
 
 The Rev A2 JLC quote/review bundle is generated at `hardware/outputs/rev_a2/jlc_upload/`.
 Use `tellmelight_rev_a2_jlc_gerber_drill.zip` for PCB quote upload practice and
 `tellmelight_rev_a2_jlc_assembly_bom_cpl.zip` for SMT BOM/CPL matching practice. The bundle is
 explicitly `NOT_FOR_ORDER` until the JLC orientation preview is manually checked.
+The static Rev A2 hardware preview is `hardware/outputs/rev_a2/preview.html`.
 
 Generate the Rev A3 machine-readable pin-level netlist:
 
@@ -129,6 +131,7 @@ Run KiCad CLI checks with the installed Windows KiCad 10.0 path:
 - Rev A1 JLC-oriented KiCad baseline with 4-layer PCB, JLC sourcing table, pogo/debug pads, and manufacturing readiness notes.
 - Rev A2 pin-level review package with JLC BOM/CPL drafts, corrected USB ESD footprint direction, local TUOZHAN RGB LED footprint mapping, and circuit explanation notes.
 - Rev A2 JLC upload review bundle with Gerber/drill zip, BOM/CPL zip, checksum manifest, and ordering blockers kept beside the quote files.
+- Rev A2 static hardware preview page linking renders, JLC upload bundle, and Rev A3 readiness artifacts.
 - Rev A3 machine-readable pin-level netlist foundation for the next real KiCad schematic draft.
 - Rev A3 local KiCad symbol library for LP5024RSMR and the exact TUOZHAN S4-3528RGBTA-A RGB LED.
 - Rev A3 netlist lint that checks required nets, expected single-pin review nets, and the VLED source-model review item before schematic generation.
