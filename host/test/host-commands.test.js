@@ -9,6 +9,7 @@ test('package exposes host bridge commands', async () => {
   assert.equal(packageJson.scripts.demo, 'node host/src/demo-client.js');
   assert.equal(packageJson.scripts.event, 'node host/src/event-cli.js');
   assert.equal(packageJson.scripts['tml-run'], 'node host/src/process-cli.js');
+  assert.equal(packageJson.scripts['tml-codex'], 'node host/src/codex-cli.js');
 });
 
 test('host bridge CLI starts the HTTP server on the default port', async () => {
@@ -46,4 +47,12 @@ test('process CLI wraps local commands with process runner', async () => {
   assert.match(cli, /parseProcessCliArgs/);
   assert.match(cli, /runProcessWithEvents/);
   assert.match(cli, /tml-run/);
+});
+
+test('codex CLI connects real Codex JSON sessions', async () => {
+  const cli = await readFile('host/src/codex-cli.js', 'utf8');
+
+  assert.match(cli, /parseCodexCliArgs/);
+  assert.match(cli, /runCodexJsonSession/);
+  assert.match(cli, /tml-codex/);
 });

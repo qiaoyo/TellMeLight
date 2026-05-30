@@ -9,6 +9,7 @@
     "demo": "node host/src/demo-client.js",
     "event": "node host/src/event-cli.js",
     "tml-run": "node host/src/process-cli.js",
+    "tml-codex": "node host/src/codex-cli.js",
     "test": "node --test host/test/*.test.js"
   }
 }
