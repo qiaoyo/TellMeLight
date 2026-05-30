@@ -101,7 +101,7 @@ D1-D6 是六个 RGB LED, 对应 FIFO 的六个 session slot。新的 session 从
 - D5: OUT12/OUT13/OUT14。
 - D6: OUT15/OUT16/OUT17。
 
-这里还有 RED blocker: S4-3528RGBTA-A 的 pad/color/common-anode pinout 必须和 KiCad footprint 一一匹配。只要这个没确认, 就不能下单。
+Rev A2 已经把 S4-3528RGBTA-A 的 pad/color/common-anode pinout 映射到本地 footprint: pin 1 是 blue cathode, pin 2 是 common anode, pin 3 是 green cathode, pin 4 是 red cathode。真正下单前仍然要在 JLC orientation preview 里看 D1-D6 是否旋转正确。
 
 ## 8. 电源和去耦
 
@@ -117,8 +117,8 @@ TP9/TP10 是 SWDIO/SWCLK, 可以用调试器烧录和调试。TP11 是 RUN reset
 
 ## 10. 当前不能下单的原因
 
-- RGB LED pinout 仍是 RED。
-- JLC SMT placement/orientation preview 还没人工确认。
+- RGB LED pinout 已映射到 TUOZHAN datasheet 和本地 footprint。
+- JLC SMT placement/orientation preview 还没人工确认, 这是当前 RED gate。
 - USB-C shell grounding 需要结合外壳和装饰面板决定。
 - 晶振和 33pF 负载电容是第一版候选, 还需要最终负载电容计算。
 

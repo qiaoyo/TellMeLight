@@ -85,9 +85,27 @@ test('rev A2 verification summary records KiCad checks and export outputs', asyn
   assert.match(summary, /ERC: 0 violations/);
   assert.match(summary, /DRC: 0 violations/);
   assert.match(summary, /Texas_DRT-3/);
-  assert.match(summary, /RGB LED pinout remains RED/);
+  assert.match(summary, /RGB LED pinout is mapped to the TUOZHAN datasheet/);
+  assert.match(summary, /JLC orientation preview remains RED/);
   assert.match(summary, /tellmelight_rev_a2_top\.png/);
   assert.match(pcb, /Texas_DRT-3/);
   assert.match(pcb, /\bR7\b/);
   assert.match(pcb, /\bC15\b/);
+});
+
+test('rev A2 RGB LED footprint maps TUOZHAN S4-3528RGBTA-A pads', async () => {
+  const review = await readText('hardware/notes/rev-a2-led-footprint-review.md');
+  const footprint = await readText('hardware/kicad/tellmelight_rev_a2/tellmelight_rev_a2.pretty/LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm.kicad_mod');
+  const pcb = await readText('hardware/kicad/tellmelight_rev_a2/tellmelight_rev_a2.kicad_pcb');
+
+  assert.match(review, /Pin 1 = blue cathode/);
+  assert.match(review, /Pin 2 = common anode/);
+  assert.match(review, /Pin 3 = green cathode/);
+  assert.match(review, /Pin 4 = red cathode/);
+  assert.match(review, /datasheet\.lcsc\.com/);
+  assert.match(footprint, /\(pad "1" smd rect\s+\(at -1\.55 -0\.7\)/);
+  assert.match(footprint, /\(pad "2" smd rect\s+\(at -1\.55 0\.7\)/);
+  assert.match(footprint, /\(pad "3" smd rect\s+\(at 1\.55 -0\.7\)/);
+  assert.match(footprint, /\(pad "4" smd rect\s+\(at 1\.55 0\.7\)/);
+  assert.match(pcb, /LED_RGB_TUOZHAN_S4-3528RGBTA-A_3\.5x2\.8mm/);
 });

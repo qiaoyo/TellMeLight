@@ -29,6 +29,7 @@ const sourceLinks = [
   ['TPD2EUSB30DRTR C94934', 'https://jlcpcb.com/partdetail/TexasInstruments-TPD2EUSB30DRTR/C94934'],
   ['TYPE-C-31-M-12 C165948', 'https://jlcpcb.com/partdetail/HRO-TYPE_C_31_M_12/C165948'],
   ['S4-3528RGBTA-A C2827321', 'https://jlcpcb.com/partdetail/OPSCOOptoelectronics-S4_3528RGBTA_A/C2827321'],
+  ['S4-3528RGBTA-A datasheet', 'https://datasheet.lcsc.com/datasheet/pdf/341ab1a3675a770275b38577ba3ea83d.pdf'],
   ['27R 0603 C25190', 'https://jlcpcb.com/partdetail/25933-0603WAF270JT5E/C25190'],
   ['5.1k 0603 C23186', 'https://jlcpcb.com/partdetail/23913-0603WAF5101T5E/C23186'],
   ['4.7k 0603 C23162', 'https://www.jlc-smt.com/lcsc/detail?componentCode=C23162'],
@@ -49,7 +50,7 @@ const designBomRows = [
   ['U4', '1', 'LDO', 'AP2112K-3.3TRG1', 'Package_TO_SOT_SMD:SOT-23-5', 'Diodes Inc AP2112K-3.3TRG1', 'C51118', 'Bottom', 'GREEN', '3V3 regulator from USB VBUS; EN tied high to VIN/VBUS'],
   ['U5', '1', 'USB_ESD', 'TPD2EUSB30DRTR', 'Package_TO_SOT_SMD:Texas_DRT-3', 'TI TPD2EUSB30DRTR', 'C94934', 'Bottom', 'YELLOW', 'Rev A2 corrects Rev A1 SOT-23-6 mismatch to KiCad Texas_DRT-3 footprint; orientation still needs JLC review'],
   ['J1', '1', 'USB_C', 'USB_C_Receptacle_USB2.0', 'Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12', 'HRO TYPE-C-31-M-12', 'C165948', 'Bottom', 'YELLOW', 'USB-C connector, shell grounding and board-edge mechanical review required'],
-  ['D1-D6', '6', 'RGB_LED', 'S4-3528RGBTA-A', 'LED_SMD:LED_RGB_Wuerth-PLCC4_3.2x2.8mm_150141M173100', 'OPSCO S4-3528RGBTA-A', 'C2827321', 'Top', 'RED', 'RGB LED pinout and selected KiCad footprint pad order must be verified before order'],
+  ['D1-D6', '6', 'RGB_LED', 'S4-3528RGBTA-A', 'TellMeLight_Rev_A2:LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm', 'TUOZHAN S4-3528RGBTA-A', 'C2827321', 'Top', 'YELLOW', 'RGB LED pinout mapped from datasheet; JLC orientation preview remains a RED order gate'],
   ['R1,R2', '2', 'RESISTOR', '27R', 'Resistor_SMD:R_0603_1608Metric', '0603WAF270JT5E', 'C25190', 'Bottom', 'GREEN', 'USB D+/D- series resistors near RP2040 side of connector-side ESD clamp'],
   ['R3,R4', '2', 'RESISTOR', '5.1k', 'Resistor_SMD:R_0603_1608Metric', '0603WAF5101T5E', 'C23186', 'Bottom', 'GREEN', 'USB-C CC1/CC2 Rd pull-downs to advertise USB device/sink'],
   ['R5,R6', '2', 'RESISTOR', '4.7k', 'Resistor_SMD:R_0603_1608Metric', '0603WAF4701T5E', 'C23162', 'Bottom', 'GREEN', 'I2C SDA/SCL pull-ups to 3V3'],
@@ -73,7 +74,7 @@ const jlcBomRows = [
   ['AP2112K-3.3TRG1', 'U4', 'Package_TO_SOT_SMD:SOT-23-5', 'C51118'],
   ['TPD2EUSB30DRTR', 'U5', 'Package_TO_SOT_SMD:Texas_DRT-3', 'C94934'],
   ['TYPE-C-31-M-12', 'J1', 'Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12', 'C165948'],
-  ['S4-3528RGBTA-A', 'D1,D2,D3,D4,D5,D6', 'LED_SMD:LED_RGB_Wuerth-PLCC4_3.2x2.8mm_150141M173100', 'C2827321'],
+  ['S4-3528RGBTA-A', 'D1,D2,D3,D4,D5,D6', 'TellMeLight_Rev_A2:LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm', 'C2827321'],
   ['27R', 'R1,R2', 'Resistor_SMD:R_0603_1608Metric', 'C25190'],
   ['5.1k', 'R3,R4', 'Resistor_SMD:R_0603_1608Metric', 'C23186'],
   ['4.7k', 'R5,R6', 'Resistor_SMD:R_0603_1608Metric', 'C23162'],
@@ -188,24 +189,24 @@ Rev A2 is a reviewed pin plan for the current RP2040 + LP5024 + QSPI flash + six
 
 | LP5024 pin | Net | Connection | Status | Notes |
 | --- | --- | --- | --- | --- |
-| 1 OUT0 | D1_R_TENTATIVE | D1 red cathode candidate | RED | RGB LED pinout must be checked against C2827321 and KiCad footprint. |
-| 2 OUT1 | D1_G_TENTATIVE | D1 green cathode candidate | RED | Tentative color order only. |
-| 3 OUT2 | D1_B_TENTATIVE | D1 blue cathode candidate | RED | Tentative color order only. |
-| 4 OUT3 | D2_R_TENTATIVE | D2 red cathode candidate | RED | Zone 2 of six FIFO sessions. |
-| 5 OUT4 | D2_G_TENTATIVE | D2 green cathode candidate | RED | Zone 2 of six FIFO sessions. |
-| 6 OUT5 | D2_B_TENTATIVE | D2 blue cathode candidate | RED | Zone 2 of six FIFO sessions. |
-| 7 OUT6 | D3_R_TENTATIVE | D3 red cathode candidate | RED | Zone 3 of six FIFO sessions. |
-| 8 OUT7 | D3_G_TENTATIVE | D3 green cathode candidate | RED | Zone 3 of six FIFO sessions. |
-| 9 OUT8 | D3_B_TENTATIVE | D3 blue cathode candidate | RED | Zone 3 of six FIFO sessions. |
-| 10 OUT9 | D4_R_TENTATIVE | D4 red cathode candidate | RED | Zone 4 of six FIFO sessions. |
-| 11 OUT10 | D4_G_TENTATIVE | D4 green cathode candidate | RED | Zone 4 of six FIFO sessions. |
-| 12 OUT11 | D4_B_TENTATIVE | D4 blue cathode candidate | RED | Zone 4 of six FIFO sessions. |
-| 13 OUT12 | D5_R_TENTATIVE | D5 red cathode candidate | RED | Zone 5 of six FIFO sessions. |
-| 14 OUT13 | D5_G_TENTATIVE | D5 green cathode candidate | RED | Zone 5 of six FIFO sessions. |
-| 15 OUT14 | D5_B_TENTATIVE | D5 blue cathode candidate | RED | Zone 5 of six FIFO sessions. |
-| 16 OUT15 | D6_R_TENTATIVE | D6 red cathode candidate | RED | Newest FIFO side. |
-| 17 OUT16 | D6_G_TENTATIVE | D6 green cathode candidate | RED | Newest FIFO side. |
-| 18 OUT17 | D6_B_TENTATIVE | D6 blue cathode candidate | RED | Newest FIFO side. |
+| 1 OUT0 | D1_R | D1 pad 4 red cathode | GREEN | TUOZHAN pinout maps pin 4 to red cathode. |
+| 2 OUT1 | D1_G | D1 pad 3 green cathode | GREEN | TUOZHAN pinout maps pin 3 to green cathode. |
+| 3 OUT2 | D1_B | D1 pad 1 blue cathode | GREEN | TUOZHAN pinout maps pin 1 to blue cathode. |
+| 4 OUT3 | D2_R | D2 pad 4 red cathode | GREEN | Zone 2 of six FIFO sessions. |
+| 5 OUT4 | D2_G | D2 pad 3 green cathode | GREEN | Zone 2 of six FIFO sessions. |
+| 6 OUT5 | D2_B | D2 pad 1 blue cathode | GREEN | Zone 2 of six FIFO sessions. |
+| 7 OUT6 | D3_R | D3 pad 4 red cathode | GREEN | Zone 3 of six FIFO sessions. |
+| 8 OUT7 | D3_G | D3 pad 3 green cathode | GREEN | Zone 3 of six FIFO sessions. |
+| 9 OUT8 | D3_B | D3 pad 1 blue cathode | GREEN | Zone 3 of six FIFO sessions. |
+| 10 OUT9 | D4_R | D4 pad 4 red cathode | GREEN | Zone 4 of six FIFO sessions. |
+| 11 OUT10 | D4_G | D4 pad 3 green cathode | GREEN | Zone 4 of six FIFO sessions. |
+| 12 OUT11 | D4_B | D4 pad 1 blue cathode | GREEN | Zone 4 of six FIFO sessions. |
+| 13 OUT12 | D5_R | D5 pad 4 red cathode | GREEN | Zone 5 of six FIFO sessions. |
+| 14 OUT13 | D5_G | D5 pad 3 green cathode | GREEN | Zone 5 of six FIFO sessions. |
+| 15 OUT14 | D5_B | D5 pad 1 blue cathode | GREEN | Zone 5 of six FIFO sessions. |
+| 16 OUT15 | D6_R | D6 pad 4 red cathode | GREEN | Newest FIFO side. |
+| 17 OUT16 | D6_G | D6 pad 3 green cathode | GREEN | Newest FIFO side. |
+| 18 OUT17 | D6_B | D6 pad 1 blue cathode | GREEN | Newest FIFO side. |
 | 19-24 OUT18..OUT23 | NC_RESERVE | No connect or optional test pads | GREEN | TI allows unused outputs to float; reserve for Rev B. |
 | 25 ADDR0 | GND | Hard strap low | GREEN | I2C address selection, must not float. |
 | 26 ADDR1 | GND | Hard strap low | GREEN | I2C address selection, must not float. |
@@ -250,14 +251,14 @@ Rev A2 is a reviewed pin plan for the current RP2040 + LP5024 + QSPI flash + six
 
 | Session slot | Physical emitter | LP5024 channels | Logical FIFO side | Status |
 | --- | --- | --- | --- | --- |
-| Slot 1 | D1 | OUT0/OUT1/OUT2 | Oldest, left long bar lower cell | RED |
-| Slot 2 | D2 | OUT3/OUT4/OUT5 | Oldest, left long bar upper cell | RED |
-| Slot 3 | D3 | OUT6/OUT7/OUT8 | Left short lower trapezoid | RED |
-| Slot 4 | D4 | OUT9/OUT10/OUT11 | Right short slightly higher trapezoid | RED |
-| Slot 5 | D5 | OUT12/OUT13/OUT14 | Newer, right long bar lower cell | RED |
-| Slot 6 | D6 | OUT15/OUT16/OUT17 | Newest, right long bar upper cell | RED |
+| Slot 1 | D1 | OUT0 red pad4 / OUT1 green pad3 / OUT2 blue pad1 | Oldest, left long bar lower cell | GREEN |
+| Slot 2 | D2 | OUT3 red pad4 / OUT4 green pad3 / OUT5 blue pad1 | Oldest, left long bar upper cell | GREEN |
+| Slot 3 | D3 | OUT6 red pad4 / OUT7 green pad3 / OUT8 blue pad1 | Left short lower trapezoid | GREEN |
+| Slot 4 | D4 | OUT9 red pad4 / OUT10 green pad3 / OUT11 blue pad1 | Right short slightly higher trapezoid | GREEN |
+| Slot 5 | D5 | OUT12 red pad4 / OUT13 green pad3 / OUT14 blue pad1 | Newer, right long bar lower cell | GREEN |
+| Slot 6 | D6 | OUT15 red pad4 / OUT16 green pad3 / OUT17 blue pad1 | Newest, right long bar upper cell | GREEN |
 
-The electrical architecture assumes common-anode RGB LEDs: each LED anode connects to VLED, and each color cathode connects to one LP5024 current sink. The unresolved item is the exact pad-to-color mapping of S4-3528RGBTA-A C2827321 versus the KiCad Wuerth PLCC4 footprint.
+The electrical architecture assumes common-anode RGB LEDs: each LED pad 2 connects to VLED, and each color cathode connects to one LP5024 current sink. Rev A2 uses a local TUOZHAN footprint because the Rev A1 Wuerth PLCC4 footprint puts pad 1 on the opposite side.
 
 ## Power And Test Pads
 
@@ -288,7 +289,8 @@ Date: 2026-05-30
 - GREEN: Rev A2 uses W25Q32JVSSIQ C179173 as the working flash alternate.
 - YELLOW: Rev A1 selected flash C82344 remains visible for history, but it has stock risk and should not drive the working cost model.
 - YELLOW: TPD2EUSB30DRTR C94934 stays, but Rev A2 corrects the KiCad footprint from Rev A1 SOT-23-6 to Texas_DRT-3.
-- RED: RGB LED pinout is still the main order blocker. S4-3528RGBTA-A C2827321 is searchable, but its pad/color/common-anode mapping must match the selected KiCad footprint before JLC upload.
+- GREEN: RGB LED pinout for S4-3528RGBTA-A C2827321 is now mapped from the TUOZHAN datasheet: pin 1 blue cathode, pin 2 common anode, pin 3 green cathode, pin 4 red cathode.
+- RED: JLC orientation preview is still the main RGB LED order blocker because D1-D6 are polarized optical parts and must be checked in the JLC SMT viewer before payment.
 - GREEN/YELLOW: Small components are now assigned JLC-searchable candidates where practical. Exact price and assembly class still need to be confirmed inside the JLC BOM quote.
 
 ## Small Component Candidates
@@ -314,6 +316,21 @@ Rev A1 used C82344 in the BOM. The Rev A1 cost preview already flagged C82344 st
 
 TPD2EUSB30DRTR is the TI DRT 3-pin package. It has D+, D-, and GND pins. It is a shunt ESD clamp placed near the USB-C connector, not a six-pin flow-through component. Rev A2 therefore uses KiCad footprint Package_TO_SOT_SMD:Texas_DRT-3 and keeps orientation review as YELLOW until KiCad/JLC placement is inspected.
 
+## RGB LED Pinout Resolution
+
+The LCSC/TUOZHAN datasheet for S4-3528RGBTA-A C2827321 shows a 3.5 mm x 2.8 mm SMD3528-4P common-anode RGB LED. The footprint used in Rev A1 was a Wurth PLCC4 footprint with pin 1 on the opposite side, so Rev A2 now uses a local footprint:
+
+\`TellMeLight_Rev_A2:LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm\`.
+
+Pin mapping:
+
+- Pin 1 = blue cathode.
+- Pin 2 = common anode to VLED.
+- Pin 3 = green cathode.
+- Pin 4 = red cathode.
+
+This resolves the electrical pad/color mapping, but JLC orientation preview remains mandatory.
+
 ## Remaining Substitution Rule
 
 If any small component cannot be found during the JLC upload, substitute by matching package, electrical value, tolerance/rating, assembly type, and footprint. Do not silently substitute the RGB LED, LP5024, RP2040, USB-C connector, or USB ESD part because those affect pinout and DFM.
@@ -331,8 +348,8 @@ Do not order Rev A2 yet.
 
 ## RED Blockers
 
-- RED: RGB LED pinout and KiCad footprint mapping must be confirmed for S4-3528RGBTA-A C2827321.
 - RED: JLC orientation preview must be checked for all polarized/oriented parts, especially U2, U5, J1, D1-D6, Y1, SW1, and SW2.
+- RED: JLC SMT quote/BOM matching must confirm the local LED footprint and C2827321 placement before payment.
 
 ## YELLOW Review Items
 
@@ -350,6 +367,7 @@ Do not order Rev A2 yet.
 - GREEN: AP2112K-3.3TRG1 C51118 remains the 3V3 regulator candidate.
 - GREEN: TPD2EUSB30DRTR C94934 has a corrected 3-pin DRT footprint direction.
 - GREEN: USB-C TYPE-C-31-M-12 C165948 remains the connector candidate.
+- GREEN: RGB LED pinout is mapped to the TUOZHAN S4-3528RGBTA-A datasheet and a local Rev A2 footprint.
 - GREEN: Small resistors/capacitors/switches now have JLC-searchable candidates.
 
 ## Before Paying For Boards
@@ -466,7 +484,7 @@ D1-D6 是六个 RGB LED, 对应 FIFO 的六个 session slot。新的 session 从
 - D5: OUT12/OUT13/OUT14。
 - D6: OUT15/OUT16/OUT17。
 
-这里还有 RED blocker: S4-3528RGBTA-A 的 pad/color/common-anode pinout 必须和 KiCad footprint 一一匹配。只要这个没确认, 就不能下单。
+Rev A2 已经把 S4-3528RGBTA-A 的 pad/color/common-anode pinout 映射到本地 footprint: pin 1 是 blue cathode, pin 2 是 common anode, pin 3 是 green cathode, pin 4 是 red cathode。真正下单前仍然要在 JLC orientation preview 里看 D1-D6 是否旋转正确。
 
 ## 8. 电源和去耦
 
@@ -482,12 +500,65 @@ TP9/TP10 是 SWDIO/SWCLK, 可以用调试器烧录和调试。TP11 是 RUN reset
 
 ## 10. 当前不能下单的原因
 
-- RGB LED pinout 仍是 RED。
-- JLC SMT placement/orientation preview 还没人工确认。
+- RGB LED pinout 已映射到 TUOZHAN datasheet 和本地 footprint。
+- JLC SMT placement/orientation preview 还没人工确认, 这是当前 RED gate。
 - USB-C shell grounding 需要结合外壳和装饰面板决定。
 - 晶振和 33pF 负载电容是第一版候选, 还需要最终负载电容计算。
 
 这些不是坏消息, 反而是 A2 最重要的价值: 把风险摊在桌面上, 让后面的 PCB 下单不会靠猜。
+`;
+}
+
+function ledFootprintReviewMarkdown() {
+  return `# Rev A2 RGB LED Footprint Review
+
+Date: 2026-05-30
+
+## Part
+
+- JLC/LCSC code: C2827321.
+- Manufacturer/listing name: TUOZHAN / S4-3528RGBTA-A.
+- Package in datasheet: SMD3528-4P, 3.5 mm x 2.8 mm.
+- LED type: Common Anode RGB.
+- Datasheet: https://datasheet.lcsc.com/datasheet/pdf/341ab1a3675a770275b38577ba3ea83d.pdf
+- JLC part page: https://jlcpcb.com/partdetail/OPSCOOptoelectronics-S4_3528RGBTA_A/C2827321
+
+## Datasheet Pinout
+
+The datasheet mechanical drawing shows pin 1 on the left/top pad when the package marking is viewed in the drawing orientation. The equivalent-circuit drawing maps the pins as:
+
+- Pin 1 = blue cathode.
+- Pin 2 = common anode.
+- Pin 3 = green cathode.
+- Pin 4 = red cathode.
+
+## KiCad Footprint Decision
+
+Rev A1 used the stock KiCad Wurth PLCC4 footprint. That footprint marks pad 1 on the right/top side, which is opposite the TUOZHAN datasheet orientation. Rev A2 therefore uses a local project footprint:
+
+\`TellMeLight_Rev_A2:LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm\`
+
+Local pad locations:
+
+| Pad | Local coordinate | Electrical role |
+| --- | --- | --- |
+| 1 | x -1.55 mm, y -0.70 mm | Blue cathode |
+| 2 | x -1.55 mm, y +0.70 mm | Common anode to VLED |
+| 3 | x +1.55 mm, y -0.70 mm | Green cathode |
+| 4 | x +1.55 mm, y +0.70 mm | Red cathode |
+
+## LP5024 Channel Mapping
+
+Each session RGB group uses OUTn red, OUTn+1 green, OUTn+2 blue:
+
+- Red channel -> LED pad 4.
+- Green channel -> LED pad 3.
+- Blue channel -> LED pad 1.
+- Common anode -> LED pad 2 -> VLED.
+
+## Remaining Manufacturing Gate
+
+The pinout/footprint mapping is now resolved locally. JLC orientation preview remains RED before order because the SMT viewer must show D1-D6 rotated the same way as the datasheet footprint orientation.
 `;
 }
 
@@ -502,6 +573,7 @@ async function main() {
     writeFile(join(notesDir, 'rev-a2-sourcing-decisions.md'), sourcingMarkdown(), 'utf8'),
     writeFile(join(notesDir, 'rev-a2-order-readiness.md'), readinessMarkdown(), 'utf8'),
     writeFile(join(notesDir, 'rev-a2-circuit-explanation.md'), circuitExplanationMarkdown(), 'utf8'),
+    writeFile(join(notesDir, 'rev-a2-led-footprint-review.md'), ledFootprintReviewMarkdown(), 'utf8'),
     writeFile(join(bomDir, 'rev_a2_bom.csv'), csv(designBomRows), 'utf8'),
     writeFile(join(bomDir, 'rev_a2_jlc_bom.csv'), csv(jlcBomRows), 'utf8'),
     writeFile(join(bomDir, 'rev_a2_jlc_cpl.csv'), csv(cplRows), 'utf8'),

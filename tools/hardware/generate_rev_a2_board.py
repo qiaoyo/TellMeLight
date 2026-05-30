@@ -11,6 +11,30 @@ SPEC = importlib.util.spec_from_file_location("rev_a1_board", A1_SCRIPT)
 rev_a1 = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(rev_a1)
 
+LOCAL_FOOTPRINT_ROOT = None
+
+
+def load_local_footprint(board, name, reference, value, x, y, rotation=0, bottom=False, show_reference=True):
+    if LOCAL_FOOTPRINT_ROOT is None:
+        raise RuntimeError("LOCAL_FOOTPRINT_ROOT is not configured")
+
+    footprint = pcbnew.FootprintLoad(LOCAL_FOOTPRINT_ROOT, name)
+    if footprint is None:
+        raise FileNotFoundError(f"Unable to load local footprint {name} from {LOCAL_FOOTPRINT_ROOT}")
+
+    position = rev_a1.vec(x, y)
+    footprint.SetReference(reference)
+    footprint.SetValue(value)
+    footprint.SetPosition(position)
+    footprint.SetOrientationDegrees(rotation)
+    board.Add(footprint)
+    if bottom:
+        footprint.Flip(position, pcbnew.FLIP_DIRECTION_TOP_BOTTOM)
+    footprint.Value().SetVisible(False)
+    if not show_reference:
+        footprint.Reference().SetVisible(False)
+    return footprint
+
 
 def add_diffuser_marks(board):
     bars = [
@@ -31,7 +55,7 @@ def add_diffuser_marks(board):
     rev_a1.add_text(board, "newest", 77, 65, pcbnew.Dwgs_User, 0.9)
     rev_a1.add_text(board, "TellMeLight Rev A2", 35, 5, pcbnew.F_SilkS, 1.1)
     rev_a1.add_text(board, "JLC SMT review", 36, 69, pcbnew.B_SilkS, 0.9)
-    rev_a1.add_text(board, "Do not order: LED pinout RED", 27, 66, pcbnew.B_SilkS, 0.85)
+    rev_a1.add_text(board, "Check JLC LED orientation", 29, 66, pcbnew.B_SilkS, 0.85)
 
 
 def place_components(board):
@@ -44,10 +68,9 @@ def place_components(board):
         ("D6", 82.0, 46.5),
     ]
     for reference, x, y in led_positions:
-        rev_a1.load_footprint(
+        load_local_footprint(
             board,
-            "LED_SMD",
-            "LED_RGB_Wuerth-PLCC4_3.2x2.8mm_150141M173100",
+            "LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm",
             reference,
             "S4-3528RGBTA-A",
             x,
@@ -203,6 +226,9 @@ def place_components(board):
 
 
 def build_board(output_path):
+    global LOCAL_FOOTPRINT_ROOT
+    LOCAL_FOOTPRINT_ROOT = os.path.join(os.path.dirname(output_path), "tellmelight_rev_a2.pretty")
+
     board = pcbnew.BOARD()
     rev_a1.configure_design_rules(board)
     title = board.GetTitleBlock()

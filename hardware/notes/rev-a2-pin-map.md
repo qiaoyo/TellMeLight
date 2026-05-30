@@ -37,24 +37,24 @@ Rev A2 is a reviewed pin plan for the current RP2040 + LP5024 + QSPI flash + six
 
 | LP5024 pin | Net | Connection | Status | Notes |
 | --- | --- | --- | --- | --- |
-| 1 OUT0 | D1_R_TENTATIVE | D1 red cathode candidate | RED | RGB LED pinout must be checked against C2827321 and KiCad footprint. |
-| 2 OUT1 | D1_G_TENTATIVE | D1 green cathode candidate | RED | Tentative color order only. |
-| 3 OUT2 | D1_B_TENTATIVE | D1 blue cathode candidate | RED | Tentative color order only. |
-| 4 OUT3 | D2_R_TENTATIVE | D2 red cathode candidate | RED | Zone 2 of six FIFO sessions. |
-| 5 OUT4 | D2_G_TENTATIVE | D2 green cathode candidate | RED | Zone 2 of six FIFO sessions. |
-| 6 OUT5 | D2_B_TENTATIVE | D2 blue cathode candidate | RED | Zone 2 of six FIFO sessions. |
-| 7 OUT6 | D3_R_TENTATIVE | D3 red cathode candidate | RED | Zone 3 of six FIFO sessions. |
-| 8 OUT7 | D3_G_TENTATIVE | D3 green cathode candidate | RED | Zone 3 of six FIFO sessions. |
-| 9 OUT8 | D3_B_TENTATIVE | D3 blue cathode candidate | RED | Zone 3 of six FIFO sessions. |
-| 10 OUT9 | D4_R_TENTATIVE | D4 red cathode candidate | RED | Zone 4 of six FIFO sessions. |
-| 11 OUT10 | D4_G_TENTATIVE | D4 green cathode candidate | RED | Zone 4 of six FIFO sessions. |
-| 12 OUT11 | D4_B_TENTATIVE | D4 blue cathode candidate | RED | Zone 4 of six FIFO sessions. |
-| 13 OUT12 | D5_R_TENTATIVE | D5 red cathode candidate | RED | Zone 5 of six FIFO sessions. |
-| 14 OUT13 | D5_G_TENTATIVE | D5 green cathode candidate | RED | Zone 5 of six FIFO sessions. |
-| 15 OUT14 | D5_B_TENTATIVE | D5 blue cathode candidate | RED | Zone 5 of six FIFO sessions. |
-| 16 OUT15 | D6_R_TENTATIVE | D6 red cathode candidate | RED | Newest FIFO side. |
-| 17 OUT16 | D6_G_TENTATIVE | D6 green cathode candidate | RED | Newest FIFO side. |
-| 18 OUT17 | D6_B_TENTATIVE | D6 blue cathode candidate | RED | Newest FIFO side. |
+| 1 OUT0 | D1_R | D1 pad 4 red cathode | GREEN | TUOZHAN pinout maps pin 4 to red cathode. |
+| 2 OUT1 | D1_G | D1 pad 3 green cathode | GREEN | TUOZHAN pinout maps pin 3 to green cathode. |
+| 3 OUT2 | D1_B | D1 pad 1 blue cathode | GREEN | TUOZHAN pinout maps pin 1 to blue cathode. |
+| 4 OUT3 | D2_R | D2 pad 4 red cathode | GREEN | Zone 2 of six FIFO sessions. |
+| 5 OUT4 | D2_G | D2 pad 3 green cathode | GREEN | Zone 2 of six FIFO sessions. |
+| 6 OUT5 | D2_B | D2 pad 1 blue cathode | GREEN | Zone 2 of six FIFO sessions. |
+| 7 OUT6 | D3_R | D3 pad 4 red cathode | GREEN | Zone 3 of six FIFO sessions. |
+| 8 OUT7 | D3_G | D3 pad 3 green cathode | GREEN | Zone 3 of six FIFO sessions. |
+| 9 OUT8 | D3_B | D3 pad 1 blue cathode | GREEN | Zone 3 of six FIFO sessions. |
+| 10 OUT9 | D4_R | D4 pad 4 red cathode | GREEN | Zone 4 of six FIFO sessions. |
+| 11 OUT10 | D4_G | D4 pad 3 green cathode | GREEN | Zone 4 of six FIFO sessions. |
+| 12 OUT11 | D4_B | D4 pad 1 blue cathode | GREEN | Zone 4 of six FIFO sessions. |
+| 13 OUT12 | D5_R | D5 pad 4 red cathode | GREEN | Zone 5 of six FIFO sessions. |
+| 14 OUT13 | D5_G | D5 pad 3 green cathode | GREEN | Zone 5 of six FIFO sessions. |
+| 15 OUT14 | D5_B | D5 pad 1 blue cathode | GREEN | Zone 5 of six FIFO sessions. |
+| 16 OUT15 | D6_R | D6 pad 4 red cathode | GREEN | Newest FIFO side. |
+| 17 OUT16 | D6_G | D6 pad 3 green cathode | GREEN | Newest FIFO side. |
+| 18 OUT17 | D6_B | D6 pad 1 blue cathode | GREEN | Newest FIFO side. |
 | 19-24 OUT18..OUT23 | NC_RESERVE | No connect or optional test pads | GREEN | TI allows unused outputs to float; reserve for Rev B. |
 | 25 ADDR0 | GND | Hard strap low | GREEN | I2C address selection, must not float. |
 | 26 ADDR1 | GND | Hard strap low | GREEN | I2C address selection, must not float. |
@@ -99,14 +99,14 @@ Rev A2 is a reviewed pin plan for the current RP2040 + LP5024 + QSPI flash + six
 
 | Session slot | Physical emitter | LP5024 channels | Logical FIFO side | Status |
 | --- | --- | --- | --- | --- |
-| Slot 1 | D1 | OUT0/OUT1/OUT2 | Oldest, left long bar lower cell | RED |
-| Slot 2 | D2 | OUT3/OUT4/OUT5 | Oldest, left long bar upper cell | RED |
-| Slot 3 | D3 | OUT6/OUT7/OUT8 | Left short lower trapezoid | RED |
-| Slot 4 | D4 | OUT9/OUT10/OUT11 | Right short slightly higher trapezoid | RED |
-| Slot 5 | D5 | OUT12/OUT13/OUT14 | Newer, right long bar lower cell | RED |
-| Slot 6 | D6 | OUT15/OUT16/OUT17 | Newest, right long bar upper cell | RED |
+| Slot 1 | D1 | OUT0 red pad4 / OUT1 green pad3 / OUT2 blue pad1 | Oldest, left long bar lower cell | GREEN |
+| Slot 2 | D2 | OUT3 red pad4 / OUT4 green pad3 / OUT5 blue pad1 | Oldest, left long bar upper cell | GREEN |
+| Slot 3 | D3 | OUT6 red pad4 / OUT7 green pad3 / OUT8 blue pad1 | Left short lower trapezoid | GREEN |
+| Slot 4 | D4 | OUT9 red pad4 / OUT10 green pad3 / OUT11 blue pad1 | Right short slightly higher trapezoid | GREEN |
+| Slot 5 | D5 | OUT12 red pad4 / OUT13 green pad3 / OUT14 blue pad1 | Newer, right long bar lower cell | GREEN |
+| Slot 6 | D6 | OUT15 red pad4 / OUT16 green pad3 / OUT17 blue pad1 | Newest, right long bar upper cell | GREEN |
 
-The electrical architecture assumes common-anode RGB LEDs: each LED anode connects to VLED, and each color cathode connects to one LP5024 current sink. The unresolved item is the exact pad-to-color mapping of S4-3528RGBTA-A C2827321 versus the KiCad Wuerth PLCC4 footprint.
+The electrical architecture assumes common-anode RGB LEDs: each LED pad 2 connects to VLED, and each color cathode connects to one LP5024 current sink. Rev A2 uses a local TUOZHAN footprint because the Rev A1 Wuerth PLCC4 footprint puts pad 1 on the opposite side.
 
 ## Power And Test Pads
 
@@ -135,6 +135,7 @@ The electrical architecture assumes common-anode RGB LEDs: each LED anode connec
 - TPD2EUSB30DRTR C94934: https://jlcpcb.com/partdetail/TexasInstruments-TPD2EUSB30DRTR/C94934
 - TYPE-C-31-M-12 C165948: https://jlcpcb.com/partdetail/HRO-TYPE_C_31_M_12/C165948
 - S4-3528RGBTA-A C2827321: https://jlcpcb.com/partdetail/OPSCOOptoelectronics-S4_3528RGBTA_A/C2827321
+- S4-3528RGBTA-A datasheet: https://datasheet.lcsc.com/datasheet/pdf/341ab1a3675a770275b38577ba3ea83d.pdf
 - 27R 0603 C25190: https://jlcpcb.com/partdetail/25933-0603WAF270JT5E/C25190
 - 5.1k 0603 C23186: https://jlcpcb.com/partdetail/23913-0603WAF5101T5E/C23186
 - 4.7k 0603 C23162: https://www.jlc-smt.com/lcsc/detail?componentCode=C23162

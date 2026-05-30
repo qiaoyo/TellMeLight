@@ -5,7 +5,7 @@ U3,1,QSPI_FLASH,W25Q32JVSSIQ,Package_SO:SOIC-8_3.9x4.9mm_P1.27mm,Winbond W25Q32J
 U4,1,LDO,AP2112K-3.3TRG1,Package_TO_SOT_SMD:SOT-23-5,Diodes Inc AP2112K-3.3TRG1,C51118,Bottom,GREEN,3V3 regulator from USB VBUS; EN tied high to VIN/VBUS
 U5,1,USB_ESD,TPD2EUSB30DRTR,Package_TO_SOT_SMD:Texas_DRT-3,TI TPD2EUSB30DRTR,C94934,Bottom,YELLOW,Rev A2 corrects Rev A1 SOT-23-6 mismatch to KiCad Texas_DRT-3 footprint; orientation still needs JLC review
 J1,1,USB_C,USB_C_Receptacle_USB2.0,Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12,HRO TYPE-C-31-M-12,C165948,Bottom,YELLOW,"USB-C connector, shell grounding and board-edge mechanical review required"
-D1-D6,6,RGB_LED,S4-3528RGBTA-A,LED_SMD:LED_RGB_Wuerth-PLCC4_3.2x2.8mm_150141M173100,OPSCO S4-3528RGBTA-A,C2827321,Top,RED,RGB LED pinout and selected KiCad footprint pad order must be verified before order
+D1-D6,6,RGB_LED,S4-3528RGBTA-A,TellMeLight_Rev_A2:LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm,TUOZHAN S4-3528RGBTA-A,C2827321,Top,YELLOW,RGB LED pinout mapped from datasheet; JLC orientation preview remains a RED order gate
 "R1,R2",2,RESISTOR,27R,Resistor_SMD:R_0603_1608Metric,0603WAF270JT5E,C25190,Bottom,GREEN,USB D+/D- series resistors near RP2040 side of connector-side ESD clamp
 "R3,R4",2,RESISTOR,5.1k,Resistor_SMD:R_0603_1608Metric,0603WAF5101T5E,C23186,Bottom,GREEN,USB-C CC1/CC2 Rd pull-downs to advertise USB device/sink
 "R5,R6",2,RESISTOR,4.7k,Resistor_SMD:R_0603_1608Metric,0603WAF4701T5E,C23162,Bottom,GREEN,I2C SDA/SCL pull-ups to 3V3

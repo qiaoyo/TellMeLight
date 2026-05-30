@@ -8,8 +8,8 @@ Do not order Rev A2 yet.
 
 ## RED Blockers
 
-- RED: RGB LED pinout and KiCad footprint mapping must be confirmed for S4-3528RGBTA-A C2827321.
 - RED: JLC orientation preview must be checked for all polarized/oriented parts, especially U2, U5, J1, D1-D6, Y1, SW1, and SW2.
+- RED: JLC SMT quote/BOM matching must confirm the local LED footprint and C2827321 placement before payment.
 
 ## YELLOW Review Items
 
@@ -27,6 +27,7 @@ Do not order Rev A2 yet.
 - GREEN: AP2112K-3.3TRG1 C51118 remains the 3V3 regulator candidate.
 - GREEN: TPD2EUSB30DRTR C94934 has a corrected 3-pin DRT footprint direction.
 - GREEN: USB-C TYPE-C-31-M-12 C165948 remains the connector candidate.
+- GREEN: RGB LED pinout is mapped to the TUOZHAN S4-3528RGBTA-A datasheet and a local Rev A2 footprint.
 - GREEN: Small resistors/capacitors/switches now have JLC-searchable candidates.
 
 ## Before Paying For Boards

@@ -461,8 +461,14 @@ Proposed first automation milestone:
   - Use `C179173` as the working `W25Q32JVSSIQ` flash alternate while Rev A1 `C82344` has stock risk.
   - Keep `LP5024RSMR` / `C427525` as the 24-channel current-sink LED driver.
   - Correct `TPD2EUSB30DRTR` / `C94934` to the KiCad `Texas_DRT-3` footprint direction instead of the Rev A1 `SOT-23-6` placeholder.
+  - Resolve `S4-3528RGBTA-A` / `C2827321` electrical pinout from the TUOZHAN datasheet:
+    - Pin 1 = blue cathode.
+    - Pin 2 = common anode.
+    - Pin 3 = green cathode.
+    - Pin 4 = red cathode.
   - Use JLC-searchable small-component candidates for 27R, 5.1k, 4.7k, 10k, 100nF, 1uF, 10uF, 33pF, 12MHz crystal, and service switches.
 - Added the Rev A2 KiCad project at `hardware/kicad/tellmelight_rev_a2/`.
+- Added a local Rev A2 LED footprint at `hardware/kicad/tellmelight_rev_a2/tellmelight_rev_a2.pretty/LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm.kicad_mod` because the Rev A1 stock Wurth PLCC4 footprint had pad 1 on the opposite side.
 - Rev A2 PCB placement adds LP5024 support passives:
   - `R7` IREF.
   - `R8` EN pull-up.
@@ -473,6 +479,6 @@ Proposed first automation milestone:
   - DRC: 0 violations and 0 unconnected items.
   - Gerbers, drill, position data, schematic PDF/SVG, PCB PDF/SVG, STEP, and top/bottom PNG renders were exported.
 - Remaining order blockers:
-  - `S4-3528RGBTA-A` RGB LED pinout and KiCad footprint mapping remain RED before any JLC order.
-  - JLC orientation preview must be manually reviewed for polarized/oriented parts.
+  - JLC orientation preview must be manually reviewed for polarized/oriented parts, especially D1-D6.
+  - JLC BOM/CPL upload must confirm the local LED footprint and C2827321 rotation before payment.
   - USB-C shell grounding and the crystal/load-cap pair remain YELLOW review items.

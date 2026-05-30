@@ -9,7 +9,8 @@ Date: 2026-05-30
 - GREEN: Rev A2 uses W25Q32JVSSIQ C179173 as the working flash alternate.
 - YELLOW: Rev A1 selected flash C82344 remains visible for history, but it has stock risk and should not drive the working cost model.
 - YELLOW: TPD2EUSB30DRTR C94934 stays, but Rev A2 corrects the KiCad footprint from Rev A1 SOT-23-6 to Texas_DRT-3.
-- RED: RGB LED pinout is still the main order blocker. S4-3528RGBTA-A C2827321 is searchable, but its pad/color/common-anode mapping must match the selected KiCad footprint before JLC upload.
+- GREEN: RGB LED pinout for S4-3528RGBTA-A C2827321 is now mapped from the TUOZHAN datasheet: pin 1 blue cathode, pin 2 common anode, pin 3 green cathode, pin 4 red cathode.
+- RED: JLC orientation preview is still the main RGB LED order blocker because D1-D6 are polarized optical parts and must be checked in the JLC SMT viewer before payment.
 - GREEN/YELLOW: Small components are now assigned JLC-searchable candidates where practical. Exact price and assembly class still need to be confirmed inside the JLC BOM quote.
 
 ## Small Component Candidates
@@ -34,6 +35,21 @@ Rev A1 used C82344 in the BOM. The Rev A1 cost preview already flagged C82344 st
 ## Why The USB ESD Footprint Changed
 
 TPD2EUSB30DRTR is the TI DRT 3-pin package. It has D+, D-, and GND pins. It is a shunt ESD clamp placed near the USB-C connector, not a six-pin flow-through component. Rev A2 therefore uses KiCad footprint Package_TO_SOT_SMD:Texas_DRT-3 and keeps orientation review as YELLOW until KiCad/JLC placement is inspected.
+
+## RGB LED Pinout Resolution
+
+The LCSC/TUOZHAN datasheet for S4-3528RGBTA-A C2827321 shows a 3.5 mm x 2.8 mm SMD3528-4P common-anode RGB LED. The footprint used in Rev A1 was a Wurth PLCC4 footprint with pin 1 on the opposite side, so Rev A2 now uses a local footprint:
+
+`TellMeLight_Rev_A2:LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm`.
+
+Pin mapping:
+
+- Pin 1 = blue cathode.
+- Pin 2 = common anode to VLED.
+- Pin 3 = green cathode.
+- Pin 4 = red cathode.
+
+This resolves the electrical pad/color mapping, but JLC orientation preview remains mandatory.
 
 ## Remaining Substitution Rule
 

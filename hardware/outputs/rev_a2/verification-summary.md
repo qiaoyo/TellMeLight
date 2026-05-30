@@ -34,13 +34,15 @@ Date: 2026-05-30
 ## Rev A2 CAD Corrections
 
 - U5 uses `Package_TO_SOT_SMD:Texas_DRT-3` for `TPD2EUSB30DRTR`.
+- D1-D6 use `TellMeLight_Rev_A2:LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm`.
 - R7 and R8 are added for LP5024 IREF and EN support.
 - C15 and C16 are added for LP5024 VCAP and VCC local capacitors.
-- The board silkscreen now marks Rev A2 and keeps the order blocker visible.
+- RGB LED pinout is mapped to the TUOZHAN datasheet: pin 1 blue cathode, pin 2 common anode, pin 3 green cathode, pin 4 red cathode.
+- The board silkscreen now marks Rev A2 and keeps the JLC orientation gate visible.
 
 ## Warnings And Remaining Blockers
 
-- RGB LED pinout remains RED. Do not order until `S4-3528RGBTA-A` pad/color/common-anode mapping is checked against the actual KiCad footprint and JLC orientation preview.
+- JLC orientation preview remains RED for D1-D6 and all other polarized/oriented parts. Do not order until the JLC SMT viewer confirms placement and rotation.
 - STEP export created `hardware/outputs/rev_a2/tellmelight_rev_a2.step`, but KiCad reported missing stock 3D models for `J1` USB-C and `U2` LP5024 VQFN. This affects visual/mechanical preview only, not ERC/DRC.
 - USB-C shell grounding is still YELLOW because it depends on enclosure/mechanical strategy.
 - Crystal/load-cap values are still YELLOW and should be recalculated before release.

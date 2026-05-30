@@ -1,4 +1,4 @@
-### Footprint positions - created on 2026-05-30T18:52:24 ###
+### Footprint positions - created on 2026-05-30T19:10:28 ###
 ### Printed by KiCad version 10.0.3
 ## Unit = inches, Angle = deg.
 ## Side : All
@@ -36,10 +36,10 @@ U3        W25Q32JVSS      SOIC-8_3.9x4.9mm_P1.27mm                             1
 U4        AP2112K-3.3     SOT-23-5                                             2.5591    -2.0079    0.0000  bottom
 U5        TPD2EUSB30      Texas_DRT-3                                          1.4567    -2.4016    0.0000  bottom
 Y1        12MHz           Crystal_SMD_TXC_7M-4Pin_3.2x2.5mm                    1.1417    -1.6535    0.0000  bottom
-D1        S4-3528RGBTA-A  LED_RGB_Wuerth-PLCC4_3.2x2.8mm_150141M173100         0.6496    -0.7677   90.0000  top
-D2        S4-3528RGBTA-A  LED_RGB_Wuerth-PLCC4_3.2x2.8mm_150141M173100         0.6496    -1.7520   90.0000  top
-D3        S4-3528RGBTA-A  LED_RGB_Wuerth-PLCC4_3.2x2.8mm_150141M173100         1.4764    -1.5748   90.0000  top
-D4        S4-3528RGBTA-A  LED_RGB_Wuerth-PLCC4_3.2x2.8mm_150141M173100         2.3031    -1.3386   90.0000  top
-D5        S4-3528RGBTA-A  LED_RGB_Wuerth-PLCC4_3.2x2.8mm_150141M173100         3.2283    -0.7874   90.0000  top
-D6        S4-3528RGBTA-A  LED_RGB_Wuerth-PLCC4_3.2x2.8mm_150141M173100         3.2283    -1.8307   90.0000  top
+D1        S4-3528RGBTA-A  LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm             0.6496    -0.7677   90.0000  top
+D2        S4-3528RGBTA-A  LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm             0.6496    -1.7520   90.0000  top
+D3        S4-3528RGBTA-A  LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm             1.4764    -1.5748   90.0000  top
+D4        S4-3528RGBTA-A  LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm             2.3031    -1.3386   90.0000  top
+D5        S4-3528RGBTA-A  LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm             3.2283    -0.7874   90.0000  top
+D6        S4-3528RGBTA-A  LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm             3.2283    -1.8307   90.0000  top
 ## End

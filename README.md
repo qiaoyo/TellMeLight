@@ -105,7 +105,7 @@ Run KiCad CLI checks with the installed Windows KiCad 10.0 path:
 - Direct Windows Codex JSON session adapter.
 - Rev A KiCad hardware baseline with BOM, PCB floorplan, and power-budget simulation.
 - Rev A1 JLC-oriented KiCad baseline with 4-layer PCB, JLC sourcing table, pogo/debug pads, and manufacturing readiness notes.
-- Rev A2 pin-level review package with JLC BOM/CPL drafts, corrected USB ESD footprint direction, and circuit explanation notes.
+- Rev A2 pin-level review package with JLC BOM/CPL drafts, corrected USB ESD footprint direction, local TUOZHAN RGB LED footprint mapping, and circuit explanation notes.
 
 ## Out Of Scope For Milestone 1
 
