@@ -90,7 +90,7 @@ function readme() {
 Generated: 2026-06-01
 Status: READY_FOR_JLC_PREVIEW_NOT_PAYMENT
 
-This is the compact 76 mm x 56 mm Rev A4 routing and JLC-preview package. It includes U6/R9/C17/R10, C18 for RP2040 VREG_VOUT, the top-side A1-style separated avatar watermark, and the persistent By Joey.qiao attribution. KiCad DRC reports 0 violations and 0 unconnected items.
+This is the compact 76 mm x 56 mm Rev A4 routing and JLC-preview package. It includes U6/R9/C17/R10, C18 for RP2040 VREG_VOUT, the top-side A1-style separated avatar watermark, and the persistent By Joey.qiao attribution. KiCad DRC reports 0 error violations, 0 unconnected items, and 10 via_dangling warnings.
 
 This bundle is for JLC size, DFM, BOM/CPL matching, placement, orientation, and silkscreen review. It is not a paid-order release until JLC DFM and orientation preview pass.
 
@@ -108,8 +108,8 @@ This bundle is for JLC size, DFM, BOM/CPL matching, placement, orientation, and 
 - Confirm U2 LP5024 pin 1, U5 USB ESD, U6 VLED TVS, J1 USB-C, Y1 passive crystal, SW1, and SW2 orientation.
 - Confirm the top-side A1-style separated avatar watermark is on silkscreen and does not overlap pads or the optical diffuser zones.
 - Confirm the top-side title includes By Joey.qiao.
-- Confirm KiCad DRC is 0 violations and 0 unconnected items before payment.
-- Confirm JLC accepts the 0.10 mm drill / 0.25 mm via process before payment; if it quotes as HDI/advanced, stop and revise via rules.
+- Confirm KiCad DRC has 0 error violations and 0 unconnected items before payment.
+- Confirm JLC accepts the ordinary 0.45 mm outer / 0.25 mm drill vias plus 0.10 mm trace/clearance before payment; if it quotes as HDI/advanced, stop and revise via rules.
 `;
 }
 
@@ -137,8 +137,8 @@ await copyTracked([
   { source: join(repoRoot, 'hardware', 'notes', 'rev-a4-enclosure-industrial-concept.md'), toDir: 'review' },
   { source: join(repoRoot, 'hardware', 'notes', 'rev-a4-routing-checkpoint.md'), toDir: 'review' },
   { source: join(outputsDir, 'verification-summary.md'), toDir: 'review' },
-  { source: join(outputsDir, 'tellmelight_rev_a4_top.png'), toDir: 'review' },
-  { source: join(outputsDir, 'tellmelight_rev_a4_bottom.png'), toDir: 'review' },
+  { source: join(outputsDir, 'tellmelight_rev_a4_pcb_top.svg'), toDir: 'review' },
+  { source: join(outputsDir, 'tellmelight_rev_a4_pcb_bottom.svg'), toDir: 'review' },
 ], manifestFiles);
 
 const readmePath = join(packageDir, 'README.md');
@@ -163,7 +163,7 @@ const manifest = {
   purpose: 'Compact Rev A4 JLC preview bundle after KiCad DRC routing signoff',
   blockers: [
     'JLC orientation preview must be checked before payment.',
-    'JLC DFM must accept 0.10 mm drill / 0.25 mm via geometry before payment.',
+    'JLC DFM must accept ordinary 0.45 mm outer / 0.25 mm drill vias before payment.',
     'RGB LED color/orientation and passive crystal warnings must be confirmed.',
     'Do not treat this package as paid-order release until the user reviews the JLC SMT preview.',
   ],

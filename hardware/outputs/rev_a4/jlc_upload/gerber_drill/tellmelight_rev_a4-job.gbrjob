@@ -5,7 +5,7 @@
       "Application": "Pcbnew",
       "Version": "10.0.3"
     },
-    "CreationDate": "2026-06-01T00:55:41+08:00"
+    "CreationDate": "2026-06-01T01:37:37+08:00"
   },
   "GeneralSpecs": {
     "ProjectId": {
@@ -26,131 +26,71 @@
       "Layers": "Outer",
       "PadToPad": 0.08,
       "PadToTrack": 0.08,
-      "TrackToTrack": 0.2,
+      "TrackToTrack": 0.1,
       "MinLineWidth": 0.1
     },
     {
       "Layers": "Inner",
       "PadToPad": 0.0,
       "PadToTrack": 0.0,
-      "TrackToTrack": 0.2,
-      "MinLineWidth": 0.2
+      "TrackToTrack": 0.1,
+      "MinLineWidth": 0.1
     }
   ],
   "FilesAttributes": [
     {
-      "Path": "tellmelight_rev_a4-F_Cu.gtl",
+      "Path": "tellmelight_rev_a4-F_Cu.gbr",
       "FileFunction": "Copper,L1,Top",
       "FilePolarity": "Positive"
     },
     {
-      "Path": "tellmelight_rev_a4-In1_Cu.g1",
+      "Path": "tellmelight_rev_a4-In1_Cu.gbr",
       "FileFunction": "Copper,L2,Inr",
       "FilePolarity": "Positive"
     },
     {
-      "Path": "tellmelight_rev_a4-In2_Cu.g2",
+      "Path": "tellmelight_rev_a4-In2_Cu.gbr",
       "FileFunction": "Copper,L3,Inr",
       "FilePolarity": "Positive"
     },
     {
-      "Path": "tellmelight_rev_a4-B_Cu.gbl",
+      "Path": "tellmelight_rev_a4-B_Cu.gbr",
       "FileFunction": "Copper,L4,Bot",
       "FilePolarity": "Positive"
     },
     {
-      "Path": "tellmelight_rev_a4-F_Adhesive.gta",
-      "FileFunction": "Glue,Top",
-      "FilePolarity": "Positive"
-    },
-    {
-      "Path": "tellmelight_rev_a4-B_Adhesive.gba",
-      "FileFunction": "Glue,Bot",
-      "FilePolarity": "Positive"
-    },
-    {
-      "Path": "tellmelight_rev_a4-F_Paste.gtp",
+      "Path": "tellmelight_rev_a4-F_Paste.gbr",
       "FileFunction": "SolderPaste,Top",
       "FilePolarity": "Positive"
     },
     {
-      "Path": "tellmelight_rev_a4-B_Paste.gbp",
+      "Path": "tellmelight_rev_a4-B_Paste.gbr",
       "FileFunction": "SolderPaste,Bot",
       "FilePolarity": "Positive"
     },
     {
-      "Path": "tellmelight_rev_a4-F_Silkscreen.gto",
+      "Path": "tellmelight_rev_a4-F_Silkscreen.gbr",
       "FileFunction": "Legend,Top",
       "FilePolarity": "Positive"
     },
     {
-      "Path": "tellmelight_rev_a4-B_Silkscreen.gbo",
+      "Path": "tellmelight_rev_a4-B_Silkscreen.gbr",
       "FileFunction": "Legend,Bot",
       "FilePolarity": "Positive"
     },
     {
-      "Path": "tellmelight_rev_a4-F_Mask.gts",
+      "Path": "tellmelight_rev_a4-F_Mask.gbr",
       "FileFunction": "SolderMask,Top",
       "FilePolarity": "Negative"
     },
     {
-      "Path": "tellmelight_rev_a4-B_Mask.gbs",
+      "Path": "tellmelight_rev_a4-B_Mask.gbr",
       "FileFunction": "SolderMask,Bot",
       "FilePolarity": "Negative"
     },
     {
-      "Path": "tellmelight_rev_a4-User_Drawings.gbr",
-      "FileFunction": "Other,User",
-      "FilePolarity": "Positive"
-    },
-    {
-      "Path": "tellmelight_rev_a4-User_Comments.gbr",
-      "FileFunction": "Other,User",
-      "FilePolarity": "Positive"
-    },
-    {
-      "Path": "tellmelight_rev_a4-User_Eco1.gbr",
-      "FileFunction": "Other,User",
-      "FilePolarity": "Positive"
-    },
-    {
-      "Path": "tellmelight_rev_a4-User_Eco2.gbr",
-      "FileFunction": "Other,User",
-      "FilePolarity": "Positive"
-    },
-    {
-      "Path": "tellmelight_rev_a4-Edge_Cuts.gm1",
+      "Path": "tellmelight_rev_a4-Edge_Cuts.gbr",
       "FileFunction": "Profile",
-      "FilePolarity": "Positive"
-    },
-    {
-      "Path": "tellmelight_rev_a4-F_Fab.gbr",
-      "FileFunction": "AssemblyDrawing,Top",
-      "FilePolarity": "Positive"
-    },
-    {
-      "Path": "tellmelight_rev_a4-B_Fab.gbr",
-      "FileFunction": "AssemblyDrawing,Bot",
-      "FilePolarity": "Positive"
-    },
-    {
-      "Path": "tellmelight_rev_a4-User_1.gbr",
-      "FileFunction": "Other,User",
-      "FilePolarity": "Positive"
-    },
-    {
-      "Path": "tellmelight_rev_a4-User_2.gbr",
-      "FileFunction": "Other,User",
-      "FilePolarity": "Positive"
-    },
-    {
-      "Path": "tellmelight_rev_a4-User_3.gbr",
-      "FileFunction": "Other,User",
-      "FilePolarity": "Positive"
-    },
-    {
-      "Path": "tellmelight_rev_a4-User_4.gbr",
-      "FileFunction": "Other,User",
       "FilePolarity": "Positive"
     }
   ],

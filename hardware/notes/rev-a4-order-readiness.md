@@ -14,7 +14,7 @@ Rev A4 is the first compact routing and JLC-preview candidate after the user's J
 - C18 adds the required RP2040 VREG_VOUT local capacitor.
 - The top-side silkscreen has a small A1-style separated avatar watermark in line art.
 - The top-side title includes the persistent By Joey.qiao attribution.
-- This package checks JLC board size, SMT matching, placement, orientation, and silkscreen. KiCad DRC now reports 0 violations and 0 unconnected items; payment is still gated by JLC DFM and orientation preview.
+- This package checks JLC board size, SMT matching, placement, orientation, and silkscreen. KiCad DRC now reports 0 error violations, 0 unconnected items, and 10 `via_dangling` warnings; payment is still gated by JLC DFM and orientation preview.
 
 ## Known JLC Warnings To Interpret
 
@@ -29,4 +29,4 @@ Do not pay until the JLC orientation preview confirms D1-D6, U2, U5, U6, J1, Y1,
 
 Status token: READY_FOR_JLC_PREVIEW_NOT_PAYMENT.
 
-The next hardware step is JLC preview upload, not payment. Confirm drill, layer count, board size, SMT placement, orientation, and whether JLC accepts the 0.10 mm drill / 0.25 mm via process before paying.
+The next hardware step is JLC preview upload, not payment. Confirm drill, layer count, board size, SMT placement, orientation, and whether JLC accepts the ordinary 0.45 mm outer / 0.25 mm drill vias plus 0.10 mm trace/clearance before paying.

@@ -2,7 +2,7 @@
 
 Date: 2026-06-01
 
-Rev A4 的目标是把 Rev A3 的 JLC 预览包推进到真实可制造 PCB。当前已经补上 RP2040 `VREG_VOUT` 的 1uF 本地电容 `C18`，并建立了 KiCad DSN -> Freerouting SES -> KiCad 导回的自动布线实验链路。A4 placement/fanout revision 之后，KiCad DRC 已达到 `0 violations and 0 unconnected items`。现在它可以进入 JLC 预览检查，但还不应该直接付款；付款前必须人工确认 JLC DFM、0.10 mm drill / 0.25 mm via 工艺、SMT 方向和器件警告。
+Rev A4 的目标是把 Rev A3 的 JLC 预览包推进到真实可制造 PCB。当前已经补上 RP2040 `VREG_VOUT` 的 1uF 本地电容 `C18`，并建立了 KiCad DSN -> Freerouting SES -> KiCad 导回的自动布线实验链路。A4 placement/fanout revision 之后，KiCad DRC 已达到 `0 error violations, 0 unconnected items`，还剩 10 个 `via_dangling` warning。现在它可以进入 JLC 预览检查，但还不应该直接付款；付款前必须人工确认 JLC DFM、0.45 mm outer / 0.25 mm drill 普通过孔、0.10 mm 线宽线距、SMT 方向和器件警告。
 
 ## 1. 总体电路
 
@@ -95,10 +95,10 @@ Rev A4 的关键设计选择是让 LED current 走 `VBUS/VLED`，不压在 `3V3`
 8. LP5024：R5/R6 上拉 I2C；R7 到 GND；C15/C16 靠近 U2；U2 OUT0-OUT17 到 D1-D6 对应颜色。
 9. LED：每颗 LED pin 2 都到 `VLED`，pin 1/3/4 分别到 B/G/R current sink。
 10. JLC 方向预览：重点看 D1-D6、U2、U5、U6、J1、Y1、SW1、SW2。
-11. 下单 gate：只有 `DRC: 0 violations and 0 unconnected items` 且 JLC orientation preview 人工确认后，才可以付款。
+11. 下单 gate：只有 `DRC: 0 error violations and 0 unconnected items`、剩余 `via_dangling` warning 经 JLC DFM 确认不影响制造，并且 JLC orientation preview 人工确认后，才可以付款。
 
 ## 7. Rev A4 当前状态
 
-Rev A4 已经证明：BOM/CPL、JLC 器件选型、USB/VLED 保护、电源框架、RP2040/LP5024 fanout 和自动布线工具链方向成立。当前 PCB DRC 结果为 `0 violations and 0 unconnected items`。
+Rev A4 已经证明：BOM/CPL、JLC 器件选型、USB/VLED 保护、电源框架、RP2040/LP5024 fanout 和自动布线工具链方向成立。当前 PCB DRC 结果为 `0 error violations and 0 unconnected items`，并保留 10 个 `via_dangling` warning 供 JLC DFM 人工确认。
 
-下一步不是继续改线，而是上传 JLC 做 preview / DFM / SMT orientation 检查。只有当 JLC 识别 4 层、76 mm x 56 mm、钻孔、Gerber、BOM/CPL 和方向都正确，并且没有把当前小孔/小过孔报成不可接受工艺时，才可以考虑付款。
+下一步不是继续改线，而是上传 JLC 做 preview / DFM / SMT orientation 检查。只有当 JLC 识别 4 层、76 mm x 56 mm、钻孔、Gerber、BOM/CPL 和方向都正确，并且没有把当前 0.45 mm outer / 0.25 mm drill 普通过孔或 0.10 mm 线宽线距报成不可接受工艺时，才可以考虑付款。

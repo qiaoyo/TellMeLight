@@ -40,6 +40,7 @@ test('rev A4 captures the routing checkpoint and do-not-pay gate', async () => {
   }
 
   assert.match(checkpoint, /NOT_FOR_PAYMENT/);
-  assert.match(checkpoint, /DRC: 0 violations and 0 unconnected items/);
+  assert.match(checkpoint, /DRC: 0 error violations, 0 unconnected items, and 10 `via_dangling` warnings/);
+  assert.match(checkpoint, /0\.45 mm outer diameter \/ 0\.25 mm drill/);
   assert.match(checkpoint, /placement\/fanout revision/);
 });

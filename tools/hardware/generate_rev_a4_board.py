@@ -70,7 +70,7 @@ def add_route(board, net_name, layer, points, width=0.15):
             add_track(board, net_name, layer, start, end, width)
 
 
-def add_via(board, net_name, x, y, diameter=0.25, drill=0.10):
+def add_via(board, net_name, x, y, diameter=0.45, drill=0.25):
     key = (net_name, round(x, 3), round(y, 3))
     if key in VIA_KEYS:
         return None
@@ -112,62 +112,27 @@ def fanout_point(pad):
     pad_x, pad_y = pad_point(pad)
     if fp.GetReference() == "U1" and pad.GetNumber().isdigit():
         pin = int(pad.GetNumber())
-        u1_points = {
-            1: (32.8, 41.6),
-            6: (32.8, 39.6),
-            7: (32.0, 39.2),
-            10: (32.8, 38.0),
-            19: (37.0, 34.6),
-            20: (37.4, 33.7),
-            21: (37.8, 32.9),
-            22: (38.2, 34.6),
-            23: (38.6, 34.2),
-            24: (39.0, 33.7),
-            25: (39.4, 32.9),
-            26: (39.8, 33.7),
-            33: (42.4, 38.0),
-            42: (42.4, 41.6),
-            44: (40.2, 43.3),
-            45: (39.8, 44.0),
-            46: (39.4, 44.7),
-            47: (39.0, 44.0),
-            48: (38.6, 44.7),
-            49: (38.2, 43.3),
-            50: (37.8, 43.0),
-            51: (37.4, 44.0),
-            52: (37.0, 44.7),
-            53: (36.6, 44.0),
-            54: (36.2, 44.7),
-            55: (35.8, 44.0),
-            56: (35.4, 44.7),
-        }
-        if pin in u1_points:
-            return u1_points[pin]
+        if pin in {1, 6, 7, 10}:
+            return pad_x - (1.45 + (pin % 2) * 0.75), pad_y
+        if 19 <= pin <= 26:
+            return pad_x, pad_y - (1.45 + ((pin - 19) % 2) * 0.75)
+        if pin in {33, 42}:
+            return pad_x + 1.55, pad_y
+        if 44 <= pin <= 56:
+            return pad_x, pad_y + (1.35 + ((pin - 44) % 2) * 0.75)
 
     if fp.GetReference() == "U2" and pad.GetNetname().startswith("D") and pad.GetNumber().isdigit():
         pin = int(pad.GetNumber())
         if 1 <= pin <= 8:
-            if pin == 7:
-                return 31.6, 22.0
-            return 33.0, 26.0 - (pin - 1) * 0.65
+            return pad_x - (1.45 + ((pin - 1) % 2) * 0.75), pad_y
         if 9 <= pin <= 16:
-            return 35.6 + (pin - 9) * 0.65, 19.2
+            return pad_x, pad_y - (1.45 + ((pin - 9) % 2) * 0.75)
         if 17 <= pin <= 18:
-            return 42.5, 21.7 + (pin - 17) * 0.65
+            return pad_x + (1.45 + ((pin - 17) % 2) * 0.75), pad_y
     if fp.GetReference() == "U2" and pad.GetNumber().isdigit():
         pin = int(pad.GetNumber())
-        u2_points = {
-            25: (39.8, 27.0),
-            26: (39.2, 27.0),
-            27: (38.6, 27.0),
-            28: (38.2, 28.5),
-            29: (37.8, 29.2),
-            30: (37.4, 28.5),
-            31: (37.0, 29.2),
-            32: (36.6, 28.5),
-        }
-        if pin in u2_points:
-            return u2_points[pin]
+        if 25 <= pin <= 32:
+            return pad_x, pad_y + (1.45 + ((pin - 25) % 2) * 0.75)
 
     fp_pos = fp.GetPosition()
     center_x = pcbnew.ToMM(fp_pos.x)
@@ -219,7 +184,7 @@ def escape_endpoint(board, net_name, pad):
 
     via_point = fanout_point(pad)
     add_route(board, net_name, layer, [point, via_point], 0.10)
-    add_via(board, net_name, via_point[0], via_point[1], 0.25, 0.10)
+    add_via(board, net_name, via_point[0], via_point[1])
     return via_point
 
 
@@ -239,7 +204,7 @@ def add_internal_spine_route(board, net_name, endpoints, spine_x, width=0.10):
     spine_points = []
     for endpoint in endpoints:
         branch_point = (spine_x, endpoint[1])
-        add_via(board, net_name, branch_point[0], branch_point[1], 0.25, 0.10)
+        add_via(board, net_name, branch_point[0], branch_point[1])
         add_route(board, net_name, pcbnew.In2_Cu, [endpoint, branch_point], width)
         spine_points.append(branch_point)
 
@@ -633,7 +598,7 @@ def place_components(board):
         24,
         bottom=True,
     )
-    u2.SetLocalClearance(rev_a1.mm(0.15))
+    u2.SetLocalClearance(rev_a1.mm(0.10))
 
     usb = rev_a1.load_footprint(
         board,
@@ -753,10 +718,10 @@ def build_board(output_path):
     settings = board.GetDesignSettings()
     settings.m_MinClearance = rev_a1.mm(0.08)
     settings.m_TrackMinWidth = rev_a1.mm(0.10)
-    settings.m_MinThroughDrill = rev_a1.mm(0.10)
+    settings.m_MinThroughDrill = rev_a1.mm(0.20)
     settings.m_HoleClearance = rev_a1.mm(0.08)
-    settings.m_ViasMinSize = rev_a1.mm(0.25)
-    settings.m_ViasMinAnnularWidth = rev_a1.mm(0.07)
+    settings.m_ViasMinSize = rev_a1.mm(0.45)
+    settings.m_ViasMinAnnularWidth = rev_a1.mm(0.10)
     settings.m_AllowSoldermaskBridgesInFPs = True
     title = board.GetTitleBlock()
     title.SetTitle("TellMeLight Rev A4")

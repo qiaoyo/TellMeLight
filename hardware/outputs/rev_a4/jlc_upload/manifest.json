@@ -6,7 +6,7 @@
   "purpose": "Compact Rev A4 JLC preview bundle after KiCad DRC routing signoff",
   "blockers": [
     "JLC orientation preview must be checked before payment.",
-    "JLC DFM must accept 0.10 mm drill / 0.25 mm via geometry before payment.",
+    "JLC DFM must accept ordinary 0.45 mm outer / 0.25 mm drill vias before payment.",
     "RGB LED color/orientation and passive crystal warnings must be confirmed.",
     "Do not treat this package as paid-order release until the user reviews the JLC SMT preview."
   ],
@@ -24,178 +24,100 @@
       "sha256": "87a633f38e8be715df06d9f2410c60f36a758824965bf1f93d2b3fc2bab8bc53"
     },
     {
-      "path": "gerber_drill/tellmelight_rev_a4-B_Adhesive.gba",
-      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-B_Adhesive.gba",
-      "bytes": 475,
-      "sha256": "5aa4673f0d9f0d402ae9ebc668d33d15e163296151c25410ca142d414371a81f"
+      "path": "gerber_drill/tellmelight_rev_a4_drill_report.txt",
+      "source": "hardware/outputs/rev_a4/drill/tellmelight_rev_a4_drill_report.txt",
+      "bytes": 888,
+      "sha256": "287d1c73f666d1cd9774a16c330e997e350b3a40059b1fc56d6281c8b9331bce"
     },
     {
-      "path": "gerber_drill/tellmelight_rev_a4-B_Courtyard.gbr",
-      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-B_Courtyard.gbr",
-      "bytes": 11075,
-      "sha256": "293a04e1b1b6889747e3ae21f6382a845fd853924006d530088886bfff8397e8"
+      "path": "gerber_drill/tellmelight_rev_a4-B_Cu.gbr",
+      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-B_Cu.gbr",
+      "bytes": 40288,
+      "sha256": "4ad919159d89469a61e847011bebfcffdaca738c571b80b2266d6a3c96a17cf5"
     },
     {
-      "path": "gerber_drill/tellmelight_rev_a4-B_Cu.gbl",
-      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-B_Cu.gbl",
-      "bytes": 36652,
-      "sha256": "91606f99eafad38a39613d13654d22df531e1ab84f57c7b8961d4f3416c8cb77"
+      "path": "gerber_drill/tellmelight_rev_a4-B_Mask.gbr",
+      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-B_Mask.gbr",
+      "bytes": 118864,
+      "sha256": "dc0d17d7776b554c5e4553a6edd06662f435ac7b78a8a1b9997a4a0f8d919dbd"
     },
     {
-      "path": "gerber_drill/tellmelight_rev_a4-B_Fab.gbr",
-      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-B_Fab.gbr",
-      "bytes": 74922,
-      "sha256": "c30bbc5e788036096d3a070f3f57b06819f65408a2acb26ee63d8d998e858efb"
+      "path": "gerber_drill/tellmelight_rev_a4-B_Paste.gbr",
+      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-B_Paste.gbr",
+      "bytes": 9382,
+      "sha256": "23ef15220940d5713d55e936cdd7c789edf11042ad1ab885e520b57459345814"
     },
     {
-      "path": "gerber_drill/tellmelight_rev_a4-B_Mask.gbs",
-      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-B_Mask.gbs",
-      "bytes": 118153,
-      "sha256": "34fa552b34f6c3ab39e1bd5b8849666b7eac7d38b887b0343f8c32d4bb7e2964"
+      "path": "gerber_drill/tellmelight_rev_a4-B_Silkscreen.gbr",
+      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-B_Silkscreen.gbr",
+      "bytes": 19978,
+      "sha256": "608e2854c94ca71b7c2fbf6c99301df4d1ff918a53cc6beb009b342808757e6d"
     },
     {
-      "path": "gerber_drill/tellmelight_rev_a4-B_Paste.gbp",
-      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-B_Paste.gbp",
-      "bytes": 8665,
-      "sha256": "80f7223d5a2b53099d2e98c88aa9918bf98e1cab56f281f5198bcec1364382b3"
+      "path": "gerber_drill/tellmelight_rev_a4-drl_map.pdf",
+      "source": "hardware/outputs/rev_a4/drill/tellmelight_rev_a4-drl_map.pdf",
+      "bytes": 21928,
+      "sha256": "23b5771b7cbecaf4e8640c3ef564af3a6f4730e5e114d786fec0f461e8d02f8e"
     },
     {
-      "path": "gerber_drill/tellmelight_rev_a4-B_Silkscreen.gbo",
-      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-B_Silkscreen.gbo",
-      "bytes": 19267,
-      "sha256": "d85f9cfae51462dbb06ea6ddad5d356ac3447d9f3d3627a87926a58d17047ef2"
+      "path": "gerber_drill/tellmelight_rev_a4-Edge_Cuts.gbr",
+      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-Edge_Cuts.gbr",
+      "bytes": 1552,
+      "sha256": "7a872e258124ee392d1037324ed4aa7d13998cc2c31aa916298fd75f92636966"
     },
     {
-      "path": "gerber_drill/tellmelight_rev_a4-Edge_Cuts.gm1",
-      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-Edge_Cuts.gm1",
-      "bytes": 841,
-      "sha256": "d7a2ee0a8db86a9c32ff93eee92133f4f972d06fe66aa0d8b8109d4f24959760"
+      "path": "gerber_drill/tellmelight_rev_a4-F_Cu.gbr",
+      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-F_Cu.gbr",
+      "bytes": 14523,
+      "sha256": "daabc92bc27f6fee7f64051de67ea090609cfd1c7fdea5a3512e964587cdfbd4"
     },
     {
-      "path": "gerber_drill/tellmelight_rev_a4-F_Adhesive.gta",
-      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-F_Adhesive.gta",
-      "bytes": 475,
-      "sha256": "44ff9cb4c48770f7d2290b4bbe3f1eb7c4bc922d1d87dd8c5f5addcb3f7d9bef"
+      "path": "gerber_drill/tellmelight_rev_a4-F_Mask.gbr",
+      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-F_Mask.gbr",
+      "bytes": 12882,
+      "sha256": "2fb605aaa27aab131e80b0b550ff9dc0c116ce5a2e8d34bd9a98345e01eb9209"
     },
     {
-      "path": "gerber_drill/tellmelight_rev_a4-F_Courtyard.gbr",
-      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-F_Courtyard.gbr",
-      "bytes": 2405,
-      "sha256": "8f3bd86015b655eeec12a3125eef2a22cd25879011b2554809533378056e037f"
+      "path": "gerber_drill/tellmelight_rev_a4-F_Paste.gbr",
+      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-F_Paste.gbr",
+      "bytes": 1936,
+      "sha256": "1f78eaf56cf246e2db05069333db01b7cca58ca62c32864cc46c1289ae9c49fe"
     },
     {
-      "path": "gerber_drill/tellmelight_rev_a4-F_Cu.gtl",
-      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-F_Cu.gtl",
-      "bytes": 11285,
-      "sha256": "49ae8c619009af818adcad39945791355cb7356167e4e00fc633e725baf8017b"
+      "path": "gerber_drill/tellmelight_rev_a4-F_Silkscreen.gbr",
+      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-F_Silkscreen.gbr",
+      "bytes": 20120,
+      "sha256": "1402929f1788a5e6dcfa54eb44e2798738ff8a02baeabca22c212330c62ec3ed"
     },
     {
-      "path": "gerber_drill/tellmelight_rev_a4-F_Fab.gbr",
-      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-F_Fab.gbr",
-      "bytes": 11144,
-      "sha256": "0ae962614dc62dd46e7cf48edf221cb5d30721e1b3de9466ef1fcda81349bce1"
+      "path": "gerber_drill/tellmelight_rev_a4-In1_Cu.gbr",
+      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-In1_Cu.gbr",
+      "bytes": 12057,
+      "sha256": "19033319ec16c132ca5b02169391d3510c2de2c98a641697f6ed1ef2eb79b40f"
     },
     {
-      "path": "gerber_drill/tellmelight_rev_a4-F_Mask.gts",
-      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-F_Mask.gts",
-      "bytes": 12171,
-      "sha256": "5f5bb96ec0f4c8d176e11b6ce18ae93e4376ec254cb4b331e3552ff92b3fd558"
-    },
-    {
-      "path": "gerber_drill/tellmelight_rev_a4-F_Paste.gtp",
-      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-F_Paste.gtp",
-      "bytes": 1225,
-      "sha256": "975144e17b22980d572470c36b7087c5edb075e88918c25b3527f4f381428901"
-    },
-    {
-      "path": "gerber_drill/tellmelight_rev_a4-F_Silkscreen.gto",
-      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-F_Silkscreen.gto",
-      "bytes": 19409,
-      "sha256": "385948cad9ec7c115c5f96149e98992d552b8c4c520e85e8e1824cfeaf1b9667"
-    },
-    {
-      "path": "gerber_drill/tellmelight_rev_a4-In1_Cu.g1",
-      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-In1_Cu.g1",
-      "bytes": 9666,
-      "sha256": "665c68f186d51bd4d7b3715d97e051e743d090d8ea331b927645973037de1b99"
-    },
-    {
-      "path": "gerber_drill/tellmelight_rev_a4-In2_Cu.g2",
-      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-In2_Cu.g2",
-      "bytes": 10316,
-      "sha256": "8372825d7d5418f308b2567222e80a58d5fa4b51c1706108750b62f0b3a96053"
+      "path": "gerber_drill/tellmelight_rev_a4-In2_Cu.gbr",
+      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-In2_Cu.gbr",
+      "bytes": 11470,
+      "sha256": "bd874fc78f29dd4798a1de6dde28ffeeeb658ad282a34b900a67d3af70b065dc"
     },
     {
       "path": "gerber_drill/tellmelight_rev_a4-job.gbrjob",
       "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-job.gbrjob",
-      "bytes": 5492,
-      "sha256": "f137addebb98c355caf4db165f9375086cb60ee79820a3c3049b95c6a0ee5da4"
-    },
-    {
-      "path": "gerber_drill/tellmelight_rev_a4-Margin.gbr",
-      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-Margin.gbr",
-      "bytes": 448,
-      "sha256": "709ce59162e8a8d6a58479a86496ef31bd28534f79c97e006a64d2d0c3b88068"
-    },
-    {
-      "path": "gerber_drill/tellmelight_rev_a4-User_1.gbr",
-      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-User_1.gbr",
-      "bytes": 448,
-      "sha256": "514246404387635fa136d1b63c8ceb9c7a5c176de576e92703dff97af7e6b001"
-    },
-    {
-      "path": "gerber_drill/tellmelight_rev_a4-User_2.gbr",
-      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-User_2.gbr",
-      "bytes": 448,
-      "sha256": "514246404387635fa136d1b63c8ceb9c7a5c176de576e92703dff97af7e6b001"
-    },
-    {
-      "path": "gerber_drill/tellmelight_rev_a4-User_3.gbr",
-      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-User_3.gbr",
-      "bytes": 448,
-      "sha256": "514246404387635fa136d1b63c8ceb9c7a5c176de576e92703dff97af7e6b001"
-    },
-    {
-      "path": "gerber_drill/tellmelight_rev_a4-User_4.gbr",
-      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-User_4.gbr",
-      "bytes": 448,
-      "sha256": "514246404387635fa136d1b63c8ceb9c7a5c176de576e92703dff97af7e6b001"
-    },
-    {
-      "path": "gerber_drill/tellmelight_rev_a4-User_Comments.gbr",
-      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-User_Comments.gbr",
-      "bytes": 27442,
-      "sha256": "4af4e8bcb4657838b1ad4bc908d8a258c5c6427fd33b89613a45f58806b5c5ee"
-    },
-    {
-      "path": "gerber_drill/tellmelight_rev_a4-User_Drawings.gbr",
-      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-User_Drawings.gbr",
-      "bytes": 10379,
-      "sha256": "e990475c116030f53c10709d375399c510f4e34e2b4b101e2354ec2acc3cfbfe"
-    },
-    {
-      "path": "gerber_drill/tellmelight_rev_a4-User_Eco1.gbr",
-      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-User_Eco1.gbr",
-      "bytes": 448,
-      "sha256": "35d4ec6c035e2a2c5eef4411da1419b4d7136d0e06982be3879b8052dc6cbb1b"
-    },
-    {
-      "path": "gerber_drill/tellmelight_rev_a4-User_Eco2.gbr",
-      "source": "hardware/outputs/rev_a4/gerbers/tellmelight_rev_a4-User_Eco2.gbr",
-      "bytes": 448,
-      "sha256": "f7d2cc562b8dd62d98b917fbb5dea332876a43ce5937b1a42e374ac76ecff8ce"
+      "bytes": 3846,
+      "sha256": "23fe25580e248bd56e492b5abf5fb6b05f0e191dee4647e3fb02935f014a5e36"
     },
     {
       "path": "gerber_drill/tellmelight_rev_a4.drl",
       "source": "hardware/outputs/rev_a4/drill/tellmelight_rev_a4.drl",
-      "bytes": 2511,
-      "sha256": "f8ef2f28aa8a4032bf025b526f939cfc50338a34c9c21fd249fbff23c8e416d1"
+      "bytes": 2445,
+      "sha256": "c5da4c34216709032a32dfc02eb05a532d0db75ef93e02eae107f9b1a9e34838"
     },
     {
       "path": "README.md",
       "source": "generated by tools/hardware/package-rev-a4-jlc.mjs",
-      "bytes": 1498,
-      "sha256": "0d96885c49178843ad17af04c74fe16b6937909889988169c6847e73d9b252d5"
+      "bytes": 1575,
+      "sha256": "d6f7d9657a3b676935295cdfa90388114b99892c24f3ad22987e4b454751aa11"
     },
     {
       "path": "review/rev_a4_bom.csv",
@@ -206,8 +128,8 @@
     {
       "path": "review/rev-a4-circuit-walkthrough.md",
       "source": "hardware/notes/rev-a4-circuit-walkthrough.md",
-      "bytes": 6713,
-      "sha256": "e09c5ffe776d9134136b7d302d3239f292328d77057c3d79a0e4e9bad1339b5c"
+      "bytes": 6987,
+      "sha256": "a65abedd58645c01d1856e21c41ead5ac7bec4a8782ac068a5e8f8a53557efd7"
     },
     {
       "path": "review/rev-a4-enclosure-industrial-concept.md",
@@ -218,44 +140,44 @@
     {
       "path": "review/rev-a4-order-readiness.md",
       "source": "hardware/notes/rev-a4-order-readiness.md",
-      "bytes": 1777,
-      "sha256": "8769151613b22c6b3ed92e122663391637dd8a35aedb777bb6d1f9be64ad6d61"
+      "bytes": 1849,
+      "sha256": "bec7d1c6a5adba7b5c27405d6a54f18b71997837399001fa4d84ede8ff0a7da6"
     },
     {
       "path": "review/rev-a4-routing-checkpoint.md",
       "source": "hardware/notes/rev-a4-routing-checkpoint.md",
-      "bytes": 1878,
-      "sha256": "d8eecee3f235ad0ce833e73497cd489ceb9181b8802d902aacd5004ac3cf5c36"
+      "bytes": 2096,
+      "sha256": "ef3dffb9399285f25d4abeacf9737cd38c479bd255654d70c7bf7421ebcfd610"
     },
     {
-      "path": "review/tellmelight_rev_a4_bottom.png",
-      "source": "hardware/outputs/rev_a4/tellmelight_rev_a4_bottom.png",
-      "bytes": 74989,
-      "sha256": "255c6a5e7f5b213155696ea93906440ae3465f33494ba1afcbe7e205c592a56f"
+      "path": "review/tellmelight_rev_a4_pcb_bottom.svg",
+      "source": "hardware/outputs/rev_a4/tellmelight_rev_a4_pcb_bottom.svg",
+      "bytes": 230217,
+      "sha256": "23bfcb98e610950031c0eeeabab8518fffb6408d2050b74ee62a9d12eba1a5c4"
     },
     {
-      "path": "review/tellmelight_rev_a4_top.png",
-      "source": "hardware/outputs/rev_a4/tellmelight_rev_a4_top.png",
-      "bytes": 57418,
-      "sha256": "19ff9e45f4aec08c2da45fbbe3ab2106950e0d0f7d1234084f349570b5180502"
+      "path": "review/tellmelight_rev_a4_pcb_top.svg",
+      "source": "hardware/outputs/rev_a4/tellmelight_rev_a4_pcb_top.svg",
+      "bytes": 57299,
+      "sha256": "ef65724b8e1991e30a11381ec0f2cf470116b9b5c27b2eba864375e34feb75c5"
     },
     {
       "path": "review/verification-summary.md",
       "source": "hardware/outputs/rev_a4/verification-summary.md",
-      "bytes": 1566,
-      "sha256": "8568058b2de787fb6150d25ae92c0a0cd83d75943e03f8f1b6494081baf74b34"
+      "bytes": 1943,
+      "sha256": "8a7a5385a60b236472ac2a7872252543591ab26905811cb371a0def7c2092b06"
     },
     {
       "path": "tellmelight_rev_a4_jlc_assembly_bom_cpl.zip",
       "source": "generated by tools/hardware/package-rev-a4-jlc.mjs",
       "bytes": 1269,
-      "sha256": "5250f2b6eef121e45dfef6b019e26054f6c86f55d1d1cd244514a61af475db07"
+      "sha256": "d0795d25c0720116e4dd105a99ca060742e9a7b768314ee4937f3e029650cb34"
     },
     {
       "path": "tellmelight_rev_a4_jlc_gerber_drill.zip",
       "source": "generated by tools/hardware/package-rev-a4-jlc.mjs",
-      "bytes": 76749,
-      "sha256": "4f230277f037fe9364f8144443a585fd6d8a9af167ed3191417076fffe48a6da"
+      "bytes": 67315,
+      "sha256": "636624f00ac7e686326c7599176e52297719cd3cb6e7fb109d05effc6309ea11"
     }
   ]
 }

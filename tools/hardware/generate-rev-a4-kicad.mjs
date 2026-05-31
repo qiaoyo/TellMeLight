@@ -75,7 +75,7 @@ Generated: 2026-05-31
 
 ## Important Boundary
 
-Rev A4 is a compact routing candidate and JLC preview package for board size, SMT matching, placement, orientation, and silkscreen review. It is not a paid-order release until JLC DFM accepts the via/drill process and the user checks the SMT orientation preview.
+Rev A4 is a compact routing candidate and JLC preview package for board size, SMT matching, placement, orientation, and silkscreen review. It uses ordinary 0.45 mm outer / 0.25 mm drill vias, not 0.10 mm drill microvias. It is not a paid-order release until JLC DFM accepts the process and the user checks the SMT orientation preview.
 
 ## Visual Mapping
 
@@ -96,11 +96,38 @@ function applyProjectReplacements(text) {
     .replaceAll('"A2"', '"A4"');
 }
 
+function applyManufacturingConstraints(text) {
+  const project = JSON.parse(text);
+  const rules = project.board?.design_settings?.rules;
+  if (rules) {
+    rules.min_clearance = 0.1;
+    rules.min_hole_clearance = 0.08;
+    rules.min_through_hole_diameter = 0.2;
+    rules.min_track_width = 0.1;
+    rules.min_via_annular_width = 0.1;
+    rules.min_via_diameter = 0.45;
+  }
+
+  const defaultClass = project.net_settings?.classes?.find((item) => item.name === 'Default');
+  if (defaultClass) {
+    defaultClass.clearance = 0.1;
+    defaultClass.track_width = 0.1;
+    defaultClass.via_diameter = 0.45;
+    defaultClass.via_drill = 0.25;
+  }
+
+  return `${JSON.stringify(project, null, 2)}\n`;
+}
+
 async function copyProjectText(sourceName, targetName = sourceName) {
   const sourcePath = join(sourceDir, sourceName);
   const targetPath = join(projectDir, targetName);
   const text = await readFile(sourcePath, 'utf8');
-  await writeFile(targetPath, applyProjectReplacements(text), 'utf8');
+  let targetText = applyProjectReplacements(text);
+  if (targetName.endsWith('.kicad_pro')) {
+    targetText = applyManufacturingConstraints(targetText);
+  }
+  await writeFile(targetPath, targetText, 'utf8');
 }
 
 async function writeProjectFiles() {
@@ -121,6 +148,12 @@ async function writeProjectFiles() {
     footprintDir,
     { recursive: true, force: true },
   );
+}
+
+async function rewriteProjectManufacturingConstraints() {
+  const projectPath = join(projectDir, 'tellmelight_rev_a4.kicad_pro');
+  const text = await readFile(projectPath, 'utf8');
+  await writeFile(projectPath, applyManufacturingConstraints(text), 'utf8');
 }
 
 function generateBoard() {
@@ -146,5 +179,6 @@ function generateBoard() {
 
 await writeProjectFiles();
 generateBoard();
+await rewriteProjectManufacturingConstraints();
 
 console.log(`Generated Rev A4 KiCad hardware candidate at ${projectDir}`);
