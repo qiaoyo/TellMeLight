@@ -24,7 +24,7 @@ Generated: 2026-05-31
 
 ## Important Boundary
 
-Rev A4 is a compact routing candidate and JLC preview package for board size, SMT matching, placement, orientation, and silkscreen review. It is not a paid-order release until JLC DFM accepts the via/drill process and the user checks the SMT orientation preview.
+Rev A4 is a compact routing candidate and JLC preview package for board size, SMT matching, placement, orientation, and silkscreen review. It uses the JLC free ordinary via target: 0.45 mm outer / 0.30 mm drill. It is not a paid-order release until JLC DFM accepts the process and the user checks the SMT orientation preview.
 
 ## Visual Mapping
 

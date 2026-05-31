@@ -70,7 +70,7 @@ def has_via(board, net_name, point):
     return False
 
 
-def add_via(board, net_name, point, diameter=0.45, drill=0.25):
+def add_via(board, net_name, point, diameter=0.45, drill=0.30):
     if has_via(board, net_name, point):
         return
     via = pcbnew.PCB_VIA(board)
@@ -92,15 +92,42 @@ def add_manual_completion_routes(board):
     add_route(
         board,
         "D5_R",
-        pcbnew.In1_Cu,
+        pcbnew.In2_Cu,
         [
             (38.2, 20.5625),
-            (38.2, 19.2),
-            (43.0, 12.85),
+            (38.2, 18.0),
+            (43.0, 12.0),
+            (61.8, 12.0),
             (64.7, 12.85),
         ],
     )
     add_route(board, "D5_R", pcbnew.F_Cu, [(64.7, 12.85), (64.7, 13.95)])
+
+    add_route(
+        board,
+        "3V3",
+        pcbnew.In2_Cu,
+        [
+            (38.2, 44.5375),
+            (38.2, 45.3),
+            (40.2, 45.3),
+            (40.2, 43.7875),
+        ],
+    )
+
+    add_via(board, "FLASH_IO1_MISO", (17.3, 39.635))
+    add_route(board, "FLASH_IO1_MISO", pcbnew.B_Cu, [(19.525, 39.635), (17.3, 39.635)])
+    add_route(
+        board,
+        "FLASH_IO1_MISO",
+        pcbnew.In2_Cu,
+        [
+            (17.3, 39.635),
+            (17.3, 44.9),
+            (35.8, 44.9),
+            (35.8, 44.5375),
+        ],
+    )
 
 
 def remove_unused_fanout_vias(board):

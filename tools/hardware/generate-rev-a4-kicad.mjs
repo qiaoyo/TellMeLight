@@ -75,7 +75,7 @@ Generated: 2026-05-31
 
 ## Important Boundary
 
-Rev A4 is a compact routing candidate and JLC preview package for board size, SMT matching, placement, orientation, and silkscreen review. It uses ordinary 0.45 mm outer / 0.25 mm drill vias, not 0.10 mm drill microvias. It is not a paid-order release until JLC DFM accepts the process and the user checks the SMT orientation preview.
+Rev A4 is a compact routing candidate and JLC preview package for board size, SMT matching, placement, orientation, and silkscreen review. It uses the JLC free ordinary via target: 0.45 mm outer / 0.30 mm drill. It is not a paid-order release until JLC DFM accepts the process and the user checks the SMT orientation preview.
 
 ## Visual Mapping
 
@@ -92,6 +92,8 @@ function applyProjectReplacements(text) {
     .replaceAll('tellmelight_rev_a2', 'tellmelight_rev_a4')
     .replaceAll('TellMeLight Rev A2', 'TellMeLight Rev A4')
     .replaceAll('TellMeLight_Rev_A2', 'TellMeLight_Rev_A4')
+    .replaceAll('QFN-56-1EP_7x7mm_P0.4mm_EP3.2x3.2mm_ThermalVias', 'QFN-56-1EP_7x7mm_P0.4mm_EP3.2x3.2mm')
+    .replaceAll('VQFN-32-1EP_4x4mm_P0.4mm_EP2.8x2.8mm_ThermalVias', 'VQFN-32-1EP_4x4mm_P0.4mm_EP2.8x2.8mm')
     .replaceAll('Rev A2', 'Rev A4')
     .replaceAll('"A2"', '"A4"');
 }
@@ -102,9 +104,9 @@ function applyManufacturingConstraints(text) {
   if (rules) {
     rules.min_clearance = 0.1;
     rules.min_hole_clearance = 0.08;
-    rules.min_through_hole_diameter = 0.2;
+    rules.min_through_hole_diameter = 0.3;
     rules.min_track_width = 0.1;
-    rules.min_via_annular_width = 0.1;
+    rules.min_via_annular_width = 0.05;
     rules.min_via_diameter = 0.45;
   }
 
@@ -113,7 +115,7 @@ function applyManufacturingConstraints(text) {
     defaultClass.clearance = 0.1;
     defaultClass.track_width = 0.1;
     defaultClass.via_diameter = 0.45;
-    defaultClass.via_drill = 0.25;
+    defaultClass.via_drill = 0.3;
   }
 
   return `${JSON.stringify(project, null, 2)}\n`;

@@ -1,6 +1,6 @@
 Designator,Qty,Kind,Value,Footprint,Preferred Part,JLC Candidate,Assembly Side,Status,Notes
-U1,1,MCU,RP2040,Package_DFN_QFN:QFN-56-1EP_7x7mm_P0.4mm_EP3.2x3.2mm_ThermalVias,Raspberry Pi RP2040,C2040,Bottom,GREEN,USB MCU
-U2,1,LED_DRIVER,LP5024RSMR,Package_DFN_QFN:VQFN-32-1EP_4x4mm_P0.4mm_EP2.8x2.8mm_ThermalVias,TI LP5024RSMR,C427525,Bottom,YELLOW,JLC color warning is expected because this is an RGB LED driver; confirm pin 1 in orientation preview
+U1,1,MCU,RP2040,Package_DFN_QFN:QFN-56-1EP_7x7mm_P0.4mm_EP3.2x3.2mm,Raspberry Pi RP2040,C2040,Bottom,GREEN,USB MCU
+U2,1,LED_DRIVER,LP5024RSMR,Package_DFN_QFN:VQFN-32-1EP_4x4mm_P0.4mm_EP2.8x2.8mm,TI LP5024RSMR,C427525,Bottom,YELLOW,JLC color warning is expected because this is an RGB LED driver; confirm pin 1 in orientation preview
 U3,1,QSPI_FLASH,W25Q32JVSSIQ,Package_SO:SOIC-8_3.9x4.9mm_P1.27mm,Winbond W25Q32JVSSIQ alternate,C179173,Bottom,GREEN,Working flash alternate verified by JLC BOM matching
 U4,1,LDO,AP2112K-3.3TRG1,Package_TO_SOT_SMD:SOT-23-5,Diodes Inc AP2112K-3.3TRG1,C51118,Bottom,GREEN,3V3 regulator from USB VBUS
 U5,1,USB_ESD,TPD2EUSB30DRTR,Package_TO_SOT_SMD:Texas_DRT-3,TI TPD2EUSB30DRTR,C94934,Bottom,YELLOW,"USB D+/D- ESD clamp, orientation preview required"

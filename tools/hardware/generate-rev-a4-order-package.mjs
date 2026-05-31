@@ -16,8 +16,8 @@ function csv(rows) {
 
 const designBomRows = [
   ['Designator', 'Qty', 'Kind', 'Value', 'Footprint', 'Preferred Part', 'JLC Candidate', 'Assembly Side', 'Status', 'Notes'],
-  ['U1', '1', 'MCU', 'RP2040', 'Package_DFN_QFN:QFN-56-1EP_7x7mm_P0.4mm_EP3.2x3.2mm_ThermalVias', 'Raspberry Pi RP2040', 'C2040', 'Bottom', 'GREEN', 'USB MCU'],
-  ['U2', '1', 'LED_DRIVER', 'LP5024RSMR', 'Package_DFN_QFN:VQFN-32-1EP_4x4mm_P0.4mm_EP2.8x2.8mm_ThermalVias', 'TI LP5024RSMR', 'C427525', 'Bottom', 'YELLOW', 'JLC color warning is expected because this is an RGB LED driver; confirm pin 1 in orientation preview'],
+  ['U1', '1', 'MCU', 'RP2040', 'Package_DFN_QFN:QFN-56-1EP_7x7mm_P0.4mm_EP3.2x3.2mm', 'Raspberry Pi RP2040', 'C2040', 'Bottom', 'GREEN', 'USB MCU'],
+  ['U2', '1', 'LED_DRIVER', 'LP5024RSMR', 'Package_DFN_QFN:VQFN-32-1EP_4x4mm_P0.4mm_EP2.8x2.8mm', 'TI LP5024RSMR', 'C427525', 'Bottom', 'YELLOW', 'JLC color warning is expected because this is an RGB LED driver; confirm pin 1 in orientation preview'],
   ['U3', '1', 'QSPI_FLASH', 'W25Q32JVSSIQ', 'Package_SO:SOIC-8_3.9x4.9mm_P1.27mm', 'Winbond W25Q32JVSSIQ alternate', 'C179173', 'Bottom', 'GREEN', 'Working flash alternate verified by JLC BOM matching'],
   ['U4', '1', 'LDO', 'AP2112K-3.3TRG1', 'Package_TO_SOT_SMD:SOT-23-5', 'Diodes Inc AP2112K-3.3TRG1', 'C51118', 'Bottom', 'GREEN', '3V3 regulator from USB VBUS'],
   ['U5', '1', 'USB_ESD', 'TPD2EUSB30DRTR', 'Package_TO_SOT_SMD:Texas_DRT-3', 'TI TPD2EUSB30DRTR', 'C94934', 'Bottom', 'YELLOW', 'USB D+/D- ESD clamp, orientation preview required'],
@@ -45,8 +45,8 @@ const designBomRows = [
 
 const jlcBomRows = [
   ['Comment', 'Designator', 'Footprint', 'LCSC Part'],
-  ['RP2040', 'U1', 'Package_DFN_QFN:QFN-56-1EP_7x7mm_P0.4mm_EP3.2x3.2mm_ThermalVias', 'C2040'],
-  ['LP5024RSMR', 'U2', 'Package_DFN_QFN:VQFN-32-1EP_4x4mm_P0.4mm_EP2.8x2.8mm_ThermalVias', 'C427525'],
+  ['RP2040', 'U1', 'Package_DFN_QFN:QFN-56-1EP_7x7mm_P0.4mm_EP3.2x3.2mm', 'C2040'],
+  ['LP5024RSMR', 'U2', 'Package_DFN_QFN:VQFN-32-1EP_4x4mm_P0.4mm_EP2.8x2.8mm', 'C427525'],
   ['W25Q32JVSSIQ', 'U3', 'Package_SO:SOIC-8_3.9x4.9mm_P1.27mm', 'C179173'],
   ['AP2112K-3.3TRG1', 'U4', 'Package_TO_SOT_SMD:SOT-23-5', 'C51118'],
   ['TPD2EUSB30DRTR', 'U5', 'Package_TO_SOT_SMD:Texas_DRT-3', 'C94934'],
@@ -133,7 +133,7 @@ Rev A4 is the first compact routing and JLC-preview candidate after the user's J
 - C18 adds the required RP2040 VREG_VOUT local capacitor.
 - The top-side silkscreen has a small A1-style separated avatar watermark in line art.
 - The top-side title includes the persistent By Joey.qiao attribution.
-- This package checks JLC board size, SMT matching, placement, orientation, and silkscreen. KiCad DRC now reports 0 error violations, 0 unconnected items, and 10 \`via_dangling\` warnings; payment is still gated by JLC DFM and orientation preview.
+- This package checks JLC board size, SMT matching, placement, orientation, and silkscreen. KiCad DRC now reports 0 error violations, 0 unconnected items, and 9 \`via_dangling\` warnings; payment is still gated by JLC DFM and orientation preview.
 
 ## Known JLC Warnings To Interpret
 
@@ -148,7 +148,7 @@ Do not pay until the JLC orientation preview confirms D1-D6, U2, U5, U6, J1, Y1,
 
 Status token: READY_FOR_JLC_PREVIEW_NOT_PAYMENT.
 
-The next hardware step is JLC preview upload, not payment. Confirm drill, layer count, board size, SMT placement, orientation, and whether JLC accepts the ordinary 0.45 mm outer / 0.25 mm drill vias plus 0.10 mm trace/clearance before paying.
+The next hardware step is JLC preview upload, not payment. Confirm drill, layer count, board size, SMT placement, orientation, and whether JLC accepts the free ordinary 0.45 mm outer / 0.30 mm drill vias plus 0.10 mm trace/clearance before paying.
 `;
 }
 

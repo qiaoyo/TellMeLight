@@ -18,11 +18,11 @@ test('rev A4 placement/fanout revision reaches electrical routing signoff', asyn
 
   assert.equal(errors.length, 0);
   assert.equal((drc.unconnected_items ?? []).length, 0);
-  assert.match(summary, /DRC: 0 error violations, 0 unconnected items, and 10 via_dangling warnings/);
+  assert.match(summary, /DRC: 0 error violations, 0 unconnected items, and 9 via_dangling warnings/);
   assert.match(checkpoint, /READY_FOR_JLC_PREVIEW_NOT_PAYMENT/);
 });
 
-test('rev A4 uses ordinary JLC via geometry, not HDI microvia values', async () => {
+test('rev A4 uses free ordinary JLC via geometry, not paid small-hole values', async () => {
   const pcb = await readText('hardware/kicad/tellmelight_rev_a4/tellmelight_rev_a4.kicad_pcb');
   const project = JSON.parse(await readText('hardware/kicad/tellmelight_rev_a4/tellmelight_rev_a4.kicad_pro'));
   const summary = await readText('hardware/outputs/rev_a4/verification-summary.md');
@@ -35,14 +35,17 @@ test('rev A4 uses ordinary JLC via geometry, not HDI microvia values', async () 
     }));
 
   assert.ok(vias.length > 0, 'expected routed PCB to contain vias');
-  assert.ok(Math.min(...vias.map((via) => via.size)) >= 0.45, 'via outer diameter must avoid JLC extra-cost microvia class');
-  assert.ok(Math.min(...vias.map((via) => via.drill)) >= 0.2, 'via drill must avoid JLC HDI microvia class');
+  assert.doesNotMatch(pcb, /ThermalVias/, 'Rev A4 should not use footprint-embedded 0.20mm thermal via holes');
+  assert.ok(Math.min(...vias.map((via) => via.size)) >= 0.45, 'via outer diameter must match JLC free 0.3mm drill option');
+  assert.ok(Math.min(...vias.map((via) => via.drill)) >= 0.3, 'via drill must match JLC free 0.3mm drill option');
   assert.equal(project.net_settings.classes[0].via_diameter, 0.45);
-  assert.equal(project.net_settings.classes[0].via_drill, 0.25);
+  assert.equal(project.net_settings.classes[0].via_drill, 0.3);
   assert.equal(project.net_settings.classes[0].clearance, 0.1);
+  assert.doesNotMatch(summary, /0\.25 mm drill/);
+  assert.doesNotMatch(checkpoint, /0\.25 mm drill/);
   assert.doesNotMatch(summary, /0\.10 mm drill \/ 0\.25 mm via/);
   assert.doesNotMatch(checkpoint, /0\.10 mm drill \/ 0\.25 mm via/);
-  assert.match(summary, /ordinary JLC/i);
+  assert.match(summary, /free ordinary JLC/i);
 });
 
 test('rev A4 records parallel enclosure, glass, and industrial design concepts', async () => {

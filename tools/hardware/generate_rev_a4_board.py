@@ -70,7 +70,7 @@ def add_route(board, net_name, layer, points, width=0.15):
             add_track(board, net_name, layer, start, end, width)
 
 
-def add_via(board, net_name, x, y, diameter=0.45, drill=0.25):
+def add_via(board, net_name, x, y, diameter=0.45, drill=0.30):
     key = (net_name, round(x, 3), round(y, 3))
     if key in VIA_KEYS:
         return None
@@ -551,7 +551,7 @@ def place_components(board):
     rev_a1.load_footprint(
         board,
         "Package_DFN_QFN",
-        "QFN-56-1EP_7x7mm_P0.4mm_EP3.2x3.2mm_ThermalVias",
+        "QFN-56-1EP_7x7mm_P0.4mm_EP3.2x3.2mm",
         "U1",
         "RP2040",
         38,
@@ -591,7 +591,7 @@ def place_components(board):
     u2 = rev_a1.load_footprint(
         board,
         "Package_DFN_QFN",
-        "VQFN-32-1EP_4x4mm_P0.4mm_EP2.8x2.8mm_ThermalVias",
+        "VQFN-32-1EP_4x4mm_P0.4mm_EP2.8x2.8mm",
         "U2",
         "LP5024",
         38,
@@ -718,10 +718,10 @@ def build_board(output_path):
     settings = board.GetDesignSettings()
     settings.m_MinClearance = rev_a1.mm(0.08)
     settings.m_TrackMinWidth = rev_a1.mm(0.10)
-    settings.m_MinThroughDrill = rev_a1.mm(0.20)
+    settings.m_MinThroughDrill = rev_a1.mm(0.30)
     settings.m_HoleClearance = rev_a1.mm(0.08)
     settings.m_ViasMinSize = rev_a1.mm(0.45)
-    settings.m_ViasMinAnnularWidth = rev_a1.mm(0.10)
+    settings.m_ViasMinAnnularWidth = rev_a1.mm(0.05)
     settings.m_AllowSoldermaskBridgesInFPs = True
     title = board.GetTitleBlock()
     title.SetTitle("TellMeLight Rev A4")

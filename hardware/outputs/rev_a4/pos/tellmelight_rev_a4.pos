@@ -1,45 +1,50 @@
-Ref,Val,Package,PosX,PosY,Rot,Side
-"C1","100nF","C_0603_1608Metric",32.000000,-36.000000,0.000000,bottom
-"C2","100nF","C_0603_1608Metric",44.000000,-36.000000,0.000000,bottom
-"C3","100nF","C_0603_1608Metric",32.000000,-20.000000,0.000000,bottom
-"C4","100nF","C_0603_1608Metric",44.000000,-20.000000,0.000000,bottom
-"C5","100nF","C_0603_1608Metric",20.000000,-34.000000,0.000000,bottom
-"C6","100nF","C_0603_1608Metric",56.000000,-34.000000,0.000000,bottom
-"C7","100nF","C_0603_1608Metric",42.000000,-44.500000,0.000000,bottom
-"C8","100nF","C_0603_1608Metric",53.000000,-43.000000,0.000000,bottom
-"C9","100nF","C_0603_1608Metric",25.000000,-26.000000,0.000000,bottom
-"C10","100nF","C_0603_1608Metric",50.000000,-22.000000,0.000000,bottom
-"C11","10uF","C_0603_1608Metric",60.000000,-39.000000,0.000000,bottom
-"C12","10uF","C_0603_1608Metric",62.000000,-35.000000,0.000000,bottom
-"C13","33pF","C_0603_1608Metric",21.000000,-28.000000,0.000000,bottom
-"C14","33pF","C_0603_1608Metric",28.000000,-29.000000,0.000000,bottom
-"C15","1uF VCAP","C_0603_1608Metric",35.000000,-31.000000,0.000000,bottom
-"C16","1uF VCC","C_0603_1608Metric",55.000000,-22.000000,0.000000,bottom
-"C17","10nF SHIELD","C_0603_1608Metric",66.000000,-42.000000,0.000000,bottom
-"C18","1uF VREG_OUT","C_0603_1608Metric",46.500000,-40.500000,0.000000,bottom
-"J1","USB_C","USB_C_Receptacle_HRO_TYPE-C-31-M-12",38.000000,-51.000000,180.000000,bottom
-"R1","27R","R_0603_1608Metric",45.000000,-44.000000,0.000000,bottom
-"R2","27R","R_0603_1608Metric",49.000000,-44.000000,0.000000,bottom
-"R3","5.1k","R_0603_1608Metric",50.000000,-49.000000,0.000000,bottom
-"R4","5.1k","R_0603_1608Metric",55.000000,-49.000000,0.000000,bottom
-"R5","4.7k","R_0603_1608Metric",45.000000,-28.000000,0.000000,bottom
-"R6","4.7k","R_0603_1608Metric",49.000000,-28.000000,0.000000,bottom
-"R7","10k IREF","R_0603_1608Metric",30.000000,-32.000000,0.000000,bottom
-"R8","10k EN","R_0603_1608Metric",54.000000,-28.000000,0.000000,bottom
-"R9","1M SHIELD","R_0603_1608Metric",61.000000,-42.000000,0.000000,bottom
-"R10","0R VLED","R_0603_1608Metric",53.000000,-45.000000,0.000000,bottom
-"SW1","BOOT","SW_SPST_EVQP2_ShortPushTravel_H2.1mm",61.000000,-48.000000,0.000000,bottom
-"SW2","RESET","SW_SPST_EVQP2_ShortPushTravel_H2.1mm",69.000000,-48.000000,0.000000,bottom
-"U1","RP2040","QFN-56-1EP_7x7mm_P0.4mm_EP3.2x3.2mm_ThermalVias",38.000000,-39.000000,0.000000,bottom
-"U2","LP5024","VQFN-32-1EP_4x4mm_P0.4mm_EP2.8x2.8mm_ThermalVias",38.000000,-24.000000,0.000000,bottom
-"U3","W25Q32JVSS","SOIC-8_3.9x4.9mm_P1.27mm",22.000000,-39.000000,0.000000,bottom
-"U4","AP2112K-3.3","SOT-23-5",56.000000,-39.000000,0.000000,bottom
-"U5","TPD2EUSB30","Texas_DRT-3",29.000000,-48.000000,0.000000,bottom
-"U6","TPD1E05U06DPY","Texas_DPY0002A_0.6x1mm_P0.65mm",24.000000,-48.000000,0.000000,bottom
-"Y1","12MHz","Crystal_SMD_TXC_7M-4Pin_3.2x2.5mm",24.000000,-32.000000,0.000000,bottom
-"D1","S4-3528RGBTA-A","LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm",10.800000,-14.000000,90.000000,top
-"D2","S4-3528RGBTA-A","LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm",10.800000,-36.500000,90.000000,top
-"D3","S4-3528RGBTA-A","LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm",29.000000,-34.000000,90.000000,top
-"D4","S4-3528RGBTA-A","LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm",45.500000,-29.000000,90.000000,top
-"D5","S4-3528RGBTA-A","LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm",64.000000,-15.500000,90.000000,top
-"D6","S4-3528RGBTA-A","LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm",64.000000,-38.500000,90.000000,top
+### Footprint positions - created on 2026-06-01T02:14:21 ###
+### Printed by KiCad version 10.0.3
+## Unit = mm, Angle = deg.
+## Side : All
+# Ref     Val             Package                                        PosX       PosY       Rot  Side
+C1        100nF           C_0603_1608Metric                           32.0000   -36.0000    0.0000  bottom
+C2        100nF           C_0603_1608Metric                           44.0000   -36.0000    0.0000  bottom
+C3        100nF           C_0603_1608Metric                           32.0000   -20.0000    0.0000  bottom
+C4        100nF           C_0603_1608Metric                           44.0000   -20.0000    0.0000  bottom
+C5        100nF           C_0603_1608Metric                           20.0000   -34.0000    0.0000  bottom
+C6        100nF           C_0603_1608Metric                           56.0000   -34.0000    0.0000  bottom
+C7        100nF           C_0603_1608Metric                           42.0000   -44.5000    0.0000  bottom
+C8        100nF           C_0603_1608Metric                           53.0000   -43.0000    0.0000  bottom
+C9        100nF           C_0603_1608Metric                           25.0000   -26.0000    0.0000  bottom
+C10       100nF           C_0603_1608Metric                           50.0000   -22.0000    0.0000  bottom
+C11       10uF            C_0603_1608Metric                           60.0000   -39.0000    0.0000  bottom
+C12       10uF            C_0603_1608Metric                           62.0000   -35.0000    0.0000  bottom
+C13       33pF            C_0603_1608Metric                           21.0000   -28.0000    0.0000  bottom
+C14       33pF            C_0603_1608Metric                           28.0000   -29.0000    0.0000  bottom
+C15       1uF_VCAP        C_0603_1608Metric                           35.0000   -31.0000    0.0000  bottom
+C16       1uF_VCC         C_0603_1608Metric                           55.0000   -22.0000    0.0000  bottom
+C17       10nF_SHIELD     C_0603_1608Metric                           66.0000   -42.0000    0.0000  bottom
+C18       1uF_VREG_OUT    C_0603_1608Metric                           46.5000   -40.5000    0.0000  bottom
+J1        USB_C           USB_C_Receptacle_HRO_TYPE-C-31-M-12         38.0000   -51.0000  180.0000  bottom
+R1        27R             R_0603_1608Metric                           45.0000   -44.0000    0.0000  bottom
+R2        27R             R_0603_1608Metric                           49.0000   -44.0000    0.0000  bottom
+R3        5.1k            R_0603_1608Metric                           50.0000   -49.0000    0.0000  bottom
+R4        5.1k            R_0603_1608Metric                           55.0000   -49.0000    0.0000  bottom
+R5        4.7k            R_0603_1608Metric                           45.0000   -28.0000    0.0000  bottom
+R6        4.7k            R_0603_1608Metric                           49.0000   -28.0000    0.0000  bottom
+R7        10k_IREF        R_0603_1608Metric                           30.0000   -32.0000    0.0000  bottom
+R8        10k_EN          R_0603_1608Metric                           54.0000   -28.0000    0.0000  bottom
+R9        1M_SHIELD       R_0603_1608Metric                           61.0000   -42.0000    0.0000  bottom
+R10       0R_VLED         R_0603_1608Metric                           53.0000   -45.0000    0.0000  bottom
+SW1       BOOT            SW_SPST_EVQP2_ShortPushTravel_H2.1mm        61.0000   -48.0000    0.0000  bottom
+SW2       RESET           SW_SPST_EVQP2_ShortPushTravel_H2.1mm        69.0000   -48.0000    0.0000  bottom
+U1        RP2040          QFN-56-1EP_7x7mm_P0.4mm_EP3.2x3.2mm         38.0000   -39.0000    0.0000  bottom
+U2        LP5024          VQFN-32-1EP_4x4mm_P0.4mm_EP2.8x2.8mm        38.0000   -24.0000    0.0000  bottom
+U3        W25Q32JVSS      SOIC-8_3.9x4.9mm_P1.27mm                    22.0000   -39.0000    0.0000  bottom
+U4        AP2112K-3.3     SOT-23-5                                    56.0000   -39.0000    0.0000  bottom
+U5        TPD2EUSB30      Texas_DRT-3                                 29.0000   -48.0000    0.0000  bottom
+U6        TPD1E05U06DPY   Texas_DPY0002A_0.6x1mm_P0.65mm              24.0000   -48.0000    0.0000  bottom
+Y1        12MHz           Crystal_SMD_TXC_7M-4Pin_3.2x2.5mm           24.0000   -32.0000    0.0000  bottom
+D1        S4-3528RGBTA-A  LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm    10.8000   -14.0000   90.0000  top
+D2        S4-3528RGBTA-A  LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm    10.8000   -36.5000   90.0000  top
+D3        S4-3528RGBTA-A  LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm    29.0000   -34.0000   90.0000  top
+D4        S4-3528RGBTA-A  LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm    45.5000   -29.0000   90.0000  top
+D5        S4-3528RGBTA-A  LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm    64.0000   -15.5000   90.0000  top
+D6        S4-3528RGBTA-A  LED_RGB_TUOZHAN_S4-3528RGBTA-A_3.5x2.8mm    64.0000   -38.5000   90.0000  top
+## End
