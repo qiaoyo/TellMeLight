@@ -1,0 +1,10 @@
+(fp_lib_table
+	(version 7)
+	(lib
+		(name "TellMeLight_Rev_A4")
+		(type "KiCad")
+		(uri "${KIPRJMOD}/tellmelight_rev_a4.pretty")
+		(options "")
+		(descr "TellMeLight Rev A4 local footprints")
+	)
+)

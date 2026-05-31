@@ -1,4 +1,6 @@
 .superpowers/
 .worktrees
 .worktrees/
+.cache/
+.tools/
 *.kicad_prl
