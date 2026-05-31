@@ -70,7 +70,7 @@ def add_route(board, net_name, layer, points, width=0.15):
             add_track(board, net_name, layer, start, end, width)
 
 
-def add_via(board, net_name, x, y, diameter=0.35, drill=0.18):
+def add_via(board, net_name, x, y, diameter=0.25, drill=0.10):
     key = (net_name, round(x, 3), round(y, 3))
     if key in VIA_KEYS:
         return None
@@ -110,16 +110,64 @@ def pad_number_index(pad):
 def fanout_point(pad):
     fp = pad.GetParentFootprint()
     pad_x, pad_y = pad_point(pad)
+    if fp.GetReference() == "U1" and pad.GetNumber().isdigit():
+        pin = int(pad.GetNumber())
+        u1_points = {
+            1: (32.8, 41.6),
+            6: (32.8, 39.6),
+            7: (32.0, 39.2),
+            10: (32.8, 38.0),
+            19: (37.0, 34.6),
+            20: (37.4, 33.7),
+            21: (37.8, 32.9),
+            22: (38.2, 34.6),
+            23: (38.6, 34.2),
+            24: (39.0, 33.7),
+            25: (39.4, 32.9),
+            26: (39.8, 33.7),
+            33: (42.4, 38.0),
+            42: (42.4, 41.6),
+            44: (40.2, 43.3),
+            45: (39.8, 44.0),
+            46: (39.4, 44.7),
+            47: (39.0, 44.0),
+            48: (38.6, 44.7),
+            49: (38.2, 43.3),
+            50: (37.8, 43.0),
+            51: (37.4, 44.0),
+            52: (37.0, 44.7),
+            53: (36.6, 44.0),
+            54: (36.2, 44.7),
+            55: (35.8, 44.0),
+            56: (35.4, 44.7),
+        }
+        if pin in u1_points:
+            return u1_points[pin]
+
     if fp.GetReference() == "U2" and pad.GetNetname().startswith("D") and pad.GetNumber().isdigit():
         pin = int(pad.GetNumber())
         if 1 <= pin <= 8:
             if pin == 7:
-                return 31.4, 24.0
+                return 31.6, 22.0
             return 33.0, 26.0 - (pin - 1) * 0.65
         if 9 <= pin <= 16:
             return 35.6 + (pin - 9) * 0.65, 19.2
         if 17 <= pin <= 18:
             return 42.5, 21.7 + (pin - 17) * 0.65
+    if fp.GetReference() == "U2" and pad.GetNumber().isdigit():
+        pin = int(pad.GetNumber())
+        u2_points = {
+            25: (39.8, 27.0),
+            26: (39.2, 27.0),
+            27: (38.6, 27.0),
+            28: (38.2, 28.5),
+            29: (37.8, 29.2),
+            30: (37.4, 28.5),
+            31: (37.0, 29.2),
+            32: (36.6, 28.5),
+        }
+        if pin in u2_points:
+            return u2_points[pin]
 
     fp_pos = fp.GetPosition()
     center_x = pcbnew.ToMM(fp_pos.x)
@@ -171,7 +219,7 @@ def escape_endpoint(board, net_name, pad):
 
     via_point = fanout_point(pad)
     add_route(board, net_name, layer, [point, via_point], 0.10)
-    add_via(board, net_name, via_point[0], via_point[1], 0.35, 0.18)
+    add_via(board, net_name, via_point[0], via_point[1], 0.25, 0.10)
     return via_point
 
 
@@ -191,7 +239,7 @@ def add_internal_spine_route(board, net_name, endpoints, spine_x, width=0.10):
     spine_points = []
     for endpoint in endpoints:
         branch_point = (spine_x, endpoint[1])
-        add_via(board, net_name, branch_point[0], branch_point[1], 0.35, 0.18)
+        add_via(board, net_name, branch_point[0], branch_point[1], 0.25, 0.10)
         add_route(board, net_name, pcbnew.In2_Cu, [endpoint, branch_point], width)
         spine_points.append(branch_point)
 
@@ -353,18 +401,14 @@ def add_routing(board):
         return
 
     if os.environ.get("TML_A4_FANOUT_ONLY") == "1":
-        local_nets = {
-            "3V3", "3V3_USB", "VBUS", "VLED", "GND",
-            "RP2040_VREG_OUT", "LP_EN", "LP_IREF", "LP_VCAP",
+        fanout_pins = {
+            "U1": {"1", "6", "7", "10", "19", "20", "21", "22", "23", "24", "25", "26", "33", "42", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56"},
+            "U2": {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "25", "26", "27", "28", "29", "30", "31", "32"},
         }
-        for ref in ["U2"]:
+        for ref, pins in fanout_pins.items():
             for pad in footprint(board, ref).Pads():
                 net_name = pad.GetNetname()
-                if not net_name or net_name in local_nets:
-                    continue
-                if net_name == "D3_R":
-                    continue
-                if not net_name.startswith("D"):
+                if not net_name or pad.GetNumber() not in pins:
                     continue
                 if pad_copper_layer(pad) is not None:
                     escape_endpoint(board, net_name, pad)
@@ -636,16 +680,16 @@ def place_components(board):
         )
 
     resistor_positions = [
-        ("R1", "27R", 32, 44),
-        ("R2", "27R", 36, 44),
+        ("R1", "27R", 45, 44),
+        ("R2", "27R", 49, 44),
         ("R3", "5.1k", 50, 49),
         ("R4", "5.1k", 55, 49),
         ("R5", "4.7k", 45, 28),
         ("R6", "4.7k", 49, 28),
-        ("R7", "10k IREF", 34, 28),
+        ("R7", "10k IREF", 30, 32),
         ("R8", "10k EN", 54, 28),
         ("R9", "1M SHIELD", 61, 42),
-        ("R10", "0R VLED", 47, 45),
+        ("R10", "0R VLED", 53, 45),
     ]
     for reference, value, x, y in resistor_positions:
         rev_a1.load_footprint(board, "Resistor_SMD", "R_0603_1608Metric", reference, value, x, y, bottom=True, show_reference=False)
@@ -657,7 +701,7 @@ def place_components(board):
         ("C4", "100nF", 44, 20),
         ("C5", "100nF", 20, 34),
         ("C6", "100nF", 56, 34),
-        ("C7", "100nF", 28, 44),
+        ("C7", "100nF", 42, 44.5),
         ("C8", "100nF", 53, 43),
         ("C9", "100nF", 25, 26),
         ("C10", "100nF", 50, 22),
@@ -665,10 +709,10 @@ def place_components(board):
         ("C12", "10uF", 62, 35),
         ("C13", "33pF", 21, 28),
         ("C14", "33pF", 28, 29),
-        ("C15", "1uF VCAP", 31, 28),
+        ("C15", "1uF VCAP", 35, 31),
         ("C16", "1uF VCC", 55, 22),
         ("C17", "10nF SHIELD", 66, 42),
-        ("C18", "1uF VREG_OUT", 46, 42),
+        ("C18", "1uF VREG_OUT", 46.5, 40.5),
     ]
     for reference, value, x, y in capacitor_positions:
         rev_a1.load_footprint(board, "Capacitor_SMD", "C_0603_1608Metric", reference, value, x, y, bottom=True, show_reference=False)
@@ -707,12 +751,12 @@ def build_board(output_path):
     board = pcbnew.BOARD()
     rev_a1.configure_design_rules(board)
     settings = board.GetDesignSettings()
-    settings.m_MinClearance = rev_a1.mm(0.10)
+    settings.m_MinClearance = rev_a1.mm(0.08)
     settings.m_TrackMinWidth = rev_a1.mm(0.10)
-    settings.m_MinThroughDrill = rev_a1.mm(0.18)
-    settings.m_HoleClearance = rev_a1.mm(0.10)
-    settings.m_ViasMinSize = rev_a1.mm(0.35)
-    settings.m_ViasMinAnnularWidth = rev_a1.mm(0.08)
+    settings.m_MinThroughDrill = rev_a1.mm(0.10)
+    settings.m_HoleClearance = rev_a1.mm(0.08)
+    settings.m_ViasMinSize = rev_a1.mm(0.25)
+    settings.m_ViasMinAnnularWidth = rev_a1.mm(0.07)
     settings.m_AllowSoldermaskBridgesInFPs = True
     title = board.GetTitleBlock()
     title.SetTitle("TellMeLight Rev A4")

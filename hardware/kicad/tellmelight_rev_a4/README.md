@@ -8,7 +8,7 @@ Generated: 2026-05-31
 - `tellmelight_rev_a4.kicad_sch`: Rev A4 review schematic/net plan inherited from Rev A2 and marked for A4.
 - `tellmelight_rev_a4.kicad_sym`: TellMeLight Rev A4 local symbols for LP5024 and the TUOZHAN RGB LED, created in the Rev A4 symbol checkpoint.
 - `tellmelight_rev_a4_review.kicad_sym`: Rev A4 generic review symbols for the inherited block-level schematic.
-- `tellmelight_rev_a4.kicad_pcb`: 76 mm x 56 mm 4-layer routing checkpoint.
+- `tellmelight_rev_a4.kicad_pcb`: 76 mm x 56 mm 4-layer routing candidate.
 - `tellmelight_rev_a4.pretty/`: local TUOZHAN RGB LED footprint.
 
 ## Rev A4 Changes From Rev A2
@@ -20,11 +20,11 @@ Generated: 2026-05-31
 - C18 `1uF` adds the required RP2040 VREG_VOUT local capacitor.
 - Top silkscreen includes a small A1-style separated avatar watermark in an empty optical-face area.
 - Top silkscreen title includes the persistent `By Joey.qiao` attribution.
-- The JLC package is a dry-run checkpoint; payment is blocked until DRC reports 0 violations and 0 unconnected items and the JLC orientation preview is checked.
+- The JLC package is a preview candidate; payment is blocked until JLC DFM and orientation preview are checked.
 
 ## Important Boundary
 
-Rev A4 is a compact routing checkpoint and JLC dry-run package for board size, SMT matching, placement, orientation, and silkscreen review. It is not a paid-order release until KiCad DRC reports 0 violations and 0 unconnected items.
+Rev A4 is a compact routing candidate and JLC preview package for board size, SMT matching, placement, orientation, and silkscreen review. It is not a paid-order release until JLC DFM accepts the via/drill process and the user checks the SMT orientation preview.
 
 ## Visual Mapping
 

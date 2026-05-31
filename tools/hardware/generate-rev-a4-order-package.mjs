@@ -86,23 +86,23 @@ const cplRows = [
   ['Y1', '24.000mm', '32.000mm', 'Bottom', '0'],
   ['SW1', '61.000mm', '48.000mm', 'Bottom', '0'],
   ['SW2', '69.000mm', '48.000mm', 'Bottom', '0'],
-  ['R1', '32.000mm', '44.000mm', 'Bottom', '0'],
-  ['R2', '36.000mm', '44.000mm', 'Bottom', '0'],
+  ['R1', '45.000mm', '44.000mm', 'Bottom', '0'],
+  ['R2', '49.000mm', '44.000mm', 'Bottom', '0'],
   ['R3', '50.000mm', '49.000mm', 'Bottom', '0'],
   ['R4', '55.000mm', '49.000mm', 'Bottom', '0'],
   ['R5', '45.000mm', '28.000mm', 'Bottom', '0'],
   ['R6', '49.000mm', '28.000mm', 'Bottom', '0'],
-  ['R7', '34.000mm', '28.000mm', 'Bottom', '0'],
+  ['R7', '30.000mm', '32.000mm', 'Bottom', '0'],
   ['R8', '54.000mm', '28.000mm', 'Bottom', '0'],
   ['R9', '61.000mm', '42.000mm', 'Bottom', '0'],
-  ['R10', '47.000mm', '45.000mm', 'Bottom', '0'],
+  ['R10', '53.000mm', '45.000mm', 'Bottom', '0'],
   ['C1', '32.000mm', '36.000mm', 'Bottom', '0'],
   ['C2', '44.000mm', '36.000mm', 'Bottom', '0'],
   ['C3', '32.000mm', '20.000mm', 'Bottom', '0'],
   ['C4', '44.000mm', '20.000mm', 'Bottom', '0'],
   ['C5', '20.000mm', '34.000mm', 'Bottom', '0'],
   ['C6', '56.000mm', '34.000mm', 'Bottom', '0'],
-  ['C7', '28.000mm', '44.000mm', 'Bottom', '0'],
+  ['C7', '42.000mm', '44.500mm', 'Bottom', '0'],
   ['C8', '53.000mm', '43.000mm', 'Bottom', '0'],
   ['C9', '25.000mm', '26.000mm', 'Bottom', '0'],
   ['C10', '50.000mm', '22.000mm', 'Bottom', '0'],
@@ -110,18 +110,18 @@ const cplRows = [
   ['C12', '62.000mm', '35.000mm', 'Bottom', '0'],
   ['C13', '21.000mm', '28.000mm', 'Bottom', '0'],
   ['C14', '28.000mm', '29.000mm', 'Bottom', '0'],
-  ['C15', '31.000mm', '28.000mm', 'Bottom', '0'],
+  ['C15', '35.000mm', '31.000mm', 'Bottom', '0'],
   ['C16', '55.000mm', '22.000mm', 'Bottom', '0'],
   ['C17', '66.000mm', '42.000mm', 'Bottom', '0'],
-  ['C18', '46.000mm', '42.000mm', 'Bottom', '0'],
+  ['C18', '46.500mm', '40.500mm', 'Bottom', '0'],
 ];
 
 function readinessMarkdown() {
   return `# TellMeLight Rev A4 Order Review
 
-Date: 2026-05-31
+Date: 2026-06-01
 
-Rev A4 is the first compact routing checkpoint after the user's JLC dry run.
+Rev A4 is the first compact routing and JLC-preview candidate after the user's JLC dry run.
 
 ## What Changed
 
@@ -133,7 +133,7 @@ Rev A4 is the first compact routing checkpoint after the user's JLC dry run.
 - C18 adds the required RP2040 VREG_VOUT local capacitor.
 - The top-side silkscreen has a small A1-style separated avatar watermark in line art.
 - The top-side title includes the persistent By Joey.qiao attribution.
-- This package checks JLC board size, SMT matching, placement, orientation, and silkscreen. It is still not the paid-order electrical routing release because routing signoff is blocked until DRC reports 0 violations and 0 unconnected items.
+- This package checks JLC board size, SMT matching, placement, orientation, and silkscreen. KiCad DRC now reports 0 violations and 0 unconnected items; payment is still gated by JLC DFM and orientation preview.
 
 ## Known JLC Warnings To Interpret
 
@@ -146,7 +146,9 @@ Rev A4 is the first compact routing checkpoint after the user's JLC dry run.
 
 Do not pay until the JLC orientation preview confirms D1-D6, U2, U5, U6, J1, Y1, SW1, and SW2.
 
-The next hardware step is a Rev A4 placement/fanout revision that reaches DRC 0 and 0 unconnected items.
+Status token: READY_FOR_JLC_PREVIEW_NOT_PAYMENT.
+
+The next hardware step is JLC preview upload, not payment. Confirm drill, layer count, board size, SMT placement, orientation, and whether JLC accepts the 0.10 mm drill / 0.25 mm via process before paying.
 `;
 }
 
