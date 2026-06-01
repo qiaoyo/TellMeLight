@@ -113,6 +113,20 @@ It combines the Rev A2 assembly BOM/CPL with the Rev A3 protection additions for
 JLC part matching and rough cost discovery, but it is still `PREFLIGHT_NOT_FOR_ORDER`
 until the real Rev A3 PCB/Gerber/CPL exists.
 
+Check the Rev A5 budget EVT cart before buying first-demo hardware:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 tools/hardware/check-rev-a5-budget.mjs
+```
+
+Flash and smoke-test the Rev A5 module firmware after the XIAO RP2040 and 6x10 matrix arrive:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools/rev_a5/send-serial-state.ps1 -Port COM7 -States running,approval,done,error,idle,running -Brightness 0.12
+```
+
+Replace `COM7` with the actual Windows serial port.
+
 Run KiCad CLI checks with the installed Windows KiCad 10.0 path:
 
 ```powershell
@@ -150,12 +164,14 @@ Run KiCad CLI checks with the installed Windows KiCad 10.0 path:
 - Rev A3 netlist lint that checks required nets, expected single-pin review nets, and the VLED source-model review item before schematic generation.
 - Rev A3 protection update with VLED TVS, explicit VBUS-to-VLED source link, USB-C shell `1M // 10nF` RC grounding, and a JLC checklist for quote/matcher validation.
 - Rev A3 JLC preflight assembly package for checking the full Rev A2 BOM plus U6/R9/C17/R10 protection additions before the final Rev A3 PCB/Gerber/CPL package.
+- Rev A5 budget EVT plan that stops the Rev A4 paid PCBA path and switches the first physical demo to a XIAO RP2040 plus 6x10 WS2812 matrix under an RMB 300 hard cost gate.
 
 ## Out Of Scope For Milestone 1
 
 - Real USB HID writer.
 - Firmware build.
 - Fabrication-ready schematic signoff, final routing, enclosure CAD, and optical validation.
+- Rev A5 custom PCBA, glass, battery, and integrated enclosure tooling.
 - Tool-specific log parsers for Codex, Claude, Cursor, or other AI tools.
 
 ## Design Docs
@@ -164,6 +180,7 @@ Run KiCad CLI checks with the installed Windows KiCad 10.0 path:
 - `docs/superpowers/specs/2026-05-30-rev-a-kicad-hardware-design.md`
 - `docs/superpowers/specs/2026-05-30-rev-a1-jlc-fabrication-candidate-design.md`
 - `docs/superpowers/specs/2026-05-30-rev-a2-pinout-jlc-order-package-design.md`
+- `docs/superpowers/specs/2026-06-02-rev-a5-budget-evt-design.md`
 - `docs/superpowers/specs/2026-05-29-adapter-foundation-design.md`
 - `docs/adapters/contract.md`
 - `docs/superpowers/brainstorm/2026-05-29-tellmelight-progress.md`
@@ -172,3 +189,4 @@ Run KiCad CLI checks with the installed Windows KiCad 10.0 path:
 - `docs/superpowers/plans/2026-05-30-rev-a1-jlc-fabrication-candidate.md`
 - `docs/superpowers/plans/2026-05-30-rev-a2-pinout-jlc-order-package.md`
 - `docs/superpowers/plans/2026-05-30-rev-a3-pin-level-schematic.md`
+- `docs/superpowers/plans/2026-06-02-rev-a5-budget-evt.md`

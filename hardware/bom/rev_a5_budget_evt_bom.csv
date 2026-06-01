@@ -1,0 +1,12 @@
+Category,Item,Qty,UnitRmb,ExtendedRmb,BuyNow,Required,Source,Notes
+controller,Seeed Studio XIAO RP2040 pre-soldered,1,45,45,YES,YES,Seeed SKU 102010428,Official price USD 3.99; domestic cart may vary
+display,6x10 RGB WS2812 Matrix for XIAO,1,50,50,YES,YES,Seeed SKU 104030107,Official price USD 4.99; uses D0 and 60 WS2812 LEDs
+cable,USB-C data cable,1,15,15,YES,YES,local,Skip only if a known data cable is available
+optics,Frosted acrylic or translucent PC diffuser sample,1,35,35,YES,YES,local,1mm to 2mm sheet; no glass in Rev A5
+optics,Black mask material or black vinyl,1,15,15,YES,YES,local,Used for six trapezoid windows
+mechanical,M2 spacers screws foam tape insulation,1,25,25,YES,YES,local,Keep metal away from exposed module pads
+buffer,Shipping and price variance buffer,1,50,50,YES,YES,cart,Hard buffer to prevent false low budget
+fallback,Grove Base for XIAO,1,40,40,NO,NO,Seeed SKU 103020312,Only if matrix is unavailable and using Grove LED Stick
+fallback,Grove RGB LED Stick 10 WS2813 Mini,1,50,50,NO,NO,Seeed SKU 104020131,Larger optical span but less spatial freedom
+forbidden,JLC Rev A4 five-piece full SMT PCBA,1,820,820,NO,NO,JLC quote,Do not buy for Rev A5; exceeds hard budget
+

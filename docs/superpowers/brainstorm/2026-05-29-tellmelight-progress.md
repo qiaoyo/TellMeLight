@@ -611,3 +611,28 @@ Proposed first automation milestone:
   - Rev A3 is `ORDER_REVIEW_NOT_FOR_PAYMENT`.
   - It is suitable for JLC board-size, DFM, BOM/CPL matching, placement, orientation, and silkscreen review.
   - Paid-order electrical routing remains the next hardware step after JLC orientation review.
+
+## Rev A5 Budget EVT Pivot Checkpoint - 2026-06-02
+
+- User set a hard first physical demo budget of RMB 300 and explicitly allowed off-the-shelf boards.
+- Rev A4's JLC five-piece full-SMT quote reached about RMB 820, driven mostly by PCBA fixed costs such as engineering/setup, stencil, and feeder/loading/changeover charges.
+- Decision: stop Rev A4 as a paid first prototype. Keep it as the integrated engineering reference only.
+- Rev A5 default hardware is now:
+  - Seeed Studio XIAO RP2040, preferably pre-soldered.
+  - Seeed 6x10 RGB WS2812 Matrix for XIAO.
+  - CircuitPython firmware over USB serial.
+  - Cheap reversible optical stack: diffuser, black mask, spacers, and temporary holder.
+- Added hard cost gate:
+  - Target: buy-now cart at or below RMB 240.
+  - Absolute stop: RMB 300.
+  - No JLC PCBA order for Rev A5.
+- Added:
+  - `docs/superpowers/specs/2026-06-02-rev-a5-budget-evt-design.md`.
+  - `docs/superpowers/plans/2026-06-02-rev-a5-budget-evt.md`.
+  - `hardware/bom/rev_a5_budget_evt_bom.csv`.
+  - `hardware/notes/rev-a5-budget-evt.md`.
+  - `hardware/notes/rev-a5-order-checklist.md`.
+  - `firmware/rev_a5_budget_evt/code.py`.
+  - `tools/rev_a5/send-serial-state.ps1`.
+  - `tools/hardware/check-rev-a5-budget.mjs`.
+- This checkpoint intentionally favors reliable light-up proof and industrial-design exploration over custom PCB integration.
