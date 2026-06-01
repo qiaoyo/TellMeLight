@@ -10,6 +10,7 @@ test('package exposes host bridge commands', async () => {
   assert.equal(packageJson.scripts.event, 'node host/src/event-cli.js');
   assert.equal(packageJson.scripts['tml-run'], 'node host/src/process-cli.js');
   assert.equal(packageJson.scripts['tml-codex'], 'node host/src/codex-cli.js');
+  assert.equal(packageJson.scripts['rev-a5-frame'], 'node host/src/rev-a5-frame-cli.js');
 });
 
 test('host bridge CLI starts the HTTP server on the default port', async () => {

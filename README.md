@@ -127,6 +127,12 @@ powershell -ExecutionPolicy Bypass -File tools/rev_a5/send-serial-state.ps1 -Por
 
 Replace `COM7` with the actual Windows serial port.
 
+Generate the current Rev A5 serial frame from a running Host Bridge:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 host/src/rev-a5-frame-cli.js --brightness 0.12
+```
+
 Run KiCad CLI checks with the installed Windows KiCad 10.0 path:
 
 ```powershell

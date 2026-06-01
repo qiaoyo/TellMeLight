@@ -10,6 +10,7 @@
     "event": "node host/src/event-cli.js",
     "tml-run": "node host/src/process-cli.js",
     "tml-codex": "node host/src/codex-cli.js",
+    "rev-a5-frame": "node host/src/rev-a5-frame-cli.js",
     "test": "node --test host/test/*.test.js"
   }
 }

@@ -150,7 +150,8 @@ Short term:
 
 Next software step:
 
-- Add a serial transport to the host bridge so FIFO changes emit the same JSON-line frame automatically.
+- Use `host/src/rev-a5-frame-cli.js` to turn the current Host Bridge `/v1/slots` snapshot into the same JSON-line frame accepted by the firmware.
+- Add a direct serial transport later if the manual PowerShell sender is too clumsy after the hardware arrives.
 - Keep the USB serial protocol stable so firmware does not need to track host internals.
 
 ## Sources
@@ -161,4 +162,3 @@ Next software step:
 - XIAO 6x10 RGB Matrix product page: https://www.seeedstudio.com/6x10-RGB-MATRIX-for-XIAO-p-5771.html
 - XIAO 6x10 RGB Matrix wiki: https://wiki.seeedstudio.com/rgb_matrix_for_xiao/
 - Grove RGB LED Stick fallback: https://www.seeedstudio.com/Grove-RGB-LED-Stick-10-WS2813-Mini.html
-

@@ -633,6 +633,8 @@ Proposed first automation milestone:
   - `hardware/notes/rev-a5-budget-evt.md`.
   - `hardware/notes/rev-a5-order-checklist.md`.
   - `firmware/rev_a5_budget_evt/code.py`.
+  - `host/src/rev-a5-frame.js`.
+  - `host/src/rev-a5-frame-cli.js`.
   - `tools/rev_a5/send-serial-state.ps1`.
   - `tools/hardware/check-rev-a5-budget.mjs`.
 - This checkpoint intentionally favors reliable light-up proof and industrial-design exploration over custom PCB integration.
