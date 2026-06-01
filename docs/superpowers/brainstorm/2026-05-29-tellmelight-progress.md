@@ -637,4 +637,5 @@ Proposed first automation milestone:
   - `host/src/rev-a5-frame-cli.js`.
   - `tools/rev_a5/send-serial-state.ps1`.
   - `tools/hardware/check-rev-a5-budget.mjs`.
+  - `hardware/outputs/rev_a5_budget/preview.html`.
 - This checkpoint intentionally favors reliable light-up proof and industrial-design exploration over custom PCB integration.

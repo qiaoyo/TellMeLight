@@ -133,6 +133,12 @@ Generate the current Rev A5 serial frame from a running Host Bridge:
 powershell -ExecutionPolicy Bypass -File tools/run-node.ps1 host/src/rev-a5-frame-cli.js --brightness 0.12
 ```
 
+Open the Rev A5 budget preview:
+
+```text
+hardware/outputs/rev_a5_budget/preview.html
+```
+
 Run KiCad CLI checks with the installed Windows KiCad 10.0 path:
 
 ```powershell
@@ -171,6 +177,7 @@ Run KiCad CLI checks with the installed Windows KiCad 10.0 path:
 - Rev A3 protection update with VLED TVS, explicit VBUS-to-VLED source link, USB-C shell `1M // 10nF` RC grounding, and a JLC checklist for quote/matcher validation.
 - Rev A3 JLC preflight assembly package for checking the full Rev A2 BOM plus U6/R9/C17/R10 protection additions before the final Rev A3 PCB/Gerber/CPL package.
 - Rev A5 budget EVT plan that stops the Rev A4 paid PCBA path and switches the first physical demo to a XIAO RP2040 plus 6x10 WS2812 matrix under an RMB 300 hard cost gate.
+- Rev A5 static preview page for the budget gate, module architecture, and diffuser/mask stack.
 
 ## Out Of Scope For Milestone 1
 

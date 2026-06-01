@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TellMeLight Rev A5 Budget EVT</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172033;
+      --muted: #5d6778;
+      --line: #d7dde7;
+      --panel: #f7f9fc;
+      --paper: #ffffff;
+      --blue: #2563eb;
+      --amber: #f59e0b;
+      --green: #13a15a;
+      --red: #de2d2d;
+      --cyan: #10c6d1;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background: #e9eef5;
+    }
+
+    main {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0;
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: minmax(320px, 1fr) 360px;
+      gap: 20px;
+      align-items: stretch;
+      margin-bottom: 18px;
+    }
+
+    section,
+    .hero-copy,
+    .budget-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .hero-copy {
+      padding: 24px;
+    }
+
+    h1,
+    h2 {
+      margin: 0;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      font-size: 28px;
+      line-height: 1.15;
+    }
+
+    h2 {
+      font-size: 16px;
+      margin-bottom: 14px;
+    }
+
+    p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .hero-note {
+      color: #0f5132;
+      font-weight: 700;
+    }
+
+    .budget-card {
+      padding: 18px;
+      display: grid;
+      gap: 12px;
+      align-content: start;
+    }
+
+    .budget-main {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .budget-main strong {
+      font-size: 32px;
+    }
+
+    .bar {
+      height: 16px;
+      border-radius: 999px;
+      background: #dbe3ed;
+      overflow: hidden;
+    }
+
+    .bar span {
+      display: block;
+      width: 78.3%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--green), var(--amber));
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+    }
+
+    .module-panel,
+    .stack-panel,
+    .links-panel {
+      padding: 20px;
+    }
+
+    .device {
+      height: 360px;
+      position: relative;
+      border-radius: 8px;
+      background: #0d1320;
+      overflow: hidden;
+      border: 1px solid #263044;
+    }
+
+    .matrix {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 280px;
+      height: 168px;
+      transform: translate(-50%, -50%);
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      grid-template-rows: repeat(6, 1fr);
+      gap: 7px;
+      opacity: 0.44;
+    }
+
+    .pixel {
+      border-radius: 50%;
+      background: #314057;
+    }
+
+    .mask {
+      position: absolute;
+      inset: 34px 52px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 8px;
+    }
+
+    .slot {
+      position: absolute;
+      filter: drop-shadow(0 0 18px currentColor);
+      opacity: 0.96;
+    }
+
+    .slot::before {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      background: currentColor;
+      opacity: 0.72;
+    }
+
+    .left-long {
+      left: 38px;
+      top: 48px;
+      width: 64px;
+      height: 236px;
+      color: var(--blue);
+      clip-path: polygon(0 0, 100% 14%, 100% 86%, 0 100%);
+    }
+
+    .mid-left {
+      left: 166px;
+      top: 170px;
+      width: 58px;
+      height: 122px;
+      color: var(--amber);
+      clip-path: polygon(0 8%, 100% 18%, 100% 84%, 0 100%);
+    }
+
+    .mid-right {
+      right: 166px;
+      top: 112px;
+      width: 58px;
+      height: 122px;
+      color: var(--green);
+      clip-path: polygon(0 16%, 100% 0, 100% 100%, 0 84%);
+    }
+
+    .right-long {
+      right: 38px;
+      top: 36px;
+      width: 70px;
+      height: 256px;
+      color: var(--cyan);
+      clip-path: polygon(0 12%, 100% 0, 100% 100%, 0 88%);
+    }
+
+    .caption-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .pill {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px 12px;
+      background: var(--panel);
+      min-height: 58px;
+    }
+
+    .pill strong,
+    .stack-step strong,
+    .link-grid a {
+      display: block;
+      font-size: 13px;
+    }
+
+    .pill span,
+    .stack-step span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .stack {
+      display: grid;
+      gap: 10px;
+    }
+
+    .stack-step {
+      padding: 13px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .link-grid a {
+      color: var(--blue);
+      text-decoration: none;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      line-height: 1.4;
+    }
+
+    @media (max-width: 860px) {
+      header,
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .device {
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="hero-copy">
+        <h1>TellMeLight Rev A5 Budget EVT</h1>
+        <p class="hero-note">No JLC PCBA for the first physical demo. Use reliable modules and keep the cart under the RMB 300 hard stop.</p>
+        <p>The default light-up path is XIAO RP2040 plus a 6x10 WS2812 Matrix, CircuitPython firmware, USB serial frames, and a reversible diffuser/mask stack.</p>
+      </div>
+
+      <div class="budget-card">
+        <h2>Budget Gate</h2>
+        <div class="budget-main"><strong>RMB 235</strong><span>guarded buy-now cart</span></div>
+        <div class="bar" aria-label="RMB 235 of RMB 300"><span></span></div>
+        <p>Target review threshold: RMB 240. Absolute RMB 300 hard stop including shipping and variance.</p>
+      </div>
+    </header>
+
+    <div class="grid">
+      <section class="module-panel">
+        <h2>Six-Session Light Preview</h2>
+        <div class="device" aria-label="Rev A5 six slot optical preview">
+          <div class="matrix" aria-hidden="true">
+            <span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span>
+            <span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span>
+            <span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span>
+            <span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span>
+            <span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span>
+            <span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span><span class="pixel"></span>
+          </div>
+          <div class="mask"></div>
+          <div class="slot left-long"></div>
+          <div class="slot mid-left"></div>
+          <div class="slot mid-right"></div>
+          <div class="slot right-long"></div>
+        </div>
+        <div class="caption-row">
+          <div class="pill"><strong>XIAO RP2040</strong><span>USB-C controller with CircuitPython support.</span></div>
+          <div class="pill"><strong>6x10 WS2812 Matrix</strong><span>Cheap official module; firmware maps it into six slots.</span></div>
+          <div class="pill"><strong>No JLC PCBA</strong><span>Rev A5 avoids setup, stencil, feeder, and orientation fees.</span></div>
+        </div>
+      </section>
+
+      <section class="stack-panel">
+        <h2>Physical Stack</h2>
+        <div class="stack">
+          <div class="stack-step"><strong>1. LED module</strong><span>XIAO RP2040 plus 6x10 matrix, brightness capped in firmware.</span></div>
+          <div class="stack-step"><strong>2. Spacer</strong><span>Foam tape or M2 spacers create distance for smoother diffusion.</span></div>
+          <div class="stack-step"><strong>3. Frosted diffuser</strong><span>Frosted diffuser acrylic or translucent PC, not glass in Rev A5.</span></div>
+          <div class="stack-step"><strong>4. Black mask</strong><span>Six rounded trapezoid windows preserve the visual language.</span></div>
+        </div>
+      </section>
+    </div>
+
+    <section class="links-panel" style="margin-top: 18px;">
+      <h2>Action Files</h2>
+      <div class="link-grid">
+        <a href="../../notes/rev-a5-budget-evt.md">hardware/notes/rev-a5-budget-evt.md</a>
+        <a href="../../notes/rev-a5-order-checklist.md">hardware/notes/rev-a5-order-checklist.md</a>
+        <a href="../../../firmware/rev_a5_budget_evt/code.py">firmware/rev_a5_budget_evt/code.py</a>
+        <a href="../../../tools/rev_a5/send-serial-state.ps1">tools/rev_a5/send-serial-state.ps1</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
+
